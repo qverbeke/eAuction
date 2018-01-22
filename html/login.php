@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-  <title>The cool website</title>
+  <title>The Better Bookstore</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -101,7 +101,18 @@
 										  </select>
 										  <h5><a href="http://www.google.com" target="_blank">Can't find your institution? Click here</a></h5>
 										</div>
-										
+										<div class="form-group">
+										  <label for="sel1">Major:</label>
+										  <select class="form-control" id="sel1">
+											 <?php
+												$list = array("Math","Comp Sci","Art");//will need to be modified
+												sort($list);
+												foreach($list as $listItem){
+													echo "<option>".$listItem."</option>";
+												}
+											?>
+										  </select>
+										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">

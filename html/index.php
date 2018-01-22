@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-  <title>The cool website</title>
+  <title>The Better Bookstore</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -70,9 +70,9 @@
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 					</span>
+					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 </div>
