@@ -31,15 +31,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="#">Help</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-	  <li>    
-		<form class="navbar-form navbar-left" action="/action_page.php">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
-	  </li>		
+    <ul class="nav navbar-nav navbar-right">	
       <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Log in or Register</a></li>
     </ul>
   </div>
