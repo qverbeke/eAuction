@@ -1,3 +1,14 @@
 .with-navbar{
 	margin-top:65px;
 }
+.textbook-img{
+	height:180px;
+	width:100%;
+	overflow:hidden;
+    display: flex;
+    align-items: center;
+	
+}
+.textbook-info-container{
+	height:200px;
+}

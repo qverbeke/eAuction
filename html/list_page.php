@@ -32,14 +32,6 @@
       <li><a href="#">Help</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-	  <li>    
-		<form class="navbar-form navbar-left" action="/action_page.php">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
-	  </li>
       <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Log in or Register</a></li>
     </ul>
   </div>
@@ -86,13 +78,25 @@
 							"https://images-na.ssl-images-amazon.com/images/I/41cXTXhiabL._SX366_BO1,204,203,200_.jpg",
 							"https://www.pearsonhighered.com/assets/bigcovers/0/2/0/5/0205583814.jpg");
 			for($i=0;$i<3;$i++){	
-				echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 20px 10px; border-radius:10px\">
+				echo "<div class=\"container-fluid\" style=\"margin:20px 0px 10px 0px\">
 					<div class=\"row\">
-						<div class=\"col-sm-2\">
-							<img src=\"".$img_urls[$i]."\" style=\"width:100%\">
+						<div class=\"col-sm-2\" style=\"background-color:white; border-radius:10px; margin-right:10px; padding-top:10px; padding-bottom:10px\">
+							<div class=\"textbook-img\">
+								<img src=\"".$img_urls[$i]."\" style=\"width:100%\">
+							</div>
 						</div>
-						<div class=\"col-sm-10\">
-							<h1>".$descriptions[$i]."</h1>
+						<div class=\"col-sm-10 textbook-info-container\" style=\"background-color:white; border-radius:10px; margin-right:-30px\">
+							<div class=\"row\">
+								<div class=\"col-sm-8\">
+									<h1>Title title title title</h1>
+									<h3>".$descriptions[$i]."</h3>
+								</div>
+								<div class=\"col-sm-4\">
+									<h3>Author, Author, Author</h3>
+									<h4>Edition of the book</h4>
+								</div>
+							</div>
+							<h5>Keywords: <a>keyword</a>, <a>keyword</a>, <a>keyword</a>, <a>keyword</a></h5>
 						</div>
 					</div>				
 				</div>";
