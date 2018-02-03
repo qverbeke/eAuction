@@ -54,6 +54,11 @@
 						  <li><a href="#Author">Author</a></li>
 						  <li><a href="#ISBN">ISBN</a></li>
 						  <li class="divider"></li>
+						  <li><a href="#Prof">Professor</a></li>
+						  <li><a href="#Course Name/Number">Course Name/Number</a></li>
+						  <li><a href="#Major/Field">Major/Field</a></li>
+						  <li><a href="#College">College</a></li>
+						  <li class="divider"></li>
 						  <li><a href="#all">Anything</a></li>
 						</ul>
 					</div>
@@ -74,11 +79,11 @@
 		<div class="col-sm-1"></div>
 		<div class="col-sm-7">
 			<div class="fluid-container">
-				<h3>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</h3>
+				<h3>We are implementing Better Bookstore, an application aimed at solving this issue. It aims to connect the buyer to the seller through an online service to minimize losses for both sides. Without getting too much into the economics of the situation, we are basically enabling buyers and sellers of textbooks to meet in the middle of the current buy and sell points through an exchange-type system. This will lower the price for textbook buyers, and raise the selling point of book sellers, meaning those who benefit most from transactions through our website are the users. On top of that, Better Bookstore allows users to buy and sell course documents, such as previous homework and midterm exams, allowing students to be best prepared for a class that they are taking. In general, our goal for the Better Bookstore is to ease the stress and financial burden of being a college student, allowing students to focus more on course content rather than the money or time it takes to get the proper course materials.</h3>
 			</div>
 		</div>
 		<div class="col-sm-3">
-			<img src="http://knowledgequest.aasl.org/wp-content/uploads/2015/01/books.png" width="90%" alt="no">
+			<img src="https://images-na.ssl-images-amazon.com/images/I/41cXTXhiabL._SX366_BO1,204,203,200_.jpg" width="90%" alt="no">
 		</div>
 		<div class="col-sm-1"></div>
 	</div>
