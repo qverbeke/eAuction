@@ -33,11 +33,21 @@ if(mysqli_num_rows($result) != 0){
 }
 echo "Done";*/
 
+$sql_statement = "SELECT * FROM User_Username UU, User_Email UE  WHERE UU.username = '$username' OR UE.email = '$email';";
+$result = mysqli_query($conn, $sql_statement);
+if(mysqli_num_rows($result) != 0){
+  echo "There is someone with the same username or email already in our database";
+}
 $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
 $sql_statement = "INSERT INTO User(Password, DOB, Address, Gender) VALUES ('$hashed_pwd', '$DOB', '$address', '$gender');";
 mysqli_query($conn, $sql_statement);
 $err = mysqli_error($conn);
 trigger_error($err);
+$UID = mysqli_insert_id($conn);
+$sql_statement = "INSERT INTO User_Username(UID, Username) VALUES ('$UID', '$username');";
+mysqli_query($conn, $sql_statement);
+$sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');";
+mysqli_query($conn, $sql_statement);
 
 /*if(mysqli_num_rows($result) != 0){
   echo "There is someone with that username";
