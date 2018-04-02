@@ -11,13 +11,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
 	$(function() {
+    //When the login button is pressed (not the LOG IN button)
 		$('#login-form-link').click(function(e) {
+      //Have login form fade in and register form fade out
 			$("#login-form").delay(100).fadeIn(100);
 			$("#register-form").fadeOut(100);
+      //Make the login form have the class active so we know it is the active form
 			$('#register-form-link').removeClass('active');
 			$(this).addClass('active');
+      //prevent the default action of this event
 			e.preventDefault();
 		});
+    //Similar to above function, when register button is pressed, witch to register form
 		$('#register-form-link').click(function(e) {
 			$("#register-form").delay(100).fadeIn(100);
 			$("#login-form").fadeOut(100);
@@ -81,7 +86,7 @@
 										</div>
 										<div class="form-group">
 											<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-										</div> 
+										</div>
 										<div class="form-group">
 											<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
 										</div>
