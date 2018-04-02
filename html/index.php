@@ -9,13 +9,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
+  //When document has loaded
 	$(document).ready(function(e){
-		$('.search-panel .dropdown-menu').find('a').click(function(e) {
-			e.preventDefault();
+    //Make an on click function in all a tags descendants of an element with the serach panel class or dropdown menu
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+      //prevent the default action of the event from being triggered
+      e.preventDefault();
+      //param equals the href field in the specific tag that was clicked minus the #
 			var param = $(this).attr("href").replace("#","");
+      //Get the text in the a tag
 			var concept = $(this).text();
+      //Sets text in search panel class and in search concept id in a span to search_concept
 			$('.search-panel span#search_concept').text(concept);
-			$('.input-group #search_param').val(param);
+      //Sets the value in all classes of input-group and all divs with id search_param to value param
+      $('.input-group #search_param').val(param);
 		});
 	});
 	</script>
@@ -31,7 +38,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="#">Help</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">	
+    <ul class="nav navbar-nav navbar-right">
       <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Log in or Register</a></li>
     </ul>
   </div>
@@ -42,7 +49,7 @@
 	  <p style="color:white">A money-saving marketplace for students</p>
 	  <br>
 	  <div class="container">
-		<div class="row">    
+		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
@@ -62,7 +69,7 @@
 						  <li><a href="#all">Anything</a></li>
 						</ul>
 					</div>
-					<input type="hidden" name="search_param" value="all" id="search_param">         
+					<input type="hidden" name="search_param" value="all" id="search_param">
 					<input type="text" class="form-control" name="x" placeholder="Search term...">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
