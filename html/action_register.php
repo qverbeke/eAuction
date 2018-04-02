@@ -34,10 +34,11 @@ if(mysqli_num_rows($result) != 0){
 echo "Done";*/
 
 $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
-$sql_statement = "INSERT INTO User(Password, DOB, Address, Gender) VALUES ('$password', '$DOB', '$address', '$gender');";
+$sql_statement = "INSERT INTO User(Password, DOB, Address, Gender) VALUES ('$hashed_pwd', '$DOB', '$address', '$gender');";
 mysqli_query($conn, $sql_statement);
 $err = mysqli_error($conn);
-echo $err;
+trigger_error($err);
+
 /*if(mysqli_num_rows($result) != 0){
   echo "There is someone with that username";
 }*/
