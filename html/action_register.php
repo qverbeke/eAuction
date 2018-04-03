@@ -26,7 +26,7 @@ else if($gender == 'female' || gender == 'Female'){
 
 //If the two passwords dont match, reload the page.
 if($confirm_password != $password){
-  header("Location: login.php");
+  header("Location: login.php?error=incorrect_confirm_password");
   exit();
 }
 
@@ -35,7 +35,7 @@ $sql_statement = "SELECT * FROM User_Username UU, User_Email UE  WHERE UU.userna
 $result = mysqli_query($conn, $sql_statement);
 if(mysqli_num_rows($result) != 0){
   //reload the page and exit the script
-  header("Location: login.php");
+  header("Location: login.php?error=duplicate_username_or_email");
   exit();
 }
 //Encrypt the password
@@ -49,7 +49,7 @@ mysqli_query($conn, $sql_statement);
 $sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');";
 mysqli_query($conn, $sql_statement);
 //go to the main pag
-header("Location: index.php?signup=success");
+header("Location: index.php?status=register_success");
 /*if(mysqli_num_rows($result) != 0){
   echo "There is someone with that username";
 }*/
