@@ -52,6 +52,25 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
+                  <p id="error-text" style="color:red; font-size: 13px;">
+                    <?php
+                      if(isset($_GET['error'])){
+                        if($_GET['error'] == 'incorrect_password'){
+                          echo 'Incorrect Password';
+                        }
+                        if($_GET['error'] == 'username_not_found'){
+                          echo 'Username not found.';
+                        }
+                        if($_GET['error'] == 'incorrect_confirm_password'){
+                          echo 'Confirm password doesnt match';
+                          
+                        }
+                        if($_GET['error'] == 'duplicate_username_or_email'){
+                          echo 'Username or email is already registered in our system.';
+                        }
+                      }
+                    ?>
+                  </p>
 									<form id="login-form" action="action_sign_in.php" method="post" role="form" style="display: block;">
 										<div class="form-group">
 											<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
