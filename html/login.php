@@ -59,10 +59,7 @@
 										<div class="form-group">
 											<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
 										</div>
-										<div class="form-group text-center">
-											<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-											<label for="remember"> Remember Me</label>
-										</div>
+
 																			<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
@@ -98,30 +95,6 @@
                       <input type="text"  name="gender" id="gender" tabindex="1" class="form-control", placeholder="Gender" value="">
                     </div>
 
-										<div class="form-group">
-										  <label for="sel1">Institution:</label>
-										  <select class="form-control" id="sel1">
-											 <?php
-												$list = array("Penn State","Rutgers lul","Carnegie Mellon");//will need to be modified
-												sort($list);
-												foreach($list as $listItem){
-													echo "<option>".$listItem."</option>";
-												}
-											?>
-										  </select>
-										  <h5><a href="http://www.google.com" target="_blank">Can't find your institution? Click here</a></h5>
-										</div>
-										<div class="form-group">
-										  <label for="sel1">Major:</label>
-										  <select class="form-control" id="sel1">
-											 <?php
-												$list = array("Math","Comp Sci","Art");//will need to be modified
-												sort($list);
-												foreach($list as $listItem){
-													echo "<option>".$listItem."</option>";
-												}
-											?>
-										  </select>
 										</div>
 										<div class="form-group">
 											<div class="row">
