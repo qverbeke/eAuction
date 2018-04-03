@@ -93,6 +93,19 @@
 											<div class="form-group">
 											<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
 										</div>
+                    <div>
+                      <div class="form-group">
+                      <input type="text"  name="DOB" id="DOB" tabindex="1" class="form-control", placeholder="MM/DD/YY" value="">
+                    </div>
+                    <div>
+                      <div class="form-group">
+                      <input type="text"  name="address" id="address" tabindex="1" class="form-control", placeholder="Address" value="">
+                    </div>
+                    <div>
+                      <div class="form-group">
+                      <input type="text"  name="gender" id="gender" tabindex="1" class="form-control", placeholder="Gender" value="">
+                    </div>
+
 										<div class="form-group">
 										  <label for="sel1">Institution:</label>
 										  <select class="form-control" id="sel1">
