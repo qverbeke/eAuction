@@ -95,7 +95,7 @@
 										</div>
                     <div>
                       <div class="form-group">
-                      <input type="text"  name="DOB" id="DOB" tabindex="1" class="form-control", placeholder="MM/DD/YY" value="">
+                      <input type="text"  name="DOB" id="DOB" tabindex="1" class="form-control", placeholder="Date of birth (MM/DD/YY)" value="">
                     </div>
                     <div>
                       <div class="form-group">
