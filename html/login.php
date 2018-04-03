@@ -18,6 +18,7 @@
 			$("#register-form").fadeOut(100);
       //Make the login form have the class active so we know it is the active form
 			$('#register-form-link').removeClass('active');
+      $("#error-text").hide();
 			$(this).addClass('active');
       //prevent the default action of this event
 			e.preventDefault();
@@ -27,6 +28,8 @@
 			$("#register-form").delay(100).fadeIn(100);
 			$("#login-form").fadeOut(100);
 			$('#login-form-link').removeClass('active');
+      //hide the error text
+      $("#error-text").hide();
 			$(this).addClass('active');
 			e.preventDefault();
 		});
@@ -54,7 +57,10 @@
 								<div class="col-lg-12">
                   <p id="error-text" style="color:red; font-size: 13px;">
                     <?php
+                    //create the text depending on the error in the url
+                    //if there is a error message in the url
                       if(isset($_GET['error'])){
+                        //if the error message is incorrect_password show the text incorrect password where the error text goes
                         if($_GET['error'] == 'incorrect_password'){
                           echo 'Incorrect Password';
                         }
@@ -63,7 +69,6 @@
                         }
                         if($_GET['error'] == 'incorrect_confirm_password'){
                           echo 'Confirm password doesnt match';
-                          
                         }
                         if($_GET['error'] == 'duplicate_username_or_email'){
                           echo 'Username or email is already registered in our system.';

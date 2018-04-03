@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 include_once 'connect-to-database.php';
 //get username and password
 //Escapes special characters in a string for use in an SQL statement, taking into account the current charset of the connection
-
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -15,6 +14,7 @@ $DOB = mysqli_real_escape_string($conn, $_POST['DOB']);
 $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 $address = mysqli_real_escape_string($conn, $_POST['address']);
 
+//Make gender into a number
 if($gender == "male" || $gender == "Male"){
   $gender_num = 0;
 }
@@ -50,7 +50,5 @@ $sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');"
 mysqli_query($conn, $sql_statement);
 //go to the main pag
 header("Location: index.php?status=register_success");
-/*if(mysqli_num_rows($result) != 0){
-  echo "There is someone with that username";
-}*/
+
 ?>
