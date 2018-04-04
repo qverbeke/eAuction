@@ -39,8 +39,8 @@
       <li><a href="#">Help</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span>Messaging</a></li>
       <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>My Account</a></li>
-      <!---li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Log in or Register</a></li-->
     </ul>
   </div>
 </nav>
