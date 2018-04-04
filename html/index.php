@@ -49,11 +49,14 @@
     <p style="font-size:15px; text-align: left;">
       <?php
         session_start();
-        $status = $_GET["status"];
-        if(isset($status) && $status="sign_in_success"){
-          $username = $_SESSION["username"];
-          echo "Welcome user " . $username;
+        if(isset($_GET["status"])){
+          $status = $_GET["status"];
+          if($status=="sign_in_success"){
+            $username = $_SESSION["username"];
+            echo "Welcome user " . $username;
+          }
         }
+
       ?>
      </p>
 	  <h1 style="color:white"><b>Better Bookstore</b></h1>
