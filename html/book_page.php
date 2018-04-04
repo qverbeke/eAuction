@@ -20,13 +20,6 @@
 		});
 	});
   </script>
-  <script>
-  var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value; // Display the default slider value
-
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = function() {
 </head>
 <body>
 <div id="navbar" style="margin-top:50px;">
@@ -77,10 +70,10 @@
 						</div>
 						<div class="checkbox disabled">
 						  <label><input class="pricerange" type="checkbox" value="" disabled>$100-$150</label>
-						</div> 
+						</div>
 						<div class="checkbox disabled">
 						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
-						</div> 
+						</div>
 >>>>>>> 83a6fdd0948a3b77b6b0582c332a46c30deac783
 					<p>Search Type</p>
 					<div class="checkbox active">
