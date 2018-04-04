@@ -41,7 +41,6 @@
 					?>
 					<br>
 					<p>Price range:</p>
-<<<<<<< HEAD
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Any</label>
 					</div>
@@ -57,7 +56,7 @@
 					<div class="checkbox disabled">
 					  <label><input type="checkbox" value="" disabled>$150-$200</label>
 					</div>
-=======
+
 					<form>
 						<div class="checkbox active">
 						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
@@ -74,7 +73,6 @@
 						<div class="checkbox disabled">
 						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
 						</div>
->>>>>>> 83a6fdd0948a3b77b6b0582c332a46c30deac783
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
