@@ -27,9 +27,6 @@
 
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = function() {
-		output.innerHTML = this.value;
-	}
-  </script>
 </head>
 <body>
 <div id="navbar" style="margin-top:50px;">
@@ -51,6 +48,7 @@
 					?>
 					<br>
 					<p>Price range:</p>
+<<<<<<< HEAD
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Any</label>
 					</div>
@@ -66,19 +64,39 @@
 					<div class="checkbox disabled">
 					  <label><input type="checkbox" value="" disabled>$150-$200</label>
 					</div>
+=======
+					<form>
+						<div class="checkbox active">
+						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$0-$50</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$50-$100</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$100-$150</label>
+						</div> 
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
+						</div> 
+>>>>>>> 83a6fdd0948a3b77b6b0582c332a46c30deac783
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="">Past Homeworks</label>
+					  <label><input type="checkbox" checked="checked" value="">Past Homeworks</label>
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="">Past Exams</label>
+					  <label><input type="checkbox" checked="checked" value="">Past Exams</label>
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="">Miscellaneous Documents</label>
+					  <label><input type="checkbox" checked="checked" value="">Miscellaneous Documents</label>
 					</div>
+					<input type="submit" value="Update Preferences">
+					</form>
 				</div>
 
 			</div>
