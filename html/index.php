@@ -11,6 +11,7 @@
   <script>
   //When document has loaded
 	$(document).ready(function(e){
+    $('#navbar').load("navbar.html");
     //Make an on click function in all a tags descendants of an element with the serach panel class or dropdown menu
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
       //prevent the default action of the event from being triggered
@@ -23,27 +24,14 @@
 			$('.search-panel span#search_concept').text(concept);
       //Sets the value in all classes of input-group and all divs with id search_param to value param
       $('.input-group #search_param').val(param);
+
 		});
 	});
 	</script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Better Bookstore</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#">Help</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span>Messaging</a></li>
-      <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>My Account</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="navbar" style="margin-top:50px;">
+</div>
 <div class="fluid-container">
 	<div class="jumbotron text-center" style="background-color:#00cc7a">
     <p style="font-size:15px; text-align: left;">

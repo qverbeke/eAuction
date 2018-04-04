@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
 	$(document).ready(function(e){
+    $('#navbar').load("navbar.html");
 		$('.search-panel .dropdown-menu').find('a').click(function(e) {
 			e.preventDefault();
 			var param = $(this).attr("href").replace("#","");
@@ -27,25 +28,12 @@
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = function() {
 		output.innerHTML = this.value;
-	} 
+	}
   </script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="">Better Bookstore</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.php">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#">Help</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Log in or Register</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="navbar" style="margin-top:50px;">
+</div>
 <div class="container-fluid with-navbar">
 	<div class="row">
 		<div class="col-sm-3">
@@ -59,7 +47,7 @@
 									"------College of Engineering", "---------AERO 020", "---------CMPSC 121");
 						foreach($hier as $elem){
 							echo "<a><p style=\"color:white\">$elem</p></a>";
-						}					
+						}
 					?>
 					<br>
 					<p>Price range:</p>
@@ -74,10 +62,10 @@
 					</div>
 					<div class="checkbox disabled">
 					  <label><input type="checkbox" value="" disabled>$100-$150</label>
-					</div> 
+					</div>
 					<div class="checkbox disabled">
 					  <label><input type="checkbox" value="" disabled>$150-$200</label>
-					</div> 
+					</div>
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
@@ -92,7 +80,7 @@
 					  <label><input type="checkbox" value="">Miscellaneous Documents</label>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="col-sm-9" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
@@ -115,7 +103,7 @@
 						  <li><a href="#all">Anything</a></li>
 						</ul>
 					</div>
-					<input type="hidden" name="search_param" value="all" id="search_param">         
+					<input type="hidden" name="search_param" value="all" id="search_param">
 					<input type="text" class="form-control" name="x" placeholder="Search term...">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
@@ -132,7 +120,7 @@
 			$img_url = "https://images-na.ssl-images-amazon.com/images/I/41a28A84XhL._SX422_BO1,204,203,200_.jpg";
 			$price="$100.00";
 			$keywords=array("Math","Calc","Fun","Integrals");
-			
+
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
 				<div class=\"row\">
 					<div class=\"col-sm-4\" style=\"margin:10px\">
@@ -162,7 +150,7 @@
 					 echo "</div>
 						</div>
 					</div>
-				</div>				
+				</div>
 			</div>";
 		?>
 		</div>
