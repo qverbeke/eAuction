@@ -5,6 +5,9 @@
   //get username and password from the form
   $username = $_POST["username"];
   $password = $_POST["password"];
+
+  $_SESSION["username"] = $username;
+
   //See if there are any users that have this username
   $sql_statement = "SELECT UU.UID FROM User_Username UU WHERE UU.username='$username'";
   $result = mysqli_query($conn, $sql_statement);

@@ -46,6 +46,16 @@
 </nav>
 <div class="fluid-container">
 	<div class="jumbotron text-center" style="background-color:#00cc7a">
+    <p style="font-size:15px; text-align: left;">
+      <?php
+        session_start();
+        $status = $_GET["status"];
+        if(isset($status) && $status="sign_in_success"){
+          $username = $_SESSION["username"];
+          echo "Welcome user " . $username;
+        }
+      ?>
+     </p>
 	  <h1 style="color:white"><b>Better Bookstore</b></h1>
 	  <p style="color:white">A money-saving marketplace for students</p>
 	  <br>

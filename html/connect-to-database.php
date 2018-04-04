@@ -1,4 +1,6 @@
 <?php
+//start a session so that we can keep variables across pages
+session_start();
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
