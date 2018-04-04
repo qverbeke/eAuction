@@ -23,7 +23,7 @@
   $row = mysqli_fetch_row($result);
   //get the users ID
   $UID = $row[0];
-
+  $_SESSION["UID"] = $UID;
   //Look for password for the user with the UID determined above
   $sql_statement = "SELECT U.password FROM User U WHERE U.UID='$UID'";
   $result = mysqli_query($conn, $sql_statement);
