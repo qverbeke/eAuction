@@ -40,6 +40,6 @@
     header("Location: login.php?error=incorrect_password");
     exit();
   }
-  header("Location: index.php?status=sign_in_success");
+  header("Location: home.php?status=sign_in_success");
   exit();
  ?>
