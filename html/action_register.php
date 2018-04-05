@@ -49,6 +49,6 @@ mysqli_query($conn, $sql_statement);
 $sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');";
 mysqli_query($conn, $sql_statement);
 //go to the main pag
-header("Location: index.php?status=register_success");
+header("Location: home.php?status=register_success");
 
 ?>
