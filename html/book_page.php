@@ -41,23 +41,6 @@
 					?>
 					<br>
 					<p>Price range:</p>
-<<<<<<< HEAD
-					<div class="checkbox active">
-					  <label><input type="checkbox" checked="checked" value="">Any</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$0-$50</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$50-$100</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$100-$150</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$150-$200</label>
-					</div>
-=======
 					<form>
 						<div class="checkbox active">
 						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
@@ -74,7 +57,7 @@
 						<div class="checkbox disabled">
 						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
 						</div>
->>>>>>> 83a6fdd0948a3b77b6b0582c332a46c30deac783
+
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
@@ -129,7 +112,6 @@
 			$description = "Welcome to the wonderful world of calculus. This book is all about the details of calculus and I hope you learn a lot about calculus by reading this here book";
 			$used_by=array("Math 140", "Math 141", "Math 230", "Math 250");
 			$img_url = "https://images-na.ssl-images-amazon.com/images/I/41a28A84XhL._SX422_BO1,204,203,200_.jpg";
-			$price="$100.00";
 			$keywords=array("Math","Calc","Fun","Integrals");
 
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
@@ -151,10 +133,7 @@
 						  echo "</h5>
 							</div>
 							<div class=\"col-sm-5\" style=\"padding-right:20px\">
-								<h3 style=\"line-height:0.6\">Available from:</h3>
-								<h2><b>".$price."</b></h2>
-								<hr>
-								<h4>Used in:</h4>";
+								<h2>Used in:</h2><hr>";
 								foreach($used_by as $user){
 									echo "<h3>$user</h3>";
 								}
@@ -163,6 +142,61 @@
 					</div>
 				</div>
 			</div>";
+			$list_price=array("$30", "$100", "$300");
+			$list_qual=array("Bad", "Good", "New");
+			$seller_rating=array("5", "3.3", "2.9");
+			for($i=0; $i<count($list_price); $i=$i+1){
+				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
+					<div class='row'>
+						<div class='col-sm-2'>
+							<h3 align='left'><b>Listing ".($i+1).":</b></h3>
+						</div>
+						<div class='col-sm-2'>
+							<div class='container-fluid'>
+								<div class='row'>
+									<div class='col-sm-6'>
+										<h3 align='right'>Price:</h3>
+									</div>
+									<div class='col-sm-6'>
+										<h3 align='left'><b>".$list_price[$i]."</b></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-sm-3'>
+							<div class='container-fluid'
+							>
+								<div class='row'>
+									<div class='col-sm-6'>
+										<h3 align='right'>Quality:</h3>
+									</div>
+									<div class='col-sm-6'>
+										<h3 align='left'><b>".$list_qual[$i]."</b></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-sm-3'>
+							<div class='container-fluid'>
+								<div class='row'>
+									<div class='col-sm-8'><p>Seller rating:</p>";
+										for ($j=0; $j<floor(floatval($seller_rating[$i])); $j=$j+1){
+											echo "<img src='img/star.png' style='white-space: nowrap; width:20px;'>";
+										}
+									echo "</div>
+									<div class='col-sm-4'>
+										<h4>".$seller_rating[$i]."/5 stars</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-sm-2'>
+							<button value='Buy'>Buy</button>
+						</div>
+					</div>
+				</div>";
+			
+			}
 		?>
 		</div>
 	</div>
