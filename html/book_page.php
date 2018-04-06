@@ -142,28 +142,28 @@
 					</div>
 				</div>
 			</div>";
-			$list_price=array("$30", "$100", "$300");
+			$list_price=array("30.50", "100.99", "300.34");
 			$list_qual=array("Bad", "Good", "New");
 			$seller_rating=array("5", "3.3", "2.9");
 			for($i=0; $i<count($list_price); $i=$i+1){
-				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
+				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px; height: 60px'>
 					<div class='row'>
-						<div class='col-sm-2'>
-							<h3 align='left'><b>Listing ".($i+1).":</b></h3>
+						<div class='col-sm-1'>
+							<button class='btn btn-primary' style='margin-top:6px; font-size:24px;' value='Buy'>BUY</button>
 						</div>
-						<div class='col-sm-2'>
+						<div class='col-sm-3' style='margin-top:-2px'>
 							<div class='container-fluid'>
 								<div class='row'>
 									<div class='col-sm-6'>
 										<h3 align='right'>Price:</h3>
 									</div>
 									<div class='col-sm-6'>
-										<h3 align='left'><b>".$list_price[$i]."</b></h3>
+										<h3 align='left'><b>$".$list_price[$i]."</b></h3>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class='col-sm-3'>
+						<div class='col-sm-3' style='margin-top:-2px'>
 							<div class='container-fluid'
 							>
 								<div class='row'>
@@ -176,22 +176,20 @@
 								</div>
 							</div>
 						</div>
-						<div class='col-sm-3'>
+						<div class='col-sm-5'>
 							<div class='container-fluid'>
 								<div class='row'>
-									<div class='col-sm-8'><p>Seller rating:</p>";
+									<div class='col-sm-3' style='margin-top:2px'><h4>Seller Rating:</h4></div>
+									<div class='col-sm-5'>";
 										for ($j=0; $j<floor(floatval($seller_rating[$i])); $j=$j+1){
-											echo "<img src='img/star.png' style='white-space: nowrap; width:20px;'>";
+											echo "<img src='img/star.png' style='white-space: nowrap; width:20px; padding-top:23px'>";
 										}
 									echo "</div>
 									<div class='col-sm-4'>
-										<h4>".$seller_rating[$i]."/5 stars</h4>
+										<h4 style='padding-top:14px'>".$seller_rating[$i]."/5 stars</h4>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class='col-sm-2'>
-							<button value='Buy'>Buy</button>
 						</div>
 					</div>
 				</div>";
