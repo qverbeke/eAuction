@@ -106,33 +106,28 @@
 			</div>
 			<hr>
 			<?php
-			$myfile=fopen("../../../../home/ubuntu/pass.txt", "r")
-			$mysqli = mysqli_connect("localhost", "root", fread($myfile,filesize("pass.txt")), "better_bookstore");
-			fclose($myfile);
-			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc D WHERE B.ISBN='9781285741550' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
+			//$myfile=fopen("../../../home/ubuntu/pass.txt", "r")
+			$mysqli = mysqli_connect("localhost", "root", "zPp>v\/16S,DO*", "betterbookstore");//fread($myfile,filesize("pass.txt")), "better_bookstore");
+			//fclose($myfile);
+			$ISBN="9781285741550";
+			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
 			$result=mysqli_query($mysqli, $query);
 			$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
-			$title=$book_info["Name"];//Note that these are all hard-coded for now. They will eventually come from our database
-			$author="James Stewart";
-			$edition="7th edition";
-			$description = "Welcome to the wonderful world of calculus. This book is all about the details of calculus and I hope you learn a lot about calculus by reading this here book";
-			$used_by=array("Math 140", "Math 141", "Math 230", "Math 250");
-			$img_url = "https://images-na.ssl-images-amazon.com/images/I/41a28A84XhL._SX422_BO1,204,203,200_.jpg";
-			$keywords=array("Math","Calc","Fun","Integrals");
-
+			$used_by=array("Math 140", "Math 141");
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
 				<div class=\"row\">
 					<div class=\"col-sm-4\" style=\"margin:10px\">
-						<img src=\"".$img_url."\" style=\"width:100%\">
+						<img src=\"".$book_info["ImgURL"]."\" style=\"width:100%\">
 					</div>
 					<div class=\"col-sm-8\" style=\"margin-right:-30px\">
 						<div class=\"row\">
 							<div class=\"col-sm-7\">
-								<h1 style=\"line-height:0.6\">".$title."</h1>
-								<h3>".$author."</h3>
-								<h4>".$edition."</h4>
-								<h3>".$description."</h3>
-								<h5>Keywords: ";
+								<h1 style=\"line-height:0.6\">".$book_info["Title"]."</h1>
+								<h3>".$book_info["Author"]."</h3>
+								<h4>Edition: ".$book_info["Edition"]."</h4>
+								<h5>".$book_info["Description"]."</h3>
+								<h3>Keywords: ";
+								$keywords = explode(",", $book_info["MyKeys"]);
 								foreach($keywords as $keyword){
 									echo "<a>$keyword</a>, ";
 								}
