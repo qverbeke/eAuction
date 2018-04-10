@@ -107,12 +107,12 @@
 			<hr>
 			<?php
 			$myfile=fopen("../../../../home/ubuntu/pass.txt", "r")
-			
-			$mysqli = new mysqli("localhost", "root", fread($myfile,filesize("pass.txt")), "betterbookstore");
+			$mysqli = mysqli_connect("localhost", "root", fread($myfile,filesize("pass.txt")), "better_bookstore");
 			fclose($myfile);
-			$result=$mysqli->query("SELECT * FROM Book B, Book_NAE N, Book_Name_Desc D WHERE B.ISBN='9781285741550' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description");
-			$book_info = $result->fetch_array(MYSQLI_ASSOC);
-			$title=$book_info['Name'];//Note that these are all hard-coded for now. They will eventually come from our database
+			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc D WHERE B.ISBN='9781285741550' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
+			$result=mysqli_query($mysqli, $query);
+			$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$title=$book_info["Name"];//Note that these are all hard-coded for now. They will eventually come from our database
 			$author="James Stewart";
 			$edition="7th edition";
 			$description = "Welcome to the wonderful world of calculus. This book is all about the details of calculus and I hope you learn a lot about calculus by reading this here book";
