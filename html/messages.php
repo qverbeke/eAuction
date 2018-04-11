@@ -81,8 +81,8 @@
                   </div>
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button type="submit" class="btn btn-default">Save as Draft </button>
-                <button type="submit" class="btn btn-default">Send</button>
+                <button type="submit" name="action" value="save" class="btn btn-default">Save as Draft </button>
+                <button type="submit" name="action" value="send" class="btn btn-default">Send</button>
               </div>
             </form>
         </div>
