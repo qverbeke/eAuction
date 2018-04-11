@@ -81,7 +81,8 @@
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-default">Login</button>
+              <button class="btn btn-default">Save as Draft </button>
+                <button class="btn btn-default">Send</button>
             </div>
         </div>
     </div>
