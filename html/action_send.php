@@ -8,7 +8,12 @@ include_once 'connect-to-database.php';
 $to = $_POST["to"];
 $message = $_POST["message"];
 $action = $_POST["action"];
-echo $to . $message . $action;
+if($action == 'send'){
+    echo 'send';
+    exit();
+}
+echo 'save';
+
 
 
 ?>
