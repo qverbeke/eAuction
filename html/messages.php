@@ -12,7 +12,6 @@
         $('#navbar').load("navbar.html");
         });
   </script>
-
 </head>
 <body>
   <div id="navbar">
@@ -30,11 +29,26 @@
   <div class="tab-content" style="padding-top:10px; width:50%; margin-left:25%;">
     <div id="inbox" class="tab-pane fade in active">
       <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action align-items-start">
-          5 days ago <br>
-          Message from John: <br>
-          Hello how is it going?
-        </a>
+        <?php
+          include_once 'connect-to-database.php';
+          $Receiver_UID = $_SESSION["UID"];
+          $sql_statement = "SELECT M.Time, M.Sender_UID, M.Content
+          FROM Message M WHERE M.Receiver_UID='$Receiver_UID' AND M.Is_Draft=0";
+          $result = mysqli_query($conn, $sql_statement);
+          if(!$result){
+            echo 'Could not run query: ' . mysqli_error($conn);
+            exit();
+          }
+          for ($i = 0; $i < mysqli_num_rows($result); $i++){
+            $row = mysqli_fetch_row($result);
+            $sql_statement = "SELECT U.Username FROM User_Username U WHERE U.UID='$row[1]'; ";
+            $result2 = mysqli_query($conn, $sql_statement);
+            $username = mysqli_fetch_row($result2)[0];
+            echo '<a href="#" class="list-group-item list-group-item-action align-items-start">'
+                  . $row[0] . '<br> Message from ' . $username .
+                  '<br>' . $row[2] . '</a>';
+          }
+        ?>
       </div>
     </div>
     <div id="outbox" class="tab-pane fade">
