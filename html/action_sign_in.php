@@ -15,7 +15,7 @@
   //if error or no usernames
   if (!$result || mysqli_num_rows($result) == 0) {
     //reload the page with different erro
-    header("Location: login.php?error=username_not_found");
+    header("Location: index.php?error=username_not_found");
     //stop running script
     exit();
   }
@@ -37,9 +37,9 @@
   //Check if the passwords are equal
   if(!password_verify($password,$hashed_password)){
     //reload page with incorrect password message
-    header("Location: login.php?error=incorrect_password");
+    header("Location: index.php?error=incorrect_password");
     exit();
   }
-  header("Location: index.php?status=sign_in_success");
+  header("Location: home.php?status=sign_in_success");
   exit();
  ?>

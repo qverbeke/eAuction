@@ -41,22 +41,6 @@
 					?>
 					<br>
 					<p>Price range:</p>
-					<div class="checkbox active">
-					  <label><input type="checkbox" checked="checked" value="">Any</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$0-$50</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$50-$100</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$100-$150</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$150-$200</label>
-					</div>
-
 					<form>
 						<div class="checkbox active">
 						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
@@ -73,6 +57,7 @@
 						<div class="checkbox disabled">
 						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
 						</div>
+
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
@@ -94,65 +79,65 @@
 		</div>
 		<div class="col-sm-9" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
 			<div class="container-fluid">
-				<div class="input-group">
-					<div class="input-group-btn search-panel">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							<span id="search_concept">Filter by</span> <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="#Title">Title</a></li>
-						  <li><a href="#Author">Author</a></li>
-						  <li><a href="#ISBN">ISBN</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#Prof">Professor</a></li>
-						  <li><a href="#Course Name/Number">Course Name/Number</a></li>
-						  <li><a href="#Major/Field">Major/Field</a></li>
-						  <li><a href="#College">College</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#all">Anything</a></li>
-						</ul>
+				<form action="/list_page.php">
+					<div class="input-group">
+						<div class="input-group-btn search-panel">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">
+								<span id="search_concept">Search by</span> <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+							  <li><a href="#Title">Title</a></li>
+							  <li><a href="#Author">Author</a></li>
+							  <li><a href="#ISBN">ISBN</a></li>
+							  <li class="divider"></li>
+							  <li><a href="#Prof">Professor</a></li>
+							  <li><a href="#Course Name/Number">Course Name/Number</a></li>
+							  <li><a href="#Major/Field">Major/Field</a></li>
+							  <li><a href="#College">College</a></li>
+							  <li class="divider"></li>
+							  <li><a href="#all">Anything</a></li>
+							</ul>
+						</div>
+						<input type="hidden" name="search_param" value="Title" id="search_param">
+						<input type="text" class="form-control" name="search_term" placeholder="Search term...">
+						<span class="input-group-btn">
+							<input class="btn btn-default" type="submit" value="Search">
+						</span>
 					</div>
-					<input type="hidden" name="search_param" value="all" id="search_param">
-					<input type="text" class="form-control" name="x" placeholder="Search term...">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-				</div>
+				</form>
 			</div>
 			<hr>
 			<?php
-			$title="Calculus";//Note that these are all hard-coded for now. They will eventually come from our database
-			$author="James Stewart";
-			$edition="7th edition";
-			$description = "Welcome to the wonderful world of calculus. This book is all about the details of calculus and I hope you learn a lot about calculus by reading this here book";
-			$used_by=array("Math 140", "Math 141", "Math 230", "Math 250");
-			$img_url = "https://images-na.ssl-images-amazon.com/images/I/41a28A84XhL._SX422_BO1,204,203,200_.jpg";
-			$price="$100.00";
-			$keywords=array("Math","Calc","Fun","Integrals");
-
+			//$myfile=fopen("../../../home/ubuntu/pass.txt", "r")
+			$mysqli = mysqli_connect("localhost", "root", "zPp>v\/16S,DO*", "betterbookstore");//fread($myfile,filesize("pass.txt")), "better_bookstore");
+			//fclose($myfile);
+			
+			$ISBN="9781285741550";
+			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
+			$result=mysqli_query($mysqli, $query);
+			$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$used_by=array("Math 140", "Math 141");
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
 				<div class=\"row\">
 					<div class=\"col-sm-4\" style=\"margin:10px\">
-						<img src=\"".$img_url."\" style=\"width:100%\">
+						<img src=\"".$book_info["ImgURL"]."\" style=\"width:100%\">
 					</div>
 					<div class=\"col-sm-8\" style=\"margin-right:-30px\">
 						<div class=\"row\">
 							<div class=\"col-sm-7\">
-								<h1 style=\"line-height:0.6\">".$title."</h1>
-								<h3>".$author."</h3>
-								<h4>".$edition."</h4>
-								<h3>".$description."</h3>
-								<h5>Keywords: ";
+								<h1>".$book_info["Name"]."</h1>
+								<h3>".$book_info["Author"]."</h3>
+								<h4>Edition: ".$book_info["Edition"]."</h4>
+								<h5>".$book_info["Description"]."</h3>
+								<h3>Keywords: ";
+								$keywords = explode(",", $book_info["MyKeys"]);
 								foreach($keywords as $keyword){
 									echo "<a>$keyword</a>, ";
 								}
 						  echo "</h5>
 							</div>
 							<div class=\"col-sm-5\" style=\"padding-right:20px\">
-								<h3 style=\"line-height:0.6\">Available from:</h3>
-								<h2><b>".$price."</b></h2>
-								<hr>
-								<h4>Used in:</h4>";
+								<h2>Used in:</h2><hr>";
 								foreach($used_by as $user){
 									echo "<h3>$user</h3>";
 								}
@@ -161,6 +146,59 @@
 					</div>
 				</div>
 			</div>";
+			$list_price=array("30.50", "100.99", "300.34");
+			$list_qual=array("Bad", "Good", "New");
+			$seller_rating=array("5", "3.3", "2.9");
+			for($i=0; $i<count($list_price); $i=$i+1){
+				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px; height: 60px'>
+					<div class='row'>
+						<div class='col-sm-1'>
+							<button class='btn btn-primary' style='margin-top:6px; font-size:24px;' value='Buy'>BUY</button>
+						</div>
+						<div class='col-sm-3' style='margin-top:-2px'>
+							<div class='container-fluid'>
+								<div class='row'>
+									<div class='col-sm-6'>
+										<h3 align='right'>Price:</h3>
+									</div>
+									<div class='col-sm-6'>
+										<h3 align='left'><b>$".$list_price[$i]."</b></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-sm-3' style='margin-top:-2px'>
+							<div class='container-fluid'
+							>
+								<div class='row'>
+									<div class='col-sm-6'>
+										<h3 align='right'>Quality:</h3>
+									</div>
+									<div class='col-sm-6'>
+										<h3 align='left'><b>".$list_qual[$i]."</b></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='col-sm-5'>
+							<div class='container-fluid'>
+								<div class='row'>
+									<div class='col-sm-3' style='margin-top:2px'><h4>Seller Rating:</h4></div>
+									<div class='col-sm-5'>";
+										for ($j=0; $j<floor(floatval($seller_rating[$i])); $j=$j+1){
+											echo "<img src='img/star.png' style='white-space: nowrap; width:20px; padding-top:23px'>";
+										}
+									echo "</div>
+									<div class='col-sm-4'>
+										<h4 style='padding-top:14px'>".$seller_rating[$i]."/5 stars</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>";
+			
+			}
 		?>
 		</div>
 	</div>

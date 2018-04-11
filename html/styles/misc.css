@@ -15,19 +15,8 @@
 .single-info-container{
 	height:400px;
 }
-input[type=submit]{
-    padding:5px 15px 5px 15px; 
-    border:0 none;
-    cursor:pointer;
+input[type=submit]{ 
     color:#000;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
+	margin-bottom:10px;
 }
-input[type=submit]:hover{
-    padding:5px 15px 5px 15px; 
-    border:0 none;
-    cursor:pointer;
-    color:#000;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
+
