@@ -79,11 +79,11 @@
 		</div>
 		<div class="col-sm-9" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
 			<div class="container-fluid">
-				<form action="/book_page.php">
+				<form action="/list_page.php">
 					<div class="input-group">
 						<div class="input-group-btn search-panel">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">
-								<span id="search_concept">Filter by</span> <span class="caret"></span>
+								<span id="search_concept">Search by</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
 							  <li><a href="#Title">Title</a></li>
@@ -98,8 +98,8 @@
 							  <li><a href="#all">Anything</a></li>
 							</ul>
 						</div>
-						<input type="hidden" name="search_param" value="ISBN" id="search_param">
-						<input type="text" class="form-control" name="x" placeholder="Search term...">
+						<input type="hidden" name="search_param" value="Title" id="search_param">
+						<input type="text" class="form-control" name="search_term" placeholder="Search term...">
 						<span class="input-group-btn">
 							<input class="btn btn-default" type="submit" value="Search">
 						</span>
@@ -111,6 +111,7 @@
 			//$myfile=fopen("../../../home/ubuntu/pass.txt", "r")
 			$mysqli = mysqli_connect("localhost", "root", "zPp>v\/16S,DO*", "betterbookstore");//fread($myfile,filesize("pass.txt")), "better_bookstore");
 			//fclose($myfile);
+			
 			$ISBN="9781285741550";
 			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
 			$result=mysqli_query($mysqli, $query);
