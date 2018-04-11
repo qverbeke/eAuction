@@ -66,24 +66,25 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body mx-3">
-                <div class="md-form mb-5">
-                    <i class="fa fa-envelope prefix grey-text"></i>
-                    <label>To</label>
-                    <input type="text" id="to" class="form-control validate">
-                </div>
+            <form action="action_send.php" method="post" role="form">
+              <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                      <i class="fa fa-envelope prefix grey-text"></i>
+                      <label>To</label>
+                      <input type="text" id="to" name="to" class="form-control validate">
+                  </div>
 
-                <div class="md-form mb-4">
-                    <i class="fa fa-lock prefix grey-text"></i>
-                    <label>Message</label>
-                    <textarea rows='5' type="text" id="message" class="form-control validate"></textarea>
-                </div>
-
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default">Save as Draft </button>
-                <button class="btn btn-default">Send</button>
-            </div>
+                  <div class="md-form mb-4">
+                      <i class="fa fa-lock prefix grey-text"></i>
+                      <label>Message</label>
+                      <textarea rows='5' type="text" name="message" id="message" class="form-control validate"></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-default">Save as Draft </button>
+                <button type="submit" class="btn btn-default">Send</button>
+              </div>
+            </form>
         </div>
     </div>
 </div>
