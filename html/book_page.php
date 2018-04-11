@@ -122,7 +122,7 @@
 					<div class=\"col-sm-8\" style=\"margin-right:-30px\">
 						<div class=\"row\">
 							<div class=\"col-sm-7\">
-								<h1 style=\"line-height:0.6\">".$book_info["Title"]."</h1>
+								<h1 style=\"line-height:0.6\">".$book_info["Name"]."</h1>
 								<h3>".$book_info["Author"]."</h3>
 								<h4>Edition: ".$book_info["Edition"]."</h4>
 								<h5>".$book_info["Description"]."</h3>
