@@ -79,30 +79,32 @@
 		</div>
 		<div class="col-sm-9" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
 			<div class="container-fluid">
-				<div class="input-group">
-					<div class="input-group-btn search-panel">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							<span id="search_concept">Filter by</span> <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="#Title">Title</a></li>
-						  <li><a href="#Author">Author</a></li>
-						  <li><a href="#ISBN">ISBN</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#Prof">Professor</a></li>
-						  <li><a href="#Course Name/Number">Course Name/Number</a></li>
-						  <li><a href="#Major/Field">Major/Field</a></li>
-						  <li><a href="#College">College</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#all">Anything</a></li>
-						</ul>
+				<form action="/book_page.php">
+					<div class="input-group">
+						<div class="input-group-btn search-panel">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">
+								<span id="search_concept">Filter by</span> <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+							  <li><a href="#Title">Title</a></li>
+							  <li><a href="#Author">Author</a></li>
+							  <li><a href="#ISBN">ISBN</a></li>
+							  <li class="divider"></li>
+							  <li><a href="#Prof">Professor</a></li>
+							  <li><a href="#Course Name/Number">Course Name/Number</a></li>
+							  <li><a href="#Major/Field">Major/Field</a></li>
+							  <li><a href="#College">College</a></li>
+							  <li class="divider"></li>
+							  <li><a href="#all">Anything</a></li>
+							</ul>
+						</div>
+						<input type="hidden" name="search_param" value="ISBN" id="search_param">
+						<input type="text" class="form-control" name="x" placeholder="Search term...">
+						<span class="input-group-btn">
+							<input class="btn btn-default" type="submit" value="Search">
+						</span>
 					</div>
-					<input type="hidden" name="search_param" value="all" id="search_param">
-					<input type="text" class="form-control" name="x" placeholder="Search term...">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-				</div>
+				</form>
 			</div>
 			<hr>
 			<?php
@@ -122,7 +124,7 @@
 					<div class=\"col-sm-8\" style=\"margin-right:-30px\">
 						<div class=\"row\">
 							<div class=\"col-sm-7\">
-								<h1 style=\"line-height:0.6\">".$book_info["Title"]."</h1>
+								<h1>".$book_info["Name"]."</h1>
 								<h3>".$book_info["Author"]."</h3>
 								<h4>Edition: ".$book_info["Edition"]."</h4>
 								<h5>".$book_info["Description"]."</h3>
