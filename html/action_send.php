@@ -29,10 +29,18 @@ if($action == 'send'){
       echo 'Could not run query: ' . mysqli_error($conn);
     }
     mysqli_query($conn, $sql_statement);
+    header("Location: messages.php?action=sent");
     exit();
 }
-echo 'save';
-
-
+$sql_statement = "INSERT INTO Message(Sender_UID,
+ Content, Is_Draft, Receiver_Username)
+Values('$Sender_UID', '$message', 1, '$Reciever_Username');";
+$result = mysqli_query($conn, $sql_statement);
+if(!$result){
+  echo 'Could not run query: ' . mysqli_error($conn);
+}
+mysqli_query($conn, $sql_statement);
+header("Location: messages.php?action=saved");
+exit();
 
 ?>
