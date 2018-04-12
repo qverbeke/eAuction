@@ -28,6 +28,15 @@
     });
 
   </script>
+  <script>
+  $(document).ready(function(){
+    $('#compose_button').click(function(event) {
+            $('#message').text("");
+            $('#to').attr("value", "");
+        }
+      );
+    });
+  </script>
 
 
 </head>
