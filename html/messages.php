@@ -12,6 +12,24 @@
         $('#navbar').load("navbar.html");
         });
   </script>
+  <script>
+  $(document).ready(function(){
+    $('.my_draft').click(function(event) {
+          var target = $(event.target);
+          var to = target.children().eq(2).text();
+          var message = target.children().eq(3).text();
+          $('#message').text(message);
+          $('#to').attr("value", to);
+          $('#compose-form').modal('show');
+
+
+        }
+      );
+    });
+
+  </script>
+
+
 </head>
 <body>
   <div id="navbar">
@@ -23,7 +41,7 @@
       <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
       <li><a data-toggle="tab" href="#outbox">Outbox</a></li>
       <li><a data-toggle="tab" href="#drafts">Drafts</a></li>
-      <li class="pull-right"> <button type="button" class="btn btn-primary"
+      <li class="pull-right"> <button id="compose_button" type="button" class="btn btn-primary"
          data-toggle="modal" data-target="#compose-form">Compose</button></li>
     </ul>
 
@@ -90,16 +108,17 @@
         }
         for ($i = 0; $i < mysqli_num_rows($result); $i++){
           $row = mysqli_fetch_row($result);
-          echo '<a href="#" data-toggle="modal" data-target="#compose-form" class="list-group-item list-group-item-action align-items-start">'
-                . $row[0] . '<br> Sending to ' . $row[1] .
-                '<br>' . $row[2] . '</a>';
+          echo '<a href="#"
+          class="my_draft list-group-item list-group-item-action align-items-start">'
+                . $row[0] . '<br> Sending to ' . $row[1] .  '<br>' . $row[2] .
+                '<p hidden>' . $row[1] . '</p>' . '<p hidden>' . $row[2] . '</p>'
+                 .'</a>';
         }
       ?>
     </div>
   </div>
-
   <div class="modal fade" id="compose-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div id="modal" class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold">Compose New Message</h4>
@@ -107,12 +126,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="action_send.php" method="post" role="form">
+            <form id="modal_form" action="action_send.php" method="post" role="form">
               <div class="modal-body mx-3">
                   <div class="md-form mb-5">
                       <i class="fa fa-envelope prefix grey-text"></i>
                       <label>To</label>
-                      <input type="text" id="to" name="to" class="form-control validate">
+                      <input type="text" id="to" name="to" value="" class="form-control validate">
                   </div>
 
                   <div class="md-form mb-4">
