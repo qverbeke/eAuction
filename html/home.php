@@ -34,29 +34,28 @@
 </div>
 <div class="fluid-container">
 	<div class="jumbotron text-center" style="background-color:#00cc7a">
-    <p style="font-size:15px; text-align: left;">
-      <?php
-        session_start();
-        if(isset($_GET["status"])){
-          $status = $_GET["status"];
-          if($status=="sign_in_success"){
-            $username = $_SESSION["username"];
-            echo "Welcome user " . $username;
-          }
-        }
+		<p style="font-size:15px; text-align: left;">
+		  <?php
+			session_start();
+			if(isset($_GET["status"])){
+			  $status = $_GET["status"];
+			  if($status=="sign_in_success"){
+				$username = $_SESSION["username"];
+				echo "Welcome user " . $username;
+			  }
+			}
 
-      ?>
-     </p>
-	  <h1 style="color:white"><b>Better Bookstore</b></h1>
-	  <p style="color:white">A money-saving marketplace for students</p>
-	  <br>
-	  <div class="container">
-		<div class="row">
-			<div class="col-sm-10 col-sm-offset-1">
+		  ?>
+		 </p>
+		  <h1 style="color:white"><b>Better Bookstore</b></h1>
+		  <p style="color:white">A money-saving marketplace for students</p>
+		  <br>
+		  <div class="container-fluid">
+			<form action="/list_page.php">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							<span id="search_concept">Filter by</span> <span class="caret"></span>
+							<span id="search_concept">Search by</span> <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 						  <li><a href="#Title">Title</a></li>
@@ -64,21 +63,17 @@
 						  <li><a href="#ISBN">ISBN</a></li>
 						  <li class="divider"></li>
 						  <li><a href="#Prof">Professor</a></li>
-						  <li><a href="#Course Name/Number">Course Name/Number</a></li>
-						  <li><a href="#Major/Field">Major/Field</a></li>
-						  <li><a href="#College">College</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#all">Anything</a></li>
+						  <li><a href="#Course Name">Course Name</a></li>
+						  <li><a href="#Group">Major/College</a></li>
 						</ul>
 					</div>
-					<input type="hidden" name="search_param" value="all" id="search_param">
-					<input type="text" class="form-control" name="x" placeholder="Search term...">
+					<input type="hidden" name="search_param" value="Title" id="search_param">
+					<input type="text" class="form-control" name="search_term" placeholder="Search term...">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+						<input class="btn btn-default" type="submit" value="Search">
 					</span>
-					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>
