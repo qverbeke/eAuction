@@ -48,6 +48,8 @@ $sql_statement = "INSERT INTO User_Username(UID, Username) VALUES ('$UID', '$use
 mysqli_query($conn, $sql_statement);
 $sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');";
 mysqli_query($conn, $sql_statement);
+$_SESSION["UID"] = $UID;
+$_SESSION["username"] = $username;
 //go to the main pag
 header("Location: home.php?status=register_success");
 
