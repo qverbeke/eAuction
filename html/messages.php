@@ -16,6 +16,8 @@
 <body>
   <div id="navbar">
   </div>
+
+
   <div class="container" style="margin-top:53px;">
     <ul class="nav nav-tabs" style="margin-botton:0px; ">
       <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
@@ -76,13 +78,23 @@
       </div>
     </div>
     <div id="drafts" class="tab-pane fade">
-      <div class="list-group">
-        <a data-target="#compose-form" data-toggle="modal" class="list-group-item list-group-item-action align-items-start">
-          5 days ago <br>
-          Draft to John: <br>
-          Hello how is it going?
-        </a>
-      </div>
+      <?php
+        include_once 'connect-to-database.php';
+        $Sender_UID = $_SESSION["UID"];
+        $sql_statement = "SELECT M.Time, M.Receiver_Username, M.Content
+        FROM Message M WHERE M.Sender_UID='$Sender_UID' AND M.Is_Draft=1";
+        $result = mysqli_query($conn, $sql_statement);
+        if(!$result){
+          echo 'Could not run query: ' . mysqli_error($conn);
+          exit();
+        }
+        for ($i = 0; $i < mysqli_num_rows($result); $i++){
+          $row = mysqli_fetch_row($result);
+          echo '<a href="#" class="list-group-item list-group-item-action align-items-start">'
+                . $row[0] . '<br> Sending to ' . $row[1] .
+                '<br>' . $row[2] . '</a>';
+        }
+      ?>
     </div>
   </div>
 
