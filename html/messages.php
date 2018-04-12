@@ -21,8 +21,6 @@
           $('#message').text(message);
           $('#to').attr("value", to);
           $('#compose-form').modal('show');
-
-
         }
       );
     });
@@ -37,7 +35,16 @@
       );
     });
   </script>
-
+  <script>
+  $(document).ready(function(){
+    $(document).click(function(event) {
+        window.history.replaceState(null, null, window.location.pathname);
+        $("#error_tag").text("");
+        $("#action_tag").text("");
+        }
+      );
+    });
+  </script>
 
 </head>
 <body>
@@ -55,6 +62,26 @@
     </ul>
 
   </div>
+  <p id="error_tag" style="text-align:center; color:red; font-size: 13px; padding:0px; margin:0;">
+    <?php
+      if(isset($_GET["error"])){
+        if($_GET["error"] == "to_not_found"){
+          echo "Username not found.";
+        }
+      }
+    ?>
+  </p>
+  <p id="action_tag" style="text-align:center; font-size: 13px; padding:0px; margin:0;"><strong>
+    <?php
+      if(isset($_GET["action"])){
+        if($_GET["action"] == "sent"){
+          echo "Message sent.";
+        }else if($_GET["action"] == "saved"){
+          echo "Message saved as draft.";
+        }
+      }
+    ?>
+  </strong></p>
   <div class="tab-content" style="padding-top:10px; width:50%; margin-left:25%;">
     <div id="inbox" class="tab-pane fade in active">
       <div class="list-group">
