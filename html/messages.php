@@ -90,7 +90,7 @@
         }
         for ($i = 0; $i < mysqli_num_rows($result); $i++){
           $row = mysqli_fetch_row($result);
-          echo '<a href="#" class="list-group-item list-group-item-action align-items-start">'
+          echo '<a href="#" data-toggle="modal" data-target="#compose-form" class="list-group-item list-group-item-action align-items-start">'
                 . $row[0] . '<br> Sending to ' . $row[1] .
                 '<br>' . $row[2] . '</a>';
         }
