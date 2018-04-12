@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>The cool website</title>
+  <title>The Better Bookstore</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -91,11 +91,8 @@
 							  <li><a href="#ISBN">ISBN</a></li>
 							  <li class="divider"></li>
 							  <li><a href="#Prof">Professor</a></li>
-							  <li><a href="#Course Name/Number">Course Name/Number</a></li>
-							  <li><a href="#Major/Field">Major/Field</a></li>
-							  <li><a href="#College">College</a></li>
-							  <li class="divider"></li>
-							  <li><a href="#all">Anything</a></li>
+							  <li><a href="#Course Name">Course Name</a></li>
+							  <li><a href="#Group">Major/College</a></li>
 							</ul>
 						</div>
 						<input type="hidden" name="search_param" value="Title" id="search_param">
@@ -108,15 +105,12 @@
 			</div>
 			<hr>
 			<?php
-			//$myfile=fopen("../../../home/ubuntu/pass.txt", "r")
-			$mysqli = mysqli_connect("localhost", "root", "zPp>v\/16S,DO*", "betterbookstore");//fread($myfile,filesize("pass.txt")), "better_bookstore");
-			//fclose($myfile);
-			
-			$ISBN="9781285741550";
+			include_once 'connect-to-database.php';				
+			$query_piece="";
+			$ISBN=$_GET['ISBN'];
 			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
-			$result=mysqli_query($mysqli, $query);
+			$result=mysqli_query($conn, $query);
 			$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
-			$used_by=array("Math 140", "Math 141");
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
 				<div class=\"row\">
 					<div class=\"col-sm-4\" style=\"margin:10px\">
@@ -138,36 +132,38 @@
 							</div>
 							<div class=\"col-sm-5\" style=\"padding-right:20px\">
 								<h2>Used in:</h2><hr>";
-								foreach($used_by as $user){
-									echo "<h3>$user</h3>";
+								$used_query="SELECT C.Name FROM Book B, Course_Uses_Book U, Course C WHERE B.ISBN='".$book_info["ISBN"]."' AND B.ISBN=U.ISBN AND C.CID=U.CID;";
+								$used_result=mysqli_query($conn, $used_query);
+								while($used_by=mysqli_fetch_assoc($used_result)){
+									echo "<h3>".$used_by["Name"]."</h3>";
 								}
 					 echo "</div>
 						</div>
 					</div>
 				</div>
 			</div>";
-			$list_price=array("30.50", "100.99", "300.34");
-			$list_qual=array("Bad", "Good", "New");
-			$seller_rating=array("5", "3.3", "2.9");
-			for($i=0; $i<count($list_price); $i=$i+1){
-				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px; height: 60px'>
+			
+			$query="SELECT L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID;";
+			$result=mysqli_query($conn, $query);
+			while($listing_info = mysqli_fetch_assoc($result)){
+				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 					<div class='row'>
-						<div class='col-sm-1'>
-							<button class='btn btn-primary' style='margin-top:6px; font-size:24px;' value='Buy'>BUY</button>
+						<div class='col-sm-2'>
+							<button class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' value='Buy'>BUY</button>
 						</div>
-						<div class='col-sm-3' style='margin-top:-2px'>
+						<div class='col-sm-3' style='margin-top:4px'>
 							<div class='container-fluid'>
 								<div class='row'>
 									<div class='col-sm-6'>
 										<h3 align='right'>Price:</h3>
 									</div>
 									<div class='col-sm-6'>
-										<h3 align='left'><b>$".$list_price[$i]."</b></h3>
+										<h3 align='left'><b>$".$listing_info["Price"]."</b></h3>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class='col-sm-3' style='margin-top:-2px'>
+						<div class='col-sm-3' style='margin-top:4px'>
 							<div class='container-fluid'
 							>
 								<div class='row'>
@@ -175,22 +171,21 @@
 										<h3 align='right'>Quality:</h3>
 									</div>
 									<div class='col-sm-6'>
-										<h3 align='left'><b>".$list_qual[$i]."</b></h3>
+										<h3 align='left'><b>".$listing_info["Quality"]."</b></h3>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class='col-sm-5'>
+						<div class='col-sm-4'>
 							<div class='container-fluid'>
 								<div class='row'>
-									<div class='col-sm-3' style='margin-top:2px'><h4>Seller Rating:</h4></div>
-									<div class='col-sm-5'>";
-										for ($j=0; $j<floor(floatval($seller_rating[$i])); $j=$j+1){
-											echo "<img src='img/star.png' style='white-space: nowrap; width:20px; padding-top:23px'>";
+									<div class='col-sm-4' style='margin-top:6px'><h4>Seller Rating:</h4></div>
+									<div class='col-sm-8'>";
+										for ($j=0; $j<floor(floatval($listing_info["Seller_rating"])); $j=$j+1){
+											echo "<img src='img/star.png' style='white-space: nowrap; width:20px; margin-bottom:-20px'>";
 										}
-									echo "</div>
-									<div class='col-sm-4'>
-										<h4 style='padding-top:14px'>".$seller_rating[$i]."/5 stars</h4>
+									echo "
+										<h4 style='padding-top:14px'>".$listing_info["Seller_rating"]."/5 stars</h4>
 									</div>
 								</div>
 							</div>
