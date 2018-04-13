@@ -20,6 +20,7 @@
           var message = target.children().eq(3).text();
           $('#message').text(message);
           $('#to').attr("value", to);
+          $('#modal-title').text("Edit Draft");
           $('#compose-form').modal('show');
         }
       );
@@ -31,6 +32,7 @@
     $('#compose_button').click(function(event) {
             $('#message').text("");
             $('#to').attr("value", "");
+            $('#modal-title').text("Compose New Message");
         }
       );
     });
@@ -157,7 +159,7 @@
     <div id="modal" class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Compose New Message</h4>
+                <h4 id="modal-title" class="modal-title w-100 font-weight-bold">Compose New Message</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
