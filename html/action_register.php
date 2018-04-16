@@ -18,7 +18,7 @@ $address = mysqli_real_escape_string($conn, $_POST['address']);
 if($gender == "male" || $gender == "Male"){
   $gender_num = 0;
 }
-else if($gender == 'female' || gender == 'Female'){
+else if($gender == 'female' || $gender == 'Female'){
   $gender_num = 1;
 }else{
   $gender_num = 2;
@@ -47,6 +47,12 @@ $UID = mysqli_insert_id($conn);
 $sql_statement = "INSERT INTO User_Username(UID, Username) VALUES ('$UID', '$username');";
 mysqli_query($conn, $sql_statement);
 $sql_statement = "INSERT INTO User_Email(UID, Email) VALUES ('$UID', '$email');";
+mysqli_query($conn, $sql_statement);
+$sql_statement = "INSERT INTO Seller(UID, Seller_rating)
+VALUES({$UID}, 2.5);";
+mysqli_query($conn, $sql_statement);
+$sql_statement = "INSERT INTO Buyer(UID, Buyer_rating)
+ VALUES (\"{$UID}\", 2.5);";
 mysqli_query($conn, $sql_statement);
 $_SESSION["UID"] = $UID;
 $_SESSION["username"] = $username;
