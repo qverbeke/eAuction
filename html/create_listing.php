@@ -18,6 +18,16 @@
 <body>
 <div id="navbar" style="margin-top:50px;">
 </div>
+<div class="container">
+    <h1>Create a Listing </h1>
+    <button class="btn btn-primary">
+      Book
+    </button>
+    <button class="btn btn-secondary">
+      Course Document
+    </button>
+</div>
 
+</div>
 
 </body>
