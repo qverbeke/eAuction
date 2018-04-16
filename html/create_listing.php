@@ -52,11 +52,20 @@
       <div class="form-group">
         <label for="select-book">Select Book to Sell</label>
           <select class="form-control" id="select-book">
-            <option>Book 1</option>
-            <option>Book 2</option>
-            <option>Book 3</option>
-            <option>Book 4</option>
-            <option>Book 5</option>
+            <?php
+              include_once 'connect-to-database.php';
+              $sql_statement = 'Select B.Name FROM Book B';
+              $result = mysqli_query($conn, $sql_statement);
+              if (!$result) {
+                echo 'Could not run query: ' . mysqli_error();
+                exit();
+              }
+              for($i = 0; $i < mysqli_num_rows($result); $i++){
+                $book_name = mysqli_fetch_row($result)[0];
+                echo "<option> {$book_name} </option>";
+              }
+
+            ?>
           </select>
       </div>
       <div class="form-group">
