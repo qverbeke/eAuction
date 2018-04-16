@@ -60,7 +60,7 @@
           </select>
       </div>
       <div class="form-group">
-        <label for="price">Price</label>
+        <label for="book-price">Price</label>
         <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
       </div>
       <div class="form-group">
@@ -79,15 +79,18 @@
     </form>
     <form id="course-document-form">
       <div class="form-group">
-      <label for="exampleSelect1">Example select</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <label for="title">Document Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title of the Document">
       </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea rows="5" type="text" class="form-control" id="description"></textarea>
+      </div>
+
     </form>
 
 </div>
