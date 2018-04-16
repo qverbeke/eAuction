@@ -19,20 +19,33 @@ else{
   $price = $_POST["doc-price"];
 }
 $sql_statement = "INSERT INTO Listing(Price, Seller_UID)
-VALUES(\"{$price}\", \"{$seller_uid}\");";
+VALUES({$price}, {$seller_uid});";
 $result = mysqli_query($conn, $sql_statement);
 if(!$result){
-  if(!$result){
-    echo 'Could not run query: ' . mysqli_error($conn);
-  }
+  echo 'Could not run query: ' . mysqli_error($conn);
 }
-
+$LID = mysqli_insert_id($conn);
 if($action == "book"){
   $isbn = $_POST["select-book"];
   $quality = $_POST["select-quality"];
+  $sql_statement = "INSERT INTO Book_Listing(LID, Quality, ISBN)
+  VALUES({$LID}, \"{$quality}\", \"{$isbn}\");";
+  $result = mysqli_query($conn, $sql_statement);
+  if(!$result){
+    echo 'Could not run query: ' . mysqli_error($conn);
+  }
   exit();
 }
 else if($action =="doc"){
+  $type = $_POST["select-type"];
+  $title = $_POST["title"];
+  $description = $_POST["description"];
+  $sql_statement = "INSERT INTO Course_Doc_Listing(LID, Type, Title, Description)
+  VALUES ({$LID}, \"{$type}\", \"{$title}\", \"{$description}\");";
+  $result = mysqli_query($conn, $sql_statement);
+  if(!$result){
+    echo 'Could not run query: ' . mysqli_error($conn);
+  }
   exit();
 }
 

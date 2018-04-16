@@ -97,9 +97,17 @@
          placeholder="Title of the Document" name="title">
       </div>
       <div class="form-group">
-        <label for="price">Price</label>
+        <label for="doc-price">Price</label>
         <input type="number" min="0.01" step="any" class="form-control"
          id="doc-price" placeholder="Enter price in dollars" name="doc-price">
+      </div>
+      <div class="form-group">
+        <label for="select-type">Document Type</label>
+        <select class="form-control" id="select-type" name="select-type">
+          <option value="Midterm">Midterm</option>
+          <option value="Homework">Homework</option>
+          <option value="Final">Final</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="select-course">Select Course</label>
