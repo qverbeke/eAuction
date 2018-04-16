@@ -12,6 +12,24 @@
   //When document has loaded
 	$(document).ready(function(e){
     $('#navbar').load("navbar.html");
+    $('#course-document-form').hide();
+    $('#book-button').click(function(){
+      $('#course-document-form').hide();
+      $('#book-form').show();
+      $(this).addClass("btn-primary");
+      $(this).removeClass("btn-secondary");
+      $('#course-document-button').removeClass("btn-primary");
+      $('#course-document-button').addClass("btn-secondary");
+
+    });
+    $('#course-document-button').click(function(){
+      $('#course-document-form').show();
+      $('#book-form').hide();
+      $(this).addClass("btn-primary");
+      $(this).removeClass("btn-secondary");
+      $('#book-button').removeClass("btn-primary");
+      $('#book-button').addClass("btn-secondary");
+    });
 	});
 	</script>
 </head>
@@ -20,12 +38,32 @@
 </div>
 <div class="container">
     <h1>Create a Listing </h1>
-    <button class="btn btn-primary">
+    <button id="book-button" class="btn btn-primary">
       Book
     </button>
-    <button class="btn btn-secondary">
+    <button id="course-document-button" class="btn btn-secondary">
       Course Document
     </button>
+    <form id="book-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </form>
+    <form id="course-document-form">
+      <div class="form-group">
+      <label for="exampleSelect1">Example select</label>
+        <select class="form-control" id="exampleSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </form>
+
 </div>
 
 </div>
