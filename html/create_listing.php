@@ -51,7 +51,7 @@
     <form id="book-form" action="action_create_listing.php" method="post" role="form">
       <div class="form-group">
         <label for="select-book">Select Book to Sell</label>
-          <select class="form-control" id="select-book" name="select-Book">
+          <select class="form-control" id="select-book" name="select-book">
             <?php
               include_once 'connect-to-database.php';
               $sql_statement = 'Select B.Name, B.ISBN FROM Book B';
