@@ -38,18 +38,44 @@
 </div>
 <div class="container">
     <h1>Create a Listing </h1>
-    <button id="book-button" class="btn btn-primary">
-      Book
-    </button>
-    <button id="course-document-button" class="btn btn-secondary">
-      Course Document
-    </button>
+    <br>
+    <p>Create a listing for a: </p>
+    <div style="padding-bottom:20px;">
+       <button id="book-button" class="btn btn-primary">
+        Book
+      </button>
+      <button id="course-document-button" class="btn btn-secondary">
+        Course Document
+      </button>
+    </div>
     <form id="book-form">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label for="select-book">Select Book to Sell</label>
+          <select class="form-control" id="select-book">
+            <option>Book 1</option>
+            <option>Book 2</option>
+            <option>Book 3</option>
+            <option>Book 4</option>
+            <option>Book 5</option>
+          </select>
       </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
+      </div>
+      <div class="form-group">
+        <label for="select-quality">Select Quality</label>
+          <select class="form-control" id="select-quality">
+            <option>New</option>
+            <option>Like New</option>
+            <option>Great</option>
+            <option>Good</option>
+            <option>Fair</option>
+            <option>Bad</option>
+            <option>Very Bad</option>
+          </select>
+      </div>
+
     </form>
     <form id="course-document-form">
       <div class="form-group">
