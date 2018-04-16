@@ -48,21 +48,23 @@
         Course Document
       </button>
     </div>
-    <form id="book-form">
+    <form id="book-form" action="action_create_listing.php" method="post" role="form">
       <div class="form-group">
         <label for="select-book">Select Book to Sell</label>
-          <select class="form-control" id="select-book">
+          <select class="form-control" id="select-book" name="select-Book">
             <?php
               include_once 'connect-to-database.php';
-              $sql_statement = 'Select B.Name FROM Book B';
+              $sql_statement = 'Select B.Name, B.ISBN FROM Book B';
               $result = mysqli_query($conn, $sql_statement);
               if (!$result) {
                 echo 'Could not run query: ' . mysqli_error();
                 exit();
               }
               for($i = 0; $i < mysqli_num_rows($result); $i++){
-                $book_name = mysqli_fetch_row($result)[0];
-                echo "<option> {$book_name} </option>";
+                $row = mysqli_fetch_row($result);
+                $book_name = $row[0];
+                $isbn = $row[1];
+                echo "<option value=\"{$isbn}\">{$book_name}</option>";
               }
 
             ?>
@@ -70,35 +72,38 @@
       </div>
       <div class="form-group">
         <label for="book-price">Price</label>
-        <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
+        <input type="number" min="0.01" step="any" class="form-control"
+        id="book-price" placeholder="Enter price in dollars" name="book-price">
       </div>
       <div class="form-group">
         <label for="select-quality">Select Quality</label>
-          <select class="form-control" id="select-quality">
-            <option>New</option>
-            <option>Like New</option>
-            <option>Great</option>
-            <option>Good</option>
-            <option>Fair</option>
-            <option>Bad</option>
-            <option>Very Bad</option>
+          <select class="form-control" id="select-quality" name="select-quality">
+            <option value="New">New</option>
+            <option value="Like New">Like New</option>
+            <option value="Great">Great</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Bad">Bad</option>
+            <option value="Very Bad">Very Bad</option>
           </select>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" name="action" value="book" class="btn btn-default">Submit</button>
 
     </form>
-    <form id="course-document-form">
+    <form id="course-document-form" action="action_create_listing.php" method="post" role="form">
       <div class="form-group">
         <label for="title">Document Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title of the Document">
+        <input type="text" class="form-control" id="title"
+         placeholder="Title of the Document" name="title">
       </div>
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
+        <input type="number" min="0.01" step="any" class="form-control"
+         id="doc-price" placeholder="Enter price in dollars" name="doc-price">
       </div>
       <div class="form-group">
         <label for="select-course">Select Course</label>
-          <select class="form-control" id="select-course">
+          <select class="form-control" id="select-course" name="select-course">
             <?php
               include_once 'connect-to-database.php';
               $sql_statement = 'Select C.Name, C.Professor FROM Course C';
@@ -111,7 +116,7 @@
                 $row = mysqli_fetch_row($result);
                 $course_name = $row[0];
                 $prof_name = $row[1];
-                echo "<option> {$course_name} - {$prof_name} </option>";
+                echo "<option value=\"{$course_name}|{$prof_name}\"> {$course_name} - {$prof_name} </option>";
               }
 
             ?>
@@ -120,10 +125,11 @@
 
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea rows="5" type="text" class="form-control" id="description"></textarea>
+        <textarea rows="5" type="text" class="form-control"
+        id="description" name="description"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" name="action" value="doc" class="btn btn-default">Submit</button>
     </form>
 
 </div>
