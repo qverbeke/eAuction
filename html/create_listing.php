@@ -75,6 +75,7 @@
             <option>Very Bad</option>
           </select>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
 
     </form>
     <form id="course-document-form">
@@ -90,7 +91,7 @@
         <label for="description">Description</label>
         <textarea rows="5" type="text" class="form-control" id="description"></textarea>
       </div>
-
+      <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
 </div>
