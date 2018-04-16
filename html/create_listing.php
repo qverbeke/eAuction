@@ -97,9 +97,32 @@
         <input type="number" min="0.01" step="any" class="form-control" id="book-price" placeholder="Enter price in dollars">
       </div>
       <div class="form-group">
+        <label for="select-course">Select Course</label>
+          <select class="form-control" id="select-course">
+            <?php
+              include_once 'connect-to-database.php';
+              $sql_statement = 'Select C.Name, C.Professor FROM Course C';
+              $result = mysqli_query($conn, $sql_statement);
+              if (!$result) {
+                echo 'Could not run query: ' . mysqli_error();
+                exit();
+              }
+              for($i = 0; $i < mysqli_num_rows($result); $i++){
+                $row = mysqli_fetch_row($result);
+                $course_name = $row[0];
+                $prof_name = $row[1];
+                echo "<option> {$course_name} - {$prof_name} </option>";
+              }
+
+            ?>
+          </select>
+        </div>
+
+      <div class="form-group">
         <label for="description">Description</label>
         <textarea rows="5" type="text" class="form-control" id="description"></textarea>
       </div>
+
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
