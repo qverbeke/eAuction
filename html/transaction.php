@@ -26,21 +26,30 @@
 </div>
 	<div class="container-fluid with-navbar">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-3">
 				<div class="container-fluid" style="background-color:black; border-radius:20px">
 					<?php
-						
-					
-					
+					include_once 'connect-to-database.php';
+					$query = "SELECT B.ISBN, B.Name, B.Description, B.ImgURL, N.Author, N.Edition FROM Book_Listing BL, Book B, Book_NAE N WHERE BL.LID='".$_POST['LID']."' AND BL.ISBN = B.ISBN AND B.ISBN=N.ISBN;";
+					$result=mysqli_query($conn, $query);
+					$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
+					echo "<h3 style='color:white'>".$book_info["Name"]."</h3>
+					<h4 style='color:white'>".$book_info["Author"]."</h4>
+					<img src='".$book_info["ImgURL"]."' alt='Book Image' style='width:100%'>
+					<h4 style='color:white'>Edition: ".$book_info["Edition"]."</h4>
+					<p style='color:white'>".$book_info["Description"]."</p>";
 					?>
 				</div>
 			</div>
-			<div class="col-sm-7">
-			
+			<div class="col-sm-7" style="background-color:#00cc7a; border-radius:20px">
+				<h2 style="color:white">Purchase Information:</h2>
+				<?php
+					include_once 'connect-to-database.php';
+					$query="SELECT * FROM Seller S, ";
+				?>
 			</div>
-			<div class="col-sm-1">
-			
-			</div>
+			<div class="col-sm-1"></div>
 		</div>
 	</div>
 </body>
