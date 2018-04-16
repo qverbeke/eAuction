@@ -142,14 +142,37 @@
 					</div>
 				</div>
 			</div>";
+			$query="SELECT Qty_sold, Avg_price, Min_price_ever, Max_Price_Ever FROM Book WHERE ISBN='".$ISBN."';";
+			$result=mysqli_query($conn, $query);
+			$meta_info=mysqli_fetch_assoc($result);
+			echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
+				<h3><b>Some information about the sale of this book:</b></h3>
+				<div class='row'>
+					<div class='col-sm-3'>
+						<h4>Quantity sold:</h4><h2>".$meta_info["Qty_sold"]."</h2>
+					</div>
+					<div class='col-sm-3'>
+						<h4>Average price:</h4><h2>$".$meta_info["Avg_price"]."</h2>
+					</div>
+					<div class='col-sm-3'>
+						<h4>Minimum price ever:</h4><h2>$".$meta_info["Min_price_ever"]."</h2>
+					</div>
+					<div class='col-sm-3'>
+						<h4>Maximum price ever:</h4><h2>$".$meta_info["Max_Price_Ever"]."</h2>
+					</div>
+				</div>
+			</div>";
 			
-			$query="SELECT L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID;";
+			$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID;";
 			$result=mysqli_query($conn, $query);
 			while($listing_info = mysqli_fetch_assoc($result)){
 				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 					<div class='row'>
 						<div class='col-sm-2'>
-							<button class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' value='Buy'>BUY</button>
+							<form method='POST' action='/transaction.php'>
+								<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
+								<input type='hidden' name='LID' value='".$listing_info['LID']."'>
+							</form>
 						</div>
 						<div class='col-sm-3' style='margin-top:4px'>
 							<div class='container-fluid'>

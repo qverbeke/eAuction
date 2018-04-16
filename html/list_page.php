@@ -51,22 +51,6 @@
 						}
 					?>
 					<br>
-					<p>Price range:</p>
-					<div class="checkbox active">
-					  <label><input type="checkbox" checked="checked" value="">Any</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$0-$50</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$50-$100</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$100-$150</label>
-					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" value="" disabled>$150-$200</label>
-					</div>
 					<p>Search Type</p>
 					<div class="checkbox active">
 					  <label><input type="checkbox" checked="checked" value="">Books</label>
@@ -76,9 +60,6 @@
 					</div>
 					<div class="checkbox">
 					  <label><input type="checkbox" value="">Past Exams</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Miscellaneous Documents</label>
 					</div>
 				</div>
 			</div>
