@@ -23,6 +23,8 @@ VALUES({$price}, {$seller_uid});";
 $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo 'Could not run query: ' . mysqli_error($conn);
+  exit();
+
 }
 $LID = mysqli_insert_id($conn);
 if($action == "book"){
@@ -33,7 +35,10 @@ if($action == "book"){
   $result = mysqli_query($conn, $sql_statement);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    exit();
+
   }
+  header("Location: home.php");
   exit();
 }
 else if($action =="doc"){
@@ -45,7 +50,20 @@ else if($action =="doc"){
   $result = mysqli_query($conn, $sql_statement);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    exit();
+
   }
+
+  $CID = $_POST["select-course"];
+  echo "{$CID}";
+  $sql_statement = "INSERT INTO Course_Doc_Part_Of_Course(CID, LID)
+  VALUES ({$CID}, {$LID});";
+  $result = mysqli_query($conn, $sql_statement);
+  if(!$result){
+    echo 'Could not run query: ' . mysqli_error($conn);
+    exit();
+  }
+  header("Location: home.php");
   exit();
 }
 

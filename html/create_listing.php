@@ -114,7 +114,7 @@
           <select class="form-control" id="select-course" name="select-course">
             <?php
               include_once 'connect-to-database.php';
-              $sql_statement = 'Select C.Name, C.Professor FROM Course C';
+              $sql_statement = 'Select C.Name, C.Professor, C.CID FROM Course C;';
               $result = mysqli_query($conn, $sql_statement);
               if (!$result) {
                 echo 'Could not run query: ' . mysqli_error();
@@ -124,7 +124,8 @@
                 $row = mysqli_fetch_row($result);
                 $course_name = $row[0];
                 $prof_name = $row[1];
-                echo "<option value=\"{$course_name}|{$prof_name}\"> {$course_name} - {$prof_name} </option>";
+                $CID = $row[2];
+                echo "<option value=\"{$CID}\"> {$course_name} - {$prof_name} </option>";
               }
 
             ?>
