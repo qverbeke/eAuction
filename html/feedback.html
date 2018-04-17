@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Better Bookstore</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/misc.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(e){
+    $('#navbar').load("navbar.html");
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+      e.preventDefault();
+      var param = $(this).attr("href").replace("#","");
+      var concept = $(this).text();
+      $('.search-panel span#search_concept').text(concept);
+      $('.input-group #search_param').val(param);
+    });
+  });
+  </script>
+  </head>
+
+
+<body>
+  <div id="navbar" style="margin-top:5px;">
+  </div>
+
+  <form action = "fill in" method = "get">
+        Title:
+        <input type = "text" name = "Title" required value = "" maxlength = "500"  />
+         <br />
+         
+        <textarea name="message" required rows="10" cols="35" >Please share your comments with us.</textarea>
+         <br>
+
+         <input type = "submit" value ="Submit"  />
+      </form>
+
+
+</body>
+
+</html>
