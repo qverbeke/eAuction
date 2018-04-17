@@ -19,4 +19,11 @@ input[type=submit]{
     color:#000;
 	margin-bottom:10px;
 }
+.hide{
+	height:0px;
+	width:0px;
+}
+.unhide{
+	
+}
 
