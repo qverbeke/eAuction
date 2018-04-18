@@ -29,17 +29,6 @@
 		<div class="col-sm-3">
 			<div class="container-fluid" style="background-color:black; border-radius:20px">
 				<div style="color:white">
-					<br>
-					<?php
-						$hier=array("All Books", "---Penn State University", "------Eberly College of Science",
-									"---------Math 040", "---------Math 140", "---------Math 141",
-									"---------Math 230", "---------Math 250", "---------Math 251",
-									"------College of Engineering", "---------AERO 020", "---------CMPSC 121");
-						foreach($hier as $elem){
-							echo "<a><p style=\"color:white\">$elem</p></a>";
-						}
-					?>
-					<br>
 					<p>Price range:</p>
 					<form>
 						<div class="checkbox active">
@@ -107,70 +96,27 @@
 			<?php
 			include_once 'connect-to-database.php';				
 			$query_piece="";
-			$ISBN=$_GET['ISBN'];
-			$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
+			$LID=$_GET['LID'];
+			$query="SELECT L.Price, CD.Type, CD.Description, CD.Title, CD.Qty_sold, C.Name, C.Professor, C.CID FROM Listing L, Course_Doc_Listing CD, Course_Doc_Part_Of_Course P, Course C WHERE L.LID=".$LID." AND L.LID=CD.LID AND CD.LID=P.LID AND P.CID=C.CID";
 			$result=mysqli_query($conn, $query);
-			$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$doc_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
-				<div class=\"row\">
-					<div class=\"col-sm-4\" style=\"margin:10px\">
-						<img src=\"".$book_info["ImgURL"]."\" style=\"width:100%\">
-					</div>
-					<div class=\"col-sm-8\" style=\"margin-right:-30px\">
-						<div class=\"row\">
-							<div class=\"col-sm-7\">
-								<h1>".$book_info["Name"]."</h1>
-								<h3>".$book_info["Author"]."</h3>
-								<h4>Edition: ".$book_info["Edition"]."</h4>
-								<h5>".$book_info["Description"]."</h5>
-								<h3>Keywords: ";
-								$keywords = explode(",", $book_info["MyKeys"]);
-								foreach($keywords as $keyword){
-									echo "<a>$keyword</a>, ";
-								}
-						  echo "</h3>
-							</div>
-							<div class=\"col-sm-5\" style=\"padding-right:20px\">
-								<h2>Used in:</h2><hr>";
-								$used_query="SELECT C.Name FROM Book B, Course_Uses_Book U, Course C WHERE B.ISBN='".$book_info["ISBN"]."' AND B.ISBN=U.ISBN AND C.CID=U.CID;";
-								$used_result=mysqli_query($conn, $used_query);
-								while($used_by=mysqli_fetch_assoc($used_result)){
-									echo "<h3>".$used_by["Name"]."</h3>";
-								}
-					 echo "</div>
-						</div>
-					</div>
-				</div>
+				<h1>".$doc_info["Title"]."</h1>
+				<h3>".$doc_info["Type"]."</h3>
+				<h3>".$doc_info["Price"]."</h3>
+				<h4>Quantity Sold: ".$doc_info["Qty_sold"]."</h4>
+				<h5>".$doc_info["Description"]."</h3>
+				<h3>".$doc_info["Name"]."</h3>
+				<h3>".$doc_info["Professor"]."</h3>
 			</div>";
-			$query="SELECT Qty_sold, Avg_price, Min_price_ever, Max_Price_Ever FROM Book WHERE ISBN='".$ISBN."';";
-			$result=mysqli_query($conn, $query);
-			$meta_info=mysqli_fetch_assoc($result);
-			if($meta_info["Qty_sold"]!=0){
-				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
-					<h3><b>Some information about the sale of this book:</b></h3>
-					<div class='row'>
-						<div class='col-sm-3'>
-							<h4>Quantity sold:</h4><h2>".$meta_info["Qty_sold"]."</h2>
-						</div>
-						<div class='col-sm-3'>
-							<h4>Average price:</h4><h2>$".$meta_info["Avg_price"]."</h2>
-						</div>
-						<div class='col-sm-3'>
-							<h4>Minimum price ever:</h4><h2>$".$meta_info["Min_price_ever"]."</h2>
-						</div>
-						<div class='col-sm-3'>
-							<h4>Maximum price ever:</h4><h2>$".$meta_info["Max_Price_Ever"]."</h2>
-						</div>
-					</div>
-				</div>";
-			}			
-			$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID;";
+			
+			$query="SELECT CD.LID, CD.Title, L.Price FROM Listing L, Course_Doc_Listing CD, Course_Doc_Part_Of_Course P WHERE L.LID=CD.LID and CD.LID=P.LID and P.CID=".$doc_info["CID"].";";
 			$result=mysqli_query($conn, $query);
 			while($listing_info = mysqli_fetch_assoc($result)){
 				echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 					<div class='row'>
 						<div class='col-sm-2'>
-							<form method='POST' action='/transaction.php'>
+							<form method='GET' action='/course_doc_page.php'>
 								<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
 								<input type='hidden' name='LID' value='".$listing_info['LID']."'>
 							</form>
@@ -218,6 +164,7 @@
 				</div>";
 			
 			}
+			
 		?>
 		</div>
 	</div>
