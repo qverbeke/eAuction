@@ -90,7 +90,12 @@
 	<div id="navbar" style="margin-top:50px;"></div>
 	<div class="container-fluid with-navbar">
 		<div class="row">
-			<div class="col-sm-6" id="books"></div>
+			<div class="col-sm-6" id="books">
+				<div class="container-fluid" style="background-color:white; border-radius:10px; margin-right:10px; padding-top:10px; padding-bottom:10px">
+					<h3>Books will appear here when you click on a label in the browsing window.<br><br>For each label, all of the books that are part of that group will be displayed.
+					<br><br>Use the plus and minus buttons to expand and collapse groups.</h3>
+				</div>
+			</div>
 			<div class="col-sm-6">
 				<?php
 					$group_hier=array();
