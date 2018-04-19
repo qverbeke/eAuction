@@ -40,27 +40,36 @@
 		<div class="col-sm-3">
 			<div class="container-fluid" style="background-color:black; border-radius:20px">
 				<div style="color:white">
-					<br>
-					<?php
-						$hier=array("All Books", "---Penn State University", "------Eberly College of Science",
-									"---------Math 040", "---------Math 140", "---------Math 141",
-									"---------Math 230", "---------Math 250", "---------Math 251",
-									"------College of Engineering", "---------AERO 020", "---------CMPSC 121");
-						foreach($hier as $elem){
-							echo "<a><p style=\"color:white\">$elem</p></a>";
-						}
-					?>
-					<br>
-					<p>Search Type</p>
-					<div class="checkbox active">
-					  <label><input type="checkbox" checked="checked" value="">Books</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Past Homeworks</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Past Exams</label>
-					</div>
+					<form>
+						<br>
+						<p>Price Range</p>
+						<div class="checkbox active">
+						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$0-$50</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$50-$100</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$100-$150</label>
+						</div>
+						<div class="checkbox disabled">
+						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
+						</div>
+						<br>
+						<p>Search Type</p>
+						<div class="checkbox active">
+						  <label><input type="checkbox" checked="checked" value="all" onchange="var thing = document.getElementsByClassName('doctype'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">All</label>
+						</div>
+						<div class="checkbox">
+						  <label><input class="doctype" type="checkbox" value="docs">Course Documents</label>
+						</div>
+						<div class="checkbox">
+						  <label><input class="doctype" type="checkbox" value="books">Books</label>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

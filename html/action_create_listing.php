@@ -38,6 +38,13 @@ if($action == "book"){
     exit();
 
   }
+  $query="INSERT INTO Course_Uses_Book(CID, ISBN) VALUES(".$_POST["select-course"].", ".$isbn.");";
+  $result=mysqli_query($conn, $query);
+  if(!$result){
+    echo 'Could not run query: ' . mysqli_error($conn);
+    exit();
+
+  }  
   header("Location: home.php");
   exit();
 }
@@ -62,7 +69,7 @@ else if($action =="doc"){
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
     exit();
-  }
+  }  
   header("Location: home.php");
   exit();
 }

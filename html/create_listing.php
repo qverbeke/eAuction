@@ -87,6 +87,23 @@
             <option value="Very Bad">Very Bad</option>
           </select>
       </div>
+      <div class="form-group">
+		<label for="select-course">Associated Course</label>
+		<select class="form-control" id="select-course" name="select-course">
+         <?php
+           include_once 'connect-to-database.php';
+           $sql_statement = 'Select CID, Name, Professor FROM Course';
+           $result = mysqli_query($conn, $sql_statement);
+           if (!$result) {
+             echo 'Could not run query: ' . mysqli_error();
+             exit();
+           }
+           while($c_info = mysqli_fetch_assoc($result)){
+             echo "<option value='".$c_info["CID"]."'>".$c_info["Name"]." - ".$c_info["Professor"]."</option>";
+           }
+           ?>
+        </select>
+      </div>
       <button type="submit" name="action" value="book" class="btn btn-default">Submit</button>
 
     </form>
