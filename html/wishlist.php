@@ -243,7 +243,7 @@ include 'connect-to-database.php'
     $no   = 1;
     $total  = 0;
 
-    $sql = "SELECT * FROM Buyer_Wants_Book WHERE UID = $_SESSION["UID"] ;";
+    $sql = "SELECT * FROM Buyer_Wants_Book WHERE UID = ".$_SESSION["UID"]." ;";
     $result = mysqli_query($mysqli,$sql);
     $resultcheck = mysqli_num_rows($result);
 
