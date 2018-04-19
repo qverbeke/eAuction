@@ -163,8 +163,43 @@
 					</div>
 				</div>
 			</div>";
-		
 		}
+		echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>";
+		$query="SELECT * FROM Buyer_Wants_Book WHERE ISBN='".$ISBN."' AND UID=".$_SESSION["UID"].";";
+		$result=mysqli_query($conn, $query);
+		if($wish_info = mysqli_fetch_assoc($result)){
+			$time = strtotime($wish_info["Timestamp"]);
+			$myFormatForView = date("m/d/y", $time);
+			echo "<div class='row'>
+				<div class='col-sm-9'>
+					<h3>This item is already on your wishlist for <b>$".$wish_info["Desired_price"]."</b>. It was added on ".$myFormatForView.".
+					 Do you want to delete this from your wishlist?</h3>
+				</div>
+				<div class='col-sm-3'>
+					<form action='/action_remove_wishlist.php'>
+						<input class='btn btn-primary' type='submit' value='Delete' style='margin-top:6px; width:100%; font-size:24px; margin-top:16px'>
+						<input type='hidden' name='ISBN' value='".$ISBN."'>
+					</form>
+				</div>
+			</div>";
+		}
+		else{
+			echo "
+				<div class='row'>
+				<div class='col-sm-6'>
+					<h3>If you would like to keep track of this item, you can add it to the wishlist.</h3>
+				</div>
+				<div class='col-sm-6'>
+					<form action='/action_add_wishlist.php'>
+						<h4 style='float:left; margin-top:28px'>Price: $</h4>
+						<input type='number' name='Price' value='0' step='0.01' min='0' style='font-size:16px; margin-top:20px; width: 6em;'>
+						<input class='btn btn-primary' type='submit' value='Add to Wishlist' style='float:right;margin-top:6px; width:50%; font-size:24px; margin-top:16px'>
+						<input type='hidden' name='ISBN' value='".$ISBN."'>
+					</form>
+					</div>
+				</div>";
+		}
+		echo "</div>";
 	?>
 	</div>
 </body>
