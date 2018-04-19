@@ -50,7 +50,7 @@
     </div>
     <form id="book-form" action="action_create_listing.php" method="post" role="form">
       <div class="form-group">
-        <label for="select-book">Select Book to Sell</label>
+        <label for="select-book">Select Book to Sell</label>&emsp;<a href="add_book.php">Don't see your book? Click here to add it.</a>
           <select class="form-control" id="select-book" name="select-book">
             <?php
               include_once 'connect-to-database.php';
@@ -72,7 +72,7 @@
       </div>
       <div class="form-group">
         <label for="book-price">Price</label>
-        <input type="number" min="0.01" step="any" class="form-control"
+        <input type="number" min="0.01" step="0.01" class="form-control"
         id="book-price" placeholder="Enter price in dollars" name="book-price">
       </div>
       <div class="form-group">
