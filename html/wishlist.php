@@ -1,9 +1,5 @@
 include 'connect-to-database.php'
 <!DOCTYPE html>
-
-<?php
-      $mysqli = mysqli_connect("localhost", "root", "zPp>v\/16S,DO*", "betterbookstore");
-?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -242,32 +238,24 @@ include 'connect-to-database.php'
   <?php
     $no   = 1;
     $total  = 0;
-
+	include_once 'connect-to-database.php';
     $sql = "SELECT * FROM Buyer_Wants_Book WHERE UID = ".$_SESSION["UID"]." ;";
-    $result = mysqli_query($mysqli,$sql);
-    $resultcheck = mysqli_num_rows($result);
+    $result = mysqli_query($conn,$sql);
+    //$resultcheck = mysqli_num_rows($result);
 
-    while ($row = mysqli_fetch_array($query))
+    while ($row = mysqli_fetch_assoc($result))
     {
       $amount  = $row['Desired_price'] == 0 ? '' : number_format($row['Desired_price']);
       echo '<tr>
           <td>'.$no.'</td>
           <td>'.$row['ISBN'].'</td>
           <td>'.$row['UID'].'</td>
-          
+          <td>'.$row['Timestamp'].'</td>
           <td>'.$amount.'</td>
         </tr>';
       $total += $row['amount'];
       $no++;
     }?>
-    <tr>
-<td>Table Data1 Row1</td>
-<td>Table Data2 Row1</td>
-</tr>
-<tr>
-<td>Table Data1 Row2</td>
-<td>Table Data2 Row2</td>
-</tr>
     </tbody>
     
     <tfoot>
