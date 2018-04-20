@@ -35,3 +35,21 @@ input[type=submit]{
     padding-bottom:10px;
     margin-bottom:10px;
 }
+.account-container{
+	height:200px;
+	width:100%;
+	background-color:#ebebe0;
+	text-align:center;
+	border-radius:10px;
+	margin-right:5px;
+	margin-left:5px;
+	padding-top:10px; 
+    padding-bottom:10px;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.account-container:hover{
+	background-color:#fff;
+}
+
+

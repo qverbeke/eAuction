@@ -90,6 +90,14 @@
 													<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
 												</div>
 											</div>
+											<?php
+											if(isset($_GET["from"])){
+												echo "<input type='hidden' value='".$_GET["from"]."' name='from'>";
+											}
+											if(isset($_GET["ISBN"])){
+												echo "<input type='hidden' value='".$_GET["ISBN"]."' name='ISBN'>";
+											}
+											?>
 										</div>
 
 									</form>

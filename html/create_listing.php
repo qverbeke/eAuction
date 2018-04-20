@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['UID'])){
+	header("Location:index.php?from=create_listing");
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -115,7 +121,7 @@
       </div>
       <div class="form-group">
         <label for="doc-price">Price</label>
-        <input type="number" min="0.01" step="any" class="form-control"
+        <input type="number" min="0.01" step="0.01" class="form-control"
          id="doc-price" placeholder="Enter price in dollars" name="doc-price">
       </div>
       <div class="form-group">

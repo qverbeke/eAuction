@@ -18,11 +18,13 @@ if($action == "book"){
 else{
   $price = $_POST["doc-price"];
 }
+mysqli_begin_transaction($conn, MYSQLI_TRANS_START_READ_WRITE);
 $sql_statement = "INSERT INTO Listing(Price, Seller_UID)
 VALUES({$price}, {$seller_uid});";
 $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo 'Could not run query: ' . mysqli_error($conn);
+  mysqli_rollback($conn);
   exit();
 
 }
@@ -35,6 +37,7 @@ if($action == "book"){
   $result = mysqli_query($conn, $sql_statement);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    mysqli_rollback($conn);
     exit();
 
   }
@@ -42,9 +45,11 @@ if($action == "book"){
   $result=mysqli_query($conn, $query);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    mysqli_rollback($conn);
     exit();
-
-  }  
+  }
+  mysqli_commit($conn);	
+  mysqli_close($conn);
   header("Location: home.php");
   exit();
 }
@@ -57,6 +62,7 @@ else if($action =="doc"){
   $result = mysqli_query($conn, $sql_statement);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    mysqli_rollback($conn);
     exit();
 
   }
@@ -68,8 +74,11 @@ else if($action =="doc"){
   $result = mysqli_query($conn, $sql_statement);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
+    mysqli_rollback($conn);
     exit();
   }  
+  mysqli_commit($conn);	
+  mysqli_close($conn);
   header("Location: home.php");
   exit();
 }

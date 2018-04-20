@@ -1,4 +1,10 @@
-include 'connect-to-database.php'
+<?php
+session_start();
+if(!isset($_SESSION['UID'])){
+	header("Location:index.php?from=wishlist");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -23,6 +23,7 @@
   $row = mysqli_fetch_row($result);
   //get the users ID
   $UID = $row[0];
+  session_start();
   $_SESSION["UID"] = $UID;
   //Look for password for the user with the UID determined above
   $sql_statement = "SELECT U.password FROM User U WHERE U.UID='$UID'";
@@ -40,6 +41,14 @@
     header("Location: index.php?error=incorrect_password");
     exit();
   }
-  header("Location: home.php?status=sign_in_success");
+  if(!isset($_POST["from"])){
+	header("Location: home.php?status=sign_in_success");
+  }
+  elseif(isset($_POST["ISBN"])){
+	header("Location: ".$_POST["from"].".php?ISBN=".$_POST["ISBN"]);
+  }
+  else{
+	header("Location: ".$_POST["from"].".php");
+  }
   exit();
  ?>

@@ -28,7 +28,7 @@
 		<div class="col-sm-2"></div>
 		<div class="col-sm-8" style="background-color:white;padding-top:20px;padding-bottom:20px; border-radius:10px">
 			<h1>Enter some basic information about the book you will be selling.</h1>
-			<form action="/action_create_book.php" id="bookform" method="POST">
+			<form action="/action_create_book.php" id="bookform">
 				<div class="form-group">
 					<label for="ISBN">ISBN-13 (only digits)</label>
 					<input type="text" pattern="[0-9]{13}" class="form-control" id="ISBN" placeholder="Enter the 13 digit ISBN" name="ISBN" maxlength="13">

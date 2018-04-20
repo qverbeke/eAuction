@@ -1,17 +1,26 @@
 <?php
 include_once 'connect-to-database.php';
-$test_query="Select * FROM Book WHERE ISBN=".$_GET["ISBN"].";";
-$result=mysqli_query($conn, $query);
+$test_query="Select * FROM Book WHERE ISBN=".$_POST["ISBN"].";";
+$result=mysqli_query($conn, $test_query);
 if($exists= mysqli_fetch_assoc($result)){
 	header("Location:add_book.php");
 }
 else{
-	$query="INSERT INTO Book_Name_Desc_Key(Name, Description, MyKeys) VALUES('".$_GET["Title"]."', '".$_GET["Description"]."', '".$_GET["Keywords"]."');";
-	mysqli_query($conn, $query);
-	$query="INSERT INTO Book(ISBN, Name, Description, ImgURL) VALUES('".$_GET["ISBN"]."', '".$_GET["Title"]."', '".$_GET["Description"]."', '".$_GET["ImgURL"]."');";
-	mysqli_query($conn, $query);
-	$query="INSERT INTO Book_NAE(ISBN, Author, Edition) VALUES('".$_GET["ISBN"]."', '".$_GET["Author"]."', ".$_GET["Edition"].");";
-	mysqli_query($conn, $query);
+	mysqli_begin_transaction($conn, MYSQLI_TRANS_START_READ_WRITE);
+	$query="INSERT INTO Book_Name_Desc_Key(Name, Description, MyKeys) VALUES('".$_POST["Title"]."', '".$_POST["Description"]."', '".$_POST["Keywords"]."');";
+	if(!mysqli_query($conn, $query)){
+		mysqli_rollback($conn);		
+	}
+	$query="INSERT INTO Book(ISBN, Name, Description, ImgURL) VALUES('".$_POST["ISBN"]."', '".$_POST["Title"]."', '".$_POST["Description"]."', '".$_POST["ImgURL"]."');";
+	if(!mysqli_query($conn, $query)){
+		mysqli_rollback($conn);			
+	}
+	$query="INSERT INTO Book_NAE(ISBN, Author, Edition) VALUES('".$_POST["ISBN"]."', '".$_POST["Author"]."', ".$_POST["Edition"].");";
+	if(!mysqli_query($conn, $query)){
+		mysqli_rollback($conn);			
+	}
+	mysqli_commit($conn);	
+	mysqli_close($conn);
 	header( "Location:create_listing.php");
 }
 

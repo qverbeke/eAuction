@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['UID'])){
+	header("Location:index.php?from=book_page&ISBN=".$_GET["ISBN"]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,7 +183,7 @@
 					 Do you want to delete this from your wishlist?</h3>
 				</div>
 				<div class='col-sm-3'>
-					<form action='/action_remove_wishlist.php'>
+					<form action='/action_remove_wishlist.php' method='POST'>
 						<input class='btn btn-primary' type='submit' value='Delete' style='margin-top:6px; width:100%; font-size:24px; margin-top:16px'>
 						<input type='hidden' name='ISBN' value='".$ISBN."'>
 					</form>
@@ -190,7 +197,7 @@
 					<h3>If you would like to keep track of this item, you can add it to the wishlist.</h3>
 				</div>
 				<div class='col-sm-6'>
-					<form action='/action_add_wishlist.php'>
+					<form action='/action_add_wishlist.php' method='POST'>
 						<h4 style='float:left; margin-top:28px'>Price: $</h4>
 						<input type='number' name='Price' value='0' step='0.01' min='0' style='font-size:16px; margin-top:20px; width: 6em;'>
 						<input class='btn btn-primary' type='submit' value='Add to Wishlist' style='float:right;margin-top:6px; width:50%; font-size:24px; margin-top:16px'>
