@@ -121,6 +121,31 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
+						<a href="manage_listings.php" style="text-decoration:none;">
+							<div class="account-container">
+								<h3>Manage Listings</h3>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-6">
+										<img src="img/manage.png" alt="Manage listings" style="width:100%;margin-top:10px">
+									</div>
+									<div class="col-sm-3"></div>
+								</div>		
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
 						<a href="action_logout.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Log out</h3>
@@ -134,6 +159,7 @@ if(!isset($_SESSION['UID'])){
 							</div>
 						</a>
 					</div>
+					<div class="col-sm-4"></div>
 				</div>
 			</div>
 		</div>
