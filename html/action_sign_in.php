@@ -47,6 +47,9 @@
   elseif(isset($_POST["ISBN"])){
 	header("Location: ".$_POST["from"].".php?ISBN=".$_POST["ISBN"]);
   }
+  elseif(isset($_POST["LID"])){
+	header("Location: ".$_POST["from"].".php?LID=".$_POST["LID"]);
+  }
   else{
 	header("Location: ".$_POST["from"].".php");
   }

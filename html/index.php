@@ -97,6 +97,9 @@
 											if(isset($_GET["ISBN"])){
 												echo "<input type='hidden' value='".$_GET["ISBN"]."' name='ISBN'>";
 											}
+											if(isset($_GET["LID"])){
+												echo "<input type='hidden' value='".$_GET["LID"]."' name='LID'>";
+											}
 											?>
 										</div>
 
@@ -124,7 +127,12 @@
                     </div>
                     <div>
                       <div class="form-group">
-                      <input type="text"  name="gender" id="gender" tabindex="7" class="form-control", placeholder="Gender" value="">
+					  <label for="gender">Gender</label>
+					  <select name="gender" id="gender" tabindex="7" class="form-control" placeholder="Gender">
+						  <option value="Male">Male</option>
+					      <option value="Female">Female</option>
+					      <option value="Other">Other</option>
+					  </select>
                     </div>
 
 										</div>

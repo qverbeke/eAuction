@@ -81,7 +81,7 @@ if(!isset($_SESSION['UID'])){
 							<h3>Keywords: ";
 							$keywords = explode(",", $book_info["MyKeys"]);
 							foreach($keywords as $keyword){
-								echo "<a>$keyword</a>, ";
+								echo "$keyword, ";
 							}
 					  echo "</h3>
 						</div>
@@ -119,7 +119,7 @@ if(!isset($_SESSION['UID'])){
 				</div>
 			</div>";
 		}			
-		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID;";
+		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID AND S.UID!=".$_SESSION["UID"].";";
 		$result=mysqli_query($conn, $query);
 		while($listing_info = mysqli_fetch_assoc($result)){
 			echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>

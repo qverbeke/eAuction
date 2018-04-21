@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/misc.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
@@ -37,7 +38,7 @@
 		  <h1 style="color:white"><b>Better Bookstore</b></h1>
 		  <p style="color:white">A money-saving marketplace for students</p>
 		  <br>
-		  <div class="container-fluid">
+		  <div class="container-fluid" style="width:66%; margin:auto">
 			<form action="/list_page.php">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
@@ -48,16 +49,12 @@
 						  <li><a href="#Title">Title</a></li>
 						  <li><a href="#Author">Author</a></li>
 						  <li><a href="#ISBN">ISBN</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#Prof">Professor</a></li>
-						  <li><a href="#Course Name">Course Name</a></li>
-						  <li><a href="#Group">Major/College</a></li>
 						</ul>
 					</div>
 					<input type="hidden" name="search_param" value="Title" id="search_param">
 					<input type="text" class="form-control" name="search_term" placeholder="Search term...">
 					<span class="input-group-btn">
-						<input class="btn btn-default" type="submit" value="Search">
+						<input class="btn btn-default" type="submit" value="Search" style="margin-bottom:0px">
 					</span>
 				</div>
 			</form>
@@ -65,18 +62,110 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-1"></div>
-		<div class="col-sm-7">
-			<div class="fluid-container">
-				<h3>We are implementing Better Bookstore, an application aimed at solving this issue. It aims to connect the buyer to the seller through an online service to minimize losses for both sides. Without getting too much into the economics of the situation, we are basically enabling buyers and sellers of textbooks to meet in the middle of the current buy and sell points through an exchange-type system. This will lower the price for textbook buyers, and raise the selling point of book sellers, meaning those who benefit most from transactions through our website are the users. On top of that, Better Bookstore allows users to buy and sell course documents, such as previous homework and midterm exams, allowing students to be best prepared for a class that they are taking. In general, our goal for the Better Bookstore is to ease the stress and financial burden of being a college student, allowing students to focus more on course content rather than the money or time it takes to get the proper course materials.</h3>
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4">
+					<a href="/create_listing.php" style="text-decoration:none;">
+						<div class="home-container">
+							<h3>Create Listing</h3>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-6">
+									<img src="img/list.png" alt="add a listing" style="width:100%;margin-top:10px">
+								</div>
+								<div class="col-sm-3"></div>
+							</div>								
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-4">
+					<a href="/browse.php" style="text-decoration:none;">
+						<div class="home-container">
+							<h3>Browse Inventory</h3>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-6">
+									<img src="img/browse.png" alt="browse image" style="width:100%;margin-top:10px">
+								</div>
+								<div class="col-sm-3"></div>
+							</div>		
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-4">
+					<a href="/account.php" style="text-decoration:none;">
+						<div class="home-container">
+							<h3>View Account</h3>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-6">
+									<img src="img/account.png" alt="Account" style="width:100%;margin-top:10px">
+								</div>
+								<div class="col-sm-3"></div>
+							</div>		
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
-			<img src="https://images-na.ssl-images-amazon.com/images/I/41cXTXhiabL._SX366_BO1,204,203,200_.jpg" width="90%" alt="no">
+	</div>
+	<div class="col-sm-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4">
+						<a href="/messages.php" style="text-decoration:none;">
+							<div class="home-container">
+								<h3>View Message Center</h3>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-6">
+										<img src="img/message.png" alt="message" style="width:100%;margin-top:10px">
+									</div>
+									<div class="col-sm-3"></div>
+								</div>		
+							</div>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="/feedback.html" style="text-decoration:none;">
+							<div class="home-container">
+								<h3>Provide feedback</h3>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-6">
+										<img src="img/feedback.png" alt="provide feedback" style="width:100%;margin-top:10px">
+									</div>
+									<div class="col-sm-3"></div>
+								</div>		
+							</div>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="/about.html" style="text-decoration:none;">
+							<div class="home-container">
+								<h3>About Us</h3>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-6">
+										<img src="img/info.png" alt="info" style="width:100%;margin-top:10px">
+									</div>
+									<div class="col-sm-3"></div>
+								</div>		
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-1"></div>
+		<div class="col-sm-2"></div>
 	</div>
 </div>
 </body>

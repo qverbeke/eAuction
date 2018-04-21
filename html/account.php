@@ -35,6 +35,9 @@ if(!isset($_SESSION['UID'])){
 	<div class="row">
 		<div class="col-sm-2"></div>
 		<div class="col-sm-8">
+			<div class="container-fluid" style="background-color:white;padding-top:20px;padding-bottom:20px; border-radius:10px; text-align:center;">
+				<h2>Account Options</h2>
+			</div>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-4">

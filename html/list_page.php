@@ -32,48 +32,13 @@
 	});
   </script>
 </head>
-<body>
+<body style="background-color:#00cc7a;">
 <div id="navbar" style="margin-top:50px;">
 </div>
 <div class="container-fluid with-navbar">
 	<div class="row">
-		<div class="col-sm-3">
-			<div class="container-fluid" style="background-color:black; border-radius:20px">
-				<div style="color:white">
-					<form>
-						<br>
-						<p>Price Range</p>
-						<div class="checkbox active">
-						  <label><input type="checkbox" checked="checked" value="" onchange="var thing = document.getElementsByClassName('pricerange'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">Any</label>
-						</div>
-						<div class="checkbox disabled">
-						  <label><input class="pricerange" type="checkbox" value="" disabled>$0-$50</label>
-						</div>
-						<div class="checkbox disabled">
-						  <label><input class="pricerange" type="checkbox" value="" disabled>$50-$100</label>
-						</div>
-						<div class="checkbox disabled">
-						  <label><input class="pricerange" type="checkbox" value="" disabled>$100-$150</label>
-						</div>
-						<div class="checkbox disabled">
-						  <label><input class="pricerange" type="checkbox" value="" disabled>$150-$200</label>
-						</div>
-						<br>
-						<p>Search Type</p>
-						<div class="checkbox active">
-						  <label><input type="checkbox" checked="checked" value="all" onchange="var thing = document.getElementsByClassName('doctype'); for(i=0; i<thing.length; i++){thing[i].disabled = this.checked; thing[i].checked=0;}">All</label>
-						</div>
-						<div class="checkbox">
-						  <label><input class="doctype" type="checkbox" value="docs">Course Documents</label>
-						</div>
-						<div class="checkbox">
-						  <label><input class="doctype" type="checkbox" value="books">Books</label>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-9" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10" >
 			<div class="container-fluid">
 				<form action="/list_page.php">
 					<div class="input-group">
@@ -85,10 +50,6 @@
 							  <li><a href="#Title">Title</a></li>
 							  <li><a href="#Author">Author</a></li>
 							  <li><a href="#ISBN">ISBN</a></li>
-							  <li class="divider"></li>
-							  <li><a href="#Prof">Professor</a></li>
-							  <li><a href="#Course Name">Course Name</a></li>
-							  <li><a href="#Group">Major/College</a></li>
 							</ul>
 						</div>
 						<input type="hidden" name="search_param" value="Title" id="search_param">
@@ -116,19 +77,6 @@
 					$query_piece="N.Author='".$_GET['search_term']."'";
 				}			
 				$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE ".$query_piece." AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
-			}
-			elseif($search_param=="Prof"||$search_param=="Course Name"){
-				if($search_param=="Prof"){
-					$query_piece="C.Professor='".$_GET['search_term']."'";
-				}
-				elseif($search_param=="Course Name"){
-					$query_piece="C.Name='".$_GET['search_term']."'";
-				}
-				$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D, Course_Uses_Book U, Course C WHERE ".$query_piece." AND C.CID=U.CID AND U.ISBN=B.ISBN AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
-			}
-			elseif($search_param=="Group"){
-				
-				exit(1);
 			}
 			else{
 				exit(1);
@@ -167,6 +115,7 @@
 			}
 			?>
 		</div>
+		<div class="col-sm-1"></div>
 	</div>
 </div>
 
