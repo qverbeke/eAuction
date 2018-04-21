@@ -48,7 +48,39 @@
         exit();
       }
       $seller_username = mysqli_fetch_row($result)[0];
+      $sql_statement = "SELECT CDL.Type, CDL.Title FROM Course_Doc_Listing CDL WHERE CDL.LID={$lid}";
+      $result = mysqli_query($conn, $sql_statement);
+      if(!$result){
+        echo 'Could not run query: ' . mysqli_error($conn);
+        exit();
+      }
+      //If this is a course document
+      if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_row($result);
+        $type = $row[0];
+        $title = $row[1];
+      }else{
+        $sql_statement = "SELECT BL.Quality, BL.ISBN FROM Book_Listing BL
+         WHERE BL.LID={$lid}";
+         $result = mysqli_query($conn, $sql_statement);
+         if(!$result){
+           echo 'Could not run query: ' . mysqli_error($conn);
+           exit();
+         }
+         $row = mysqli_fetch_row($result);
+         $quality = $row[0];
+         $isbn = $row[1];
+         $sql_statement = "SELECT B.Name FROM Book B WHERE B.ISBN=\"{$isbn}\" ";
+         $result = mysqli_query($conn, $sql_statement);
+         if(!$result){
+           echo 'Could not run query: ' . mysqli_error($conn);
+           exit();
+         }
+         $row = mysqli_fetch_row($result);
+         $title = $row[0];
+      }
     }
-   ?>
+    ?>
+  
  </div>
 </body>
