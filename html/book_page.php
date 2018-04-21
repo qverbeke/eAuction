@@ -61,6 +61,10 @@ if(!isset($_SESSION['UID'])){
 		$ISBN=$_GET['ISBN'];
 		$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
 		$result=mysqli_query($conn, $query);
+		if (!$result) {
+			alert('Could not run query: ' . mysqli_error() );
+			exit();
+		}
 		$book_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
 			<div class=\"row\">
@@ -95,6 +99,10 @@ if(!isset($_SESSION['UID'])){
 		</div>";
 		$query="SELECT Qty_sold, Avg_price, Min_price_ever, Max_Price_Ever FROM Book WHERE ISBN='".$ISBN."';";
 		$result=mysqli_query($conn, $query);
+		if (!$result) {
+			echo 'Could not run query: ' . mysqli_error();
+			exit();
+		}
 		$meta_info=mysqli_fetch_assoc($result);
 		if($meta_info["Qty_sold"]!=0){
 			echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
@@ -117,6 +125,10 @@ if(!isset($_SESSION['UID'])){
 		}
 		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID AND S.UID!=".$_SESSION["UID"].";";
 		$result=mysqli_query($conn, $query);
+		if (!$result) {
+			alert('Could not run query: ' . mysqli_error());
+			exit();
+		}
 		while($listing_info = mysqli_fetch_assoc($result)){
 			echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 				<div class='row'>
@@ -170,6 +182,10 @@ if(!isset($_SESSION['UID'])){
 		echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>";
 		$query="SELECT * FROM Buyer_Wants_Book WHERE ISBN='".$ISBN."' AND UID=".$_SESSION["UID"].";";
 		$result=mysqli_query($conn, $query);
+		if (!$result) {
+			echo 'Could not run query: ' . mysqli_error();
+			exit();
+		}
 		if($wish_info = mysqli_fetch_assoc($result)){
 			$time = strtotime($wish_info["Timestamp"]);
 			$myFormatForView = date("m/d/y", $time);

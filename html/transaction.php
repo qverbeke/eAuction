@@ -20,6 +20,16 @@
 		});
 	});
   </script>
+  <script>
+  $(document).ready(function(){
+    $('#message_button').click(function(event) {
+            $('#message').text("");
+            $('#to').attr("value", $('#seller-username').text());
+            $('#modal-title').text("Compose New Message");
+        }
+      );
+    });
+  </script>
 </head>
 <body>
 <div id="navbar" style="margin-top:50px;">
@@ -105,22 +115,59 @@
 										</form>
 									</div>
 									<div class='col-sm-6'>
-										<form action='messages.php' style='width:100%'>
-											<input class='btn btn-primary' type='submit' value='Message Seller' style='width:100%; color:white;'>
-										</form>
-									</div>
+                    <button id=\"message_button\" type=\"button\" class=\"btn btn-light btn-block\"
+                       data-toggle=\"modal\" data-target=\"#compose-form\">Message
+                       <p id=\"seller-username\" hidden>";
+                       $seller_uid = $list_info["UID"];
+                       $sql_statement = "SELECT UU.username FROM User_Username UU WHERE UU.UID={$seller_uid};";
+                       $result = mysqli_query($conn, $sql_statement);
+                       $seller_username = mysqli_fetch_row($result)[0];
+                       echo "{$seller_username} </p>
+                       </button>
+  									</div>
 								</div>
 							</div>
 							";
 						}
-						
+
 					echo "</div>";
-					
+
 				?>
 			</div>
 			<div class="col-sm-1"></div>
 		</div>
 	</div>
+  <div class="modal fade" id="compose-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modal" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 id="modal-title" class="modal-title w-100 font-weight-bold">Compose New Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="modal_form" action="action_send.php" method="post" role="form">
+              <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                      <i class="fa fa-envelope prefix grey-text"></i>
+                      <label>To</label>
+                      <input type="text" id="to" name="to" value="" class="form-control validate">
+                  </div>
+
+                  <div class="md-form mb-4">
+                      <i class="fa fa-lock prefix grey-text"></i>
+                      <label>Message</label>
+                      <textarea rows='5' type="text" name="message" id="message" class="form-control validate"></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" name="action" value="save" class="btn btn-default">Save as Draft </button>
+                <button type="submit" name="action" value="send" class="btn btn-default">Send</button>
+              </div>
+            </form>
+        </div>
+    </div>
+  </div>
 </body>
 
 </html>
