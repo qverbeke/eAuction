@@ -39,14 +39,10 @@ if(!isset($_SESSION['UID'])){
 
 <div style="background-color:white; border-radius: 10px">
 	<br>
-
-<html lang="en">
-
-<body>
   <div id="navbar" style="margin-top:5px;">
   </div>
 
-  <form action = "feedback.php" method = "post">
+  <form action = "action_create_feedback.php" method = "post">
         Title:
         <input type = "text" name = "Title" maxlength = "500"  />
          <br />
@@ -55,12 +51,10 @@ if(!isset($_SESSION['UID'])){
          <br />
          <br />
 
-        <input type="checkbox" name="check" value="Yes"> Is there a Bug? <br>
+        <input type="checkbox" name="check" value="1"> Is there a Bug? <br>
 
 
-        <textarea name="Content" rows=10 cols=35> Please share your comments with us
-     
-        </textarea>
+        <textarea name="Content" rows=10 cols=35> Please share your comments with us</textarea>
          <br>
 
          <button type = "submit" name = "submit"> Submit</button>
@@ -68,18 +62,7 @@ if(!isset($_SESSION['UID'])){
 
 
 </body>
-
-
-
-<?php
-  include_once 'connect-to-database.php';
-    $title = $_POST['Title'];
-    $check = $_POST['check'];
-    $content = $_POST['Content'];
-
-    $sql = "INSERT INTO Feedback (Is_bug, Title, Content) VALUES ('$title',  '$check', '$content');";
-    mysqli_query($conn, $sql);
-    header("Location: feedback.php");
+</html>
 
 
 
