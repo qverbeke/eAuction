@@ -26,6 +26,20 @@ if(!isset($_SESSION['UID'])){
 		});
 	});
   </script>
+  <script>
+  function changePrice(LID){
+	var myelem = document.getElementById("l"+LID);
+	myelem.innerHTML="<h5>New Price:</h5>$<input type='number' id='in"+LID+"' step='0.01' min='0.01' style='width:6em'><button onclick='submitPrice("+LID+"); return false;'>Submit</button>";
+	return false;
+  }
+  function submitPrice(myLID){
+	var newPrice=document.getElementById("in"+myLID).value;
+	$.post( "action_change_price.php", { LID: myLID+"", Price: newPrice+""});
+	document.getElementById("l"+myLID).innerHTML="<h3><b>Price</b>:<br>$"+newPrice+"</h3>";
+	return false; 
+  }
+  
+  </script>
 </head>
 <body style="background-color:#00cc7a;">
 <div id="navbar" style="margin-top:50px;">
@@ -54,15 +68,12 @@ if(!isset($_SESSION['UID'])){
 								<h3><b>Date created</b>: ".$myFormatForView."</h3>
 							</div>
 							<div class='col-sm-2'>
-								<h3><b>Price</b>:<br>$".$list_info["Price"]."</h3>
+								<div id='l".$list_info["LID"]."'><h3><b>Price</b>:<br>$".$list_info["Price"]."</h3></div>
 							</div>
 						</div>
 					</div>
 					<div class='col-sm-3' style='background-color:white; height:90%; margin-top:10px;margin-bottom:10px; border-radius:10px; margin-left:10px; margin-right:-10px; padding-top:10px; padding-bottom:10px'>
-							<form action='' method='post' style='height:100%; width:50%; float:left;'>
-								<button type='submit' class='btn' style='width:100%; height:100%; font-size:24px; float:left; background-color:#BFBFBF'>Change<br>Price</button>
-								<input type='hidden' value='".$list_info["LID"]." name='LID'>
-							</form>
+							<button onclick='changePrice(".$list_info["LID"]."); return false;' class='btn' style='width:50%; height:100%; font-size:24px; float:left; background-color:#BFBFBF'>Change<br>Price</button>
 							<form action='action_delete_listing.php' method='post' style='height:100%; width:50%; float:left;'>
 								<button type='submit' class='btn btn-primary' style='width:100%; height:100%; font-size:24px;'>Delete<br>Listing</button>
 								<input type='hidden' value='".$list_info["LID"]."' name='LID'>
@@ -98,16 +109,13 @@ if(!isset($_SESSION['UID'])){
 								<h5><b>Date created</b>: ".$myFormatForView."</h5>
 							</div>
 							<div class='col-sm-3'>
-								<h3><b>Price</b>: $".$list_info["Price"]."</h3>
+								<div id='l".$list_info["LID"]."'><h3><b>Price</b>:<br>$".$list_info["Price"]."</h3></div>
 								<h5><b>Qty Sold</b>:".$list_info["Qty_sold"]."</h5>
 							</div>
 						</div>
 					</div>
 					<div class='col-sm-3' style='background-color:white; height:90%; margin-top:10px;margin-bottom:10px; border-radius:10px; margin-left:10px; margin-right:-10px; padding-top:10px; padding-bottom:10px'>
-							<form action='' method='post' style='height:100%; width:50%; float:left;'>
-								<button type='submit' class='btn' style='width:100%; height:100%; font-size:24px; float:left; background-color:#BFBFBF'>Change<br>Price</button>
-								<input type='hidden' value='".$list_info["LID"]." name='LID'>
-							</form>
+							<button onclick='changePrice(".$list_info["LID"]."); return false;' class='btn' style='width:50%; height:100%; font-size:24px; float:left; background-color:#BFBFBF'>Change<br>Price</button>
 							<form action='action_delete_listing.php' method='post' style='height:100%; width:50%; float:left;'>
 								<button type='submit' class='btn btn-primary' style='width:100%; height:100%; font-size:24px;'>Delete<br>Listing</button>
 								<input type='hidden' value='".$list_info["LID"]."' name='LID'>
