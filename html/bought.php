@@ -29,7 +29,19 @@
     }
     for ($i = 0; $i < mysqli_num_rows($result); $i++){
       $row = mysqli_fetch_row($result);
-      echo($row[2]);
+      $lid = $row[2];
+      $timestamp = $row[1];
+      $online_or_live = $row[0];
+      $sql_statement = "SELECT L.Price, L.Seller_UID FROM Listing L WHERE L.LID={$lid}";
+      $result = mysqli_query($conn, $sql_statement);
+      if(!$result){
+        echo 'Could not run query: ' . mysqli_error($conn);
+        exit();
+      }
+      $row = mysqli_fetch_row($result);
+      $price = $row[0];
+      $seller_uid = $row[1];
+      echo $price;
     }
    ?>
  </div>
