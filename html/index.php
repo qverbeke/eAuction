@@ -127,6 +127,10 @@
                     </div>
                     <div>
                       <div class="form-group">
+                      <input type="text" pattern="[0-9]{10}" autofocus required title="Please enter only numbers" name="phone_number" id="phone_number" tabindex="7" class="form-control", placeholder="Phone Number" value="">
+                    </div>
+                    <div>
+                      <div class="form-group">
 					  <label for="gender">Gender</label>
 					  <select name="gender" id="gender" tabindex="7" class="form-control" placeholder="Gender">
 						  <option value="Male">Male</option>
