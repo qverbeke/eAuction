@@ -41,14 +41,16 @@ if($action == "book"){
     exit();
 
   }
-  $query="INSERT INTO Course_Uses_Book(CID, ISBN) VALUES(".$_POST["select-course"].", ".$isbn.");";
+
+  $course = $_POST["select-course"];
+  $query="INSERT INTO Course_Uses_Book(CID, ISBN) VALUES({$course},\"{$isbn}\");";
   $result=mysqli_query($conn, $query);
   if(!$result){
     echo 'Could not run query: ' . mysqli_error($conn);
     mysqli_rollback($conn);
     exit();
   }
-  mysqli_commit($conn);	
+  mysqli_commit($conn);
   mysqli_close($conn);
   header("Location: home.php");
   exit();
@@ -76,8 +78,8 @@ else if($action =="doc"){
     echo 'Could not run query: ' . mysqli_error($conn);
     mysqli_rollback($conn);
     exit();
-  }  
-  mysqli_commit($conn);	
+  }
+  mysqli_commit($conn);
   mysqli_close($conn);
   header("Location: home.php");
   exit();
