@@ -41,7 +41,7 @@ if(!isset($_SESSION['UID'])){
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-4">
-						<a href="/create_listing.php" style="text-decoration:none;">
+						<a href="create_listing.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Create Listing</h3>
 								<div class="row">
@@ -55,7 +55,7 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/add_book.php" style="text-decoration:none;">
+						<a href="add_book.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Add Book</h3>
 								<div class="row">
@@ -69,7 +69,7 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/wishlist.php" style="text-decoration:none;">
+						<a href="wishlist.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>View Wishlist</h3>
 								<div class="row">
@@ -93,7 +93,7 @@ if(!isset($_SESSION['UID'])){
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-4">
-						<a href="/bought.php" style="text-decoration:none;">
+						<a href="bought.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>View purchased items</h3>
 								<div class="row">
@@ -107,7 +107,7 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/feedback.html" style="text-decoration:none;">
+						<a href="feedback.html" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Provide feedback</h3>
 								<div class="row">
@@ -121,7 +121,7 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/action_logout.php" style="text-decoration:none;">
+						<a href="action_logout.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Log out</h3>
 								<div class="row">

@@ -69,7 +69,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-4">
-					<a href="/create_listing.php" style="text-decoration:none;">
+					<a href="create_listing.php" style="text-decoration:none;">
 						<div class="home-container">
 							<h3>Create Listing</h3>
 							<div class="row">
@@ -83,7 +83,7 @@
 					</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="/browse.php" style="text-decoration:none;">
+					<a href="browse.php" style="text-decoration:none;">
 						<div class="home-container">
 							<h3>Browse Inventory</h3>
 							<div class="row">
@@ -97,7 +97,7 @@
 					</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="/account.php" style="text-decoration:none;">
+					<a href="account.php" style="text-decoration:none;">
 						<div class="home-container">
 							<h3>View Account</h3>
 							<div class="row">
@@ -121,7 +121,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-4">
-						<a href="/messages.php" style="text-decoration:none;">
+						<a href="messages.php" style="text-decoration:none;">
 							<div class="home-container">
 								<h3>View Message Center</h3>
 								<div class="row">
@@ -135,7 +135,7 @@
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/feedback.html" style="text-decoration:none;">
+						<a href="feedback.html" style="text-decoration:none;">
 							<div class="home-container">
 								<h3>Provide feedback</h3>
 								<div class="row">
@@ -149,7 +149,7 @@
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/about.html" style="text-decoration:none;">
+						<a href="about.html" style="text-decoration:none;">
 							<div class="home-container">
 								<h3>About Us</h3>
 								<div class="row">

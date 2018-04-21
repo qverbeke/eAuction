@@ -100,12 +100,12 @@
 							<div class='container-fluid'>
 								<div class='row'>
 									<div class='col-sm-6'>
-										<form action='/action_buy.php' style='width:100%'>
+										<form action='action_buy.php' style='width:100%'>
 											<input class='btn btn-primary' type='submit' value='Buy Directly' style='width:100%; margin-right:10px; color:white;'>
 										</form>
 									</div>
 									<div class='col-sm-6'>
-										<form action='/messages.php' style='width:100%'>
+										<form action='messages.php' style='width:100%'>
 											<input class='btn btn-primary' type='submit' value='Message Seller' style='width:100%; color:white;'>
 										</form>
 									</div>

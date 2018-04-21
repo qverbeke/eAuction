@@ -44,10 +44,6 @@ if(!isset($_SESSION['UID'])){
 						  <li><a href="#Title">Title</a></li>
 						  <li><a href="#Author">Author</a></li>
 						  <li><a href="#ISBN">ISBN</a></li>
-						  <li class="divider"></li>
-						  <li><a href="#Prof">Professor</a></li>
-						  <li><a href="#Course Name">Course Name</a></li>
-						  <li><a href="#Group">Major/College</a></li>
 						</ul>
 					</div>
 					<input type="hidden" name="search_param" value="Title" id="search_param">
