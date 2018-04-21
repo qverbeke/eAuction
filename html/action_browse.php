@@ -12,7 +12,7 @@ $query1 = substr($query1, 0, strlen($query1)-4).");";
 $query2 = substr($query2, 0, strlen($query2)-4).");";
 $result=mysqli_query($conn, $query1);
 while($book_info = mysqli_fetch_assoc($result)){
-	echo "<a href=\"/book_page.php?ISBN=".$book_info["ISBN"]."\" style='float:left'>
+	echo "<a href=\"book_page.php?ISBN=".$book_info["ISBN"]."\" style='float:left'>
 		<div class='browse-container'>
 			<div style='height:80px'>
 				<h5 style='line-height:20px;'><b>Title:</b> ".$book_info["Name"]."<br>
@@ -22,14 +22,14 @@ while($book_info = mysqli_fetch_assoc($result)){
 			<div class=\"textbook-img\" style='margin-left:25px'>
 				<img src='".$book_info["ImgURL"]."' alt='image not found' style='width:150px'>
 			</div>
-		
+
 		</div>
 	</a>";
 }
 
 $result2=mysqli_query($conn, $query2);
 while($cd_info = mysqli_fetch_assoc($result2)){
-	echo "<a href=\"/course_doc_page.php?LID=".$cd_info["LID"]."\" style='float:left'>
+	echo "<a href=\"course_doc_page.php?LID=".$cd_info["LID"]."\" style='float:left'>
 		<div class='browse-container'>
 			<h5 style='line-height:20px;'><b>Title:</b> ".$cd_info["Title"]."<br>
 			<b>Type:</b> ".$cd_info["Type"]."<br>

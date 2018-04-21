@@ -62,7 +62,7 @@
 			</div>
 			<hr>
 			<?php
-			include_once 'connect-to-database.php';	
+			include_once 'connect-to-database.php';
 			$query_piece="";
 			$search_param=$_GET['search_param'];
 			$query="";
@@ -75,7 +75,7 @@
 				}
 				elseif($search_param=="Author"){
 					$query_piece="N.Author='".$_GET['search_term']."'";
-				}			
+				}
 				$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE ".$query_piece." AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
 			}
 			else{
@@ -83,7 +83,7 @@
 			}
 			$result=mysqli_query($conn, $query);
 			while($book_info = mysqli_fetch_assoc($result)){
-				echo "<a href=\"/book_page.php?ISBN=".$book_info["ISBN"]."\"><div class=\"container-fluid\" style=\"margin:20px 0px 10px 0px\">
+				echo "<a href=\"book_page.php?ISBN=".$book_info["ISBN"]."\"><div class=\"container-fluid\" style=\"margin:20px 0px 10px 0px\">
 					<div class=\"row\">
 						<div class=\"col-sm-2\" style=\"background-color:white; border-radius:10px; margin-right:10px; padding-top:10px; padding-bottom:10px\">
 							<div class=\"textbook-img\">
@@ -107,7 +107,7 @@
 							foreach($keywords as $keyword){
 								echo "<a>$keyword</a>, ";
 							}
-							
+
 							echo "</h5>
 						</div>
 					</div>
@@ -122,4 +122,3 @@
 </body>
 
 </html>
-

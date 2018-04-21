@@ -56,7 +56,7 @@ if(!isset($_SESSION['UID'])){
 		</div>
 		<hr>
 		<?php
-		include_once 'connect-to-database.php';				
+		include_once 'connect-to-database.php';
 		$query_piece="";
 		$ISBN=$_GET['ISBN'];
 		$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE B.ISBN='".$ISBN."' AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
@@ -114,14 +114,14 @@ if(!isset($_SESSION['UID'])){
 					</div>
 				</div>
 			</div>";
-		}			
+		}
 		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID AND S.UID!=".$_SESSION["UID"].";";
 		$result=mysqli_query($conn, $query);
 		while($listing_info = mysqli_fetch_assoc($result)){
 			echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 				<div class='row'>
 					<div class='col-sm-2'>
-						<form method='POST' action='/transaction.php'>
+						<form method='POST' action='transaction.php'>
 							<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
 							<input type='hidden' name='LID' value='".$listing_info['LID']."'>
 						</form>
@@ -179,7 +179,7 @@ if(!isset($_SESSION['UID'])){
 					 Do you want to delete this from your wishlist?</h3>
 				</div>
 				<div class='col-sm-3'>
-					<form action='/action_remove_wishlist.php' method='POST'>
+					<form action='action_remove_wishlist.php' method='POST'>
 						<input class='btn btn-primary' type='submit' value='Delete' style='margin-top:6px; width:100%; font-size:24px; margin-top:16px'>
 						<input type='hidden' name='ISBN' value='".$ISBN."'>
 					</form>
@@ -193,7 +193,7 @@ if(!isset($_SESSION['UID'])){
 					<h3>If you would like to keep track of this item, you can add it to the wishlist.</h3>
 				</div>
 				<div class='col-sm-6'>
-					<form action='/action_add_wishlist.php' method='POST'>
+					<form action='action_add_wishlist.php' method='POST'>
 						<h4 style='float:left; margin-top:28px'>Price: $</h4>
 						<input type='number' name='Price' value='0' step='0.01' min='0' style='font-size:16px; margin-top:20px; width: 6em;'>
 						<input class='btn btn-primary' type='submit' value='Add to Wishlist' style='float:right;margin-top:6px; width:50%; font-size:24px; margin-top:16px'>

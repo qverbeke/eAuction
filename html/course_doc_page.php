@@ -33,7 +33,7 @@ if(!isset($_SESSION['UID'])){
 <div class="container-fluid with-navbar">
 	<div class="container-fluid" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
 		<div class="container-fluid">
-			<form action="/list_page.php">
+			<form action="list_page.php">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">
@@ -58,7 +58,7 @@ if(!isset($_SESSION['UID'])){
 			<div class="row">
 				<div class="col-sm-7">
 					<?php
-					include_once 'connect-to-database.php';				
+					include_once 'connect-to-database.php';
 					$query_piece="";
 					$LID=$_GET['LID'];
 					$query="SELECT L.Price, CD.Type, CD.Description, CD.Title, CD.Qty_sold, C.Name, C.Professor, C.CID FROM Listing L, Course_Doc_Listing CD, Course_Doc_Part_Of_Course P, Course C WHERE L.LID=".$LID." AND L.LID=CD.LID AND CD.LID=P.LID AND P.CID=C.CID";
@@ -72,7 +72,7 @@ if(!isset($_SESSION['UID'])){
 						<h5>".$doc_info["Description"]."</h3>
 						<h3>".$doc_info["Name"]."</h3>
 						<h3>".$doc_info["Professor"]."</h3>
-						<form method='POST' action='/course_doc_page.php'>
+						<form method='POST' action='course_doc_page.php'>
 							<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
 							<input type='hidden' name='LID' value='".$LID."'>
 						</form>
@@ -88,19 +88,19 @@ if(!isset($_SESSION['UID'])){
 						echo "<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
 							<div class='row'>
 								<div class='col-sm-3'>
-									<form method='GET' action='/course_doc_page.php'>
+									<form method='GET' action='course_doc_page.php'>
 										<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='VIEW'>
 										<input type='hidden' name='LID' value='".$listing_info['LID']."'>
 									</form>
 								</div>
 								<div class='col-sm-5'>
-									<h3>Type: <b>".$listing_info['Type']."</b></h3> 
+									<h3>Type: <b>".$listing_info['Type']."</b></h3>
 								</div>
 								<div class='col-sm-4'>
 									<h3>Price: <b>$".$listing_info['Price']."</b></h3>
 								</div>
 							</div>
-						</div>";		
+						</div>";
 					}
 				?>
 			</div>
