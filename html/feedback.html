@@ -27,18 +27,73 @@
   <div id="navbar" style="margin-top:5px;">
   </div>
 
-  <form action = "fill in" method = "get">
+  <form action = "feedback.php" method = "post">
         Title:
-        <input type = "text" name = "Title" required value = "" maxlength = "500"  />
+        <input type = "text" name = "Title" maxlength = "500"  />
          <br />
-         
-        <textarea name="message" required rows="10" cols="35" >Please share your comments with us.</textarea>
+
+         <br />
+         <br />
+         <br />
+
+
+        <input type="checkbox" name="check" value="Yes"> Is there a Bug? <br>
+
+
+        <textarea name="Content" rows=10 cols=35> Please share your comments with us
+     
+
+        </textarea>
          <br>
 
-         <input type = "submit" value ="Submit"  />
+
+         <button type = "submit" name = "submit"> Submit</button>
       </form>
 
 
 </body>
+
+<!-- <script type="text/javascript">
+function beta()
+{
+  var newhttp;
+
+  newhttp=new XMLHttpRequest();
+  newhttp.open("GET",)
+  newhttp.send(null);
+
+
+
+
+
+}
+
+</script>     
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

@@ -107,7 +107,7 @@ if(!isset($_SESSION['UID'])){
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="feedback.html" style="text-decoration:none;">
+						<a href="feedback.php" style="text-decoration:none;">
 							<div class="account-container">
 								<h3>Provide feedback</h3>
 								<div class="row">
