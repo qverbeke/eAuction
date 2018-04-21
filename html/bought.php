@@ -30,8 +30,10 @@
       echo 'Could not run query: ' . mysqli_error($conn);
       exit();
     }
-    for ($i = 0; $i < mysqli_num_rows($result); $i++){
-      $row = mysqli_fetch_row($result);
+    $num_results = mysqli_num_rows($result);
+    $og_result = $result;
+    for ($i = 0; $i < $num_results; $i++){
+      $row = mysqli_fetch_row($og_result);
       $lid = $row[2];
       $timestamp = $row[1];
       $online_or_live = $row[0];
