@@ -13,6 +13,8 @@ $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm-password'])
 $DOB = mysqli_real_escape_string($conn, $_POST['DOB']);
 $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 $address = mysqli_real_escape_string($conn, $_POST['address']);
+$phone_number = mysqli_real_escape_string($conn, $_POST['phone_number']);
+
 
 //Make gender into a number
 if($gender == "male" || $gender == "Male"){
@@ -40,7 +42,8 @@ if(mysqli_num_rows($result) != 0){
 }
 //Encrypt the password
 $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
-$sql_statement = "INSERT INTO User(Password, DOB, Address, Gender) VALUES ('$hashed_pwd', '$DOB', '$address', '$gender_num');";
+$sql_statement = "INSERT INTO User(Password, DOB, Address, Gender, Phone)
+VALUES ('$hashed_pwd', '$DOB', '$address', '$gender_num', '$phone_number');";
 mysqli_query($conn, $sql_statement);
 //Get the uid from the last insert statement
 $UID = mysqli_insert_id($conn);
