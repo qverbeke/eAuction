@@ -34,7 +34,7 @@ if(!isset($_SESSION['UID'])){
 <div class="container-fluid with-navbar">
 	<div class="container-fluid" style="background-color:#00cc7a; padding-top:20px;padding-bottom:20px; border-radius:10px">
 		<div class="container-fluid">
-			<form action="/list_page.php">
+			<form action="list_page.php">
 				<div class="input-group">
 					<div class="input-group-btn search-panel">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">

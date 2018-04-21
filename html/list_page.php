@@ -40,7 +40,7 @@
 		<div class="col-sm-1"></div>
 		<div class="col-sm-10" >
 			<div class="container-fluid">
-				<form action="/list_page.php">
+				<form action="list_page.php">
 					<div class="input-group">
 						<div class="input-group-btn search-panel">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="margin-top:-10px">
