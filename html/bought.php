@@ -18,10 +18,13 @@
   <div id='navbar'>
   </div>
   <div class="container" style="margin-top:53px;">
+    <h1 style="margin-bottom:25px"> Purchase History </h1>
+    <div class="list-group">
   <?php
     include_once 'connect-to-database.php';
     $uid = $_SESSION["UID"];
-    $sql_statement = "Select T.Online_or_live, T.Timestamp, T.LID FROM Transaction T WHERE T.Buyer_UID={$uid}";
+    $sql_statement = "Select T.Online_or_live, T.Timestamp, T.LID FROM Transaction T
+     WHERE T.Buyer_UID={$uid} ORDER BY T.Timestamp";
     $result = mysqli_query($conn, $sql_statement);
     if(!$result){
       echo 'Could not run query: ' . mysqli_error($conn);
@@ -54,11 +57,20 @@
         echo 'Could not run query: ' . mysqli_error($conn);
         exit();
       }
+
+      echo "<a href=\"#\" class=\"list-group-item list-group-item-action align-items-start\">";
       //If this is a course document
       if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_row($result);
         $type = $row[0];
         $title = $row[1];
+        echo "
+        Time Purchased: {$timestamp} <br>
+        Item Type: Course Document <br>
+        Document Title: {$title} <br>
+        Price: {$price} <br>
+        Bought From: {$seller_username}";
+
       }else{
         $sql_statement = "SELECT BL.Quality, BL.ISBN FROM Book_Listing BL
          WHERE BL.LID={$lid}";
@@ -78,9 +90,19 @@
          }
          $row = mysqli_fetch_row($result);
          $title = $row[0];
+         echo "
+         Time Purchased: {$timestamp} <br>
+         Item Type: Book <br>
+         Book Title: {$title} <br>
+         Price: {$price} <br>
+         Quality: {$quality} <br>
+         Bought From: {$seller_username}
+         ";
+
       }
+      echo "</a>";
     }
     ?>
-  
+  </div>
  </div>
 </body>
