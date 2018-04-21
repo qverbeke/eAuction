@@ -41,7 +41,13 @@
       $row = mysqli_fetch_row($result);
       $price = $row[0];
       $seller_uid = $row[1];
-      echo $price;
+      $sql_statement = "SELECT UU.username FROM User_Username UU WHERE UU.UID={$seller_uid}";
+      $result = mysqli_query($conn, $sql_statement);
+      if(!$result){
+        echo 'Could not run query: ' . mysqli_error($conn);
+        exit();
+      }
+      $seller_username = mysqli_fetch_row($result)[0];
     }
    ?>
  </div>
