@@ -67,9 +67,7 @@
         type:"POST",
         url: "action_rate.php",
         data: {username1: username, rating1:rating, rated:rated1},
-        success: function(result){
-          alert(result);
-        }
+      
       });
     });
 	});

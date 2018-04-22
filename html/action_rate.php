@@ -27,9 +27,35 @@ if ($rated == "Seller"){
   VALUES({$uid}, {$other_uid}, {$rating}, \"{$rated}\")";
 }
 $result = mysqli_query($conn, $sql_statement);
-
 if(!$result){
   echo $sql_statement;
   echo 'Could not run query: ' . mysqli_error($conn);
 }
+if ($rated == "Seller"){
+  $sql_statement = "SELECT AVG(U.Rating) FROM User_Rates_User U WHERE
+  U.Rated=\"Seller\" AND U.Seller_UID={$other_uid}";
+
+}else{
+  $sql_statement = "SELECT AVG(U.Rating) FROM User_Rates_User U WHERE
+  U.Rated=\"Buyer\" AND U.Buyer_UID={$other_uid}";
+}
+$result = mysqli_query($conn, $sql_statement);
+if(!$result){
+  echo $sql_statement;
+  echo 'Could not run query: ' . mysqli_error($conn);
+}
+$new_rating = mysqli_fetch_row($result)[0];
+if ($rated == "Seller"){
+  $sql_statement = "UPDATE Seller SET Seller_rating={$new_rating}
+  WHERE UID={$other_uid}";
+}else{
+  $sql_statement = "UPDATE Buyer SET Buyer_rating={$new_rating}
+  WHERE UID={$other_uid}";
+}
+$result = mysqli_query($conn, $sql_statement);
+if(!$result){
+  echo $sql_statement;
+  echo 'Could not run query: ' . mysqli_error($conn);
+}
+
 ?>
