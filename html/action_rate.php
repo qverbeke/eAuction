@@ -16,6 +16,12 @@ if(!$result){
 $row = mysqli_fetch_row($result);
 $other_uid = $row[0];
 $uid = $_SESSION["UID"];
-echo $other_uid;
-echo $uid;
+$sql_statement = "INSERT INTO User_Rates_User
+(Seller_UID, Buyer_UID, Rating, Rated)
+VALUES({$uid}, {$other_uid}, {$rating}, \"Seller\")";
+$result = mysqli_query($conn, $sql_statement);
+if(!$result){
+  echo $sql_statement;
+  echo 'Could not run query: ' . mysqli_error($conn);
+}
 ?>
