@@ -27,7 +27,6 @@
       padding: 3px;
       font-size: 36px;
       color: #444;
-      transition: all .2s;
     }
 
     label.star:hover { cursor: pointer;}
@@ -45,6 +44,10 @@
       var next = $(this).nextAll();
       prev.css("color", "#444");
       next.css("color", "#FD4");
+      $(this).css("color", "#FD4");
+      $(this).unbind();
+      prev.unbind();
+      next.unbind();
       });
 	});
   </script>
