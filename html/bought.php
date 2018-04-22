@@ -49,7 +49,6 @@
       prev.unbind();
       next.unbind();
       alert(Math.floor(next.length / 2) + 1);
-
       });
 	});
   </script>
@@ -59,35 +58,7 @@
   <div id='navbar'>
   </div>
   <div class="container" style="margin-top:53px;">
-    <div class="stars">
-      <form action="">
-        <input class="star star-5" id="star-5" type="radio" name="star"/>
-        <label class="star star-5 " for="star-5"></label>
-        <input class="star star-4 " id="star-4" type="radio" name="star"/>
-        <label class="star star-4" for="star-4"></label>
-        <input class="star star-3" id="star-3" type="radio" name="star"/>
-        <label class="star star-3" for="star-3"></label>
-        <input class="star star-2" id="star-2" type="radio" name="star"/>
-        <label class="star star-2" for="star-2"></label>
-        <input class="star star-1" id="star-1" type="radio" name="star"/>
-        <label class="star star-1" for="star-1"></label>
-      </form>
-  </div>
-  <div class="stars">
-    <br><br>
-    <form action="">
-      <input class="star star-5" id="1star-5" type="radio" name="star"/>
-      <label class="star star-5" for="1star-5"></label>
-      <input class="star star-4" id="2star-4" type="radio" name="star"/>
-      <label class="star star-4" for="2star-4"></label>
-      <input class="star star-3" id="3star-3" type="radio" name="star"/>
-      <label class="star star-3" for="3star-3"></label>
-      <input class="star star-2" id="4star-2" type="radio" name="star"/>
-      <label class="star star-2" for="4star-2"></label>
-      <input class="star star-1" id="5star-1" type="radio" name="star"/>
-      <label class="star star-1" for="5star-1"></label>
-    </form>
-  </div>
+
     <h1 style="margin-bottom:25px"> Purchase History </h1>
     <div class="list-group">
   <?php
@@ -172,6 +143,22 @@
          ";
 
       }
+      echo '
+      <div class="stars">
+        <form action="">
+          <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
+          <label class="star star-5 " for="'.$i.'star-5"></label>
+          <input class="star star-4" id="'.$i.'star-4" type="radio" name="star"/>
+          <label class="star star-4" for="'.$i.'star-4"></label>
+          <input class="star star-3" id="'.$i.'star-3" type="radio" name="star"/>
+          <label class="star star-3" for="'.$i.'star-3"></label>
+          <input class="star star-2" id="'.$i.'star-2" type="radio" name="star"/>
+          <label class="star star-2" for="'.$i.'star-2"></label>
+          <input class="star star-1" id="'.$i.'star-1" type="radio" name="star"/>
+          <label class="star star-1" for="'.$i.'star-1"></label>
+        </form>
+    </div>
+    ';
       echo "</a>";
     }
     ?>
