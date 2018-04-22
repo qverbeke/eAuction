@@ -52,9 +52,16 @@
       var index1 = a_text.indexOf('User:');
       var index2 = a_text.indexOf('Rate');
       var username = a_text.substring(index1 + 6, index2);
-      alert(username);
-      //alert(Math.floor(next.length / 2) + 1);
+      var rating = Math.floor(next.length / 2) + 1;
+      $.ajax({
+        type:"POST",
+        url: "action_rate.php",
+        data: {username1: username, rating1:rating},
+        success: function(result){
+          alert(result);
+        }
       });
+    });
 	});
   </script>
 
