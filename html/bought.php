@@ -189,7 +189,7 @@
       }
       $sql_statement = "SELECT URU.Rating FROM User_Rates_User URU
       WHERE URU.Seller_UID={$seller_uid} AND URU.Buyer_UID={$uid} AND
-      URU.Rated=\"Seller\" ";
+      URU.Rated=\"Seller\"";
       $result = mysqli_query($conn, $sql_statement);
       if(!$result){
         echo $sql_statement;
@@ -199,7 +199,7 @@
       echo 'Rate this user: <br>
       <div class="stars">
         <form action="">';
-      if(mysqli_num_rows($result == 0)){
+      if(mysqli_num_rows($result) == 0){
         echo'
             <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
             <label class="star star-5 " for="'.$i.'star-5"></label>
@@ -215,7 +215,6 @@
     }else{
       $rating = mysqli_fetch_row($result)[0];
       echo '<div>';
-      echo $rating;
       for($k = 5; $k >= 1; $k = $k - 1){
         echo
         '<input class="star star-'.$k.'" id="'.$i.'star-'.$k.'" type="radio" name="star"';
