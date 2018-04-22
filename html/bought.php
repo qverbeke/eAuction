@@ -64,6 +64,29 @@
     });
 	});
   </script>
+  <script>
+  //When document has loaded
+	$(document).ready(function(e){
+    $('#selling-history').hide();
+    $('#selling-button').click(function(){
+      $('#purchase-history').hide();
+      $('#selling-history').show();
+      $(this).addClass("btn-primary");
+      $(this).removeClass("btn-secondary");
+      $('#purchase-button').removeClass("btn-primary");
+      $('#purchase-button').addClass("btn-secondary");
+
+    });
+    $('#purchase-button').click(function(){
+      $('#purchase-history').show();
+      $('#selling-history').hide();
+      $(this).addClass("btn-primary");
+      $(this).removeClass("btn-secondary");
+      $('#selling-button').removeClass("btn-primary");
+      $('#selling-button').addClass("btn-secondary");
+    });
+	});
+	</script>
 
 </head>
 <body>
@@ -71,8 +94,16 @@
   </div>
   <div class="container" style="margin-top:53px;">
 
-    <h1 style="margin-bottom:25px"> Purchase History </h1>
-    <div class="list-group">
+    <h1 style="margin-bottom:25px"> Transaction History </h1>
+    <div style="margin-bottom:10px;">
+      <button id="purchase-button" class="btn btn-primary">
+       Purchase History
+     </button>
+     <button id="selling-button" class="btn btn-secondary">
+       Selling History
+     </button>
+   </div>
+    <div id="purchase-history" class="list-group">
   <?php
     include_once 'connect-to-database.php';
     $uid = $_SESSION["UID"];
@@ -174,9 +205,11 @@
     </div>
     ';
     echo "</a>";
-
     }
     ?>
+  </div>
+  <div id="selling-history" class="list-group">
+    
   </div>
  </div>
 </body>
