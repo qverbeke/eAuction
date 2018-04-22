@@ -18,7 +18,7 @@ $other_uid = $row[0];
 $uid = $_SESSION["UID"];
 $sql_statement = "INSERT INTO User_Rates_User
 (Seller_UID, Buyer_UID, Rating, Rated)
-VALUES({$uid}, {$other_uid}, {$rating}, \"Seller\")";
+VALUES({$other_uid}, {$uid}, {$rating}, \"Seller\")";
 $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo $sql_statement;

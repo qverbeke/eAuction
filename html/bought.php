@@ -40,6 +40,9 @@
   <script>
   $(document).ready(function(e){
     $('input.star').click(function(){
+      if($(this).parent().attr("class")=="noclick"){
+        return;
+      }
       var prev = $(this).prevAll();
       var next = $(this).nextAll();
       prev.css("color", "#444");
@@ -214,7 +217,7 @@
           ';
     }else{
       $rating = mysqli_fetch_row($result)[0];
-      echo '<div>';
+      echo '<div class="noclick">';
       for($k = 5; $k >= 1; $k = $k - 1){
         echo
         '<input class="star star-'.$k.'" id="'.$i.'star-'.$k.'" type="radio" name="star"';
