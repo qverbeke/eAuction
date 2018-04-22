@@ -209,7 +209,97 @@
     ?>
   </div>
   <div id="selling-history" class="list-group">
-    
+    <?php
+      ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
+      include_once 'connect-to-database.php';
+      $uid = $_SESSION["UID"];
+      $sql_statement = "SELECT UU.username, L.Price, T.Timestamp, L.LID FROM Transaction T,
+      Listing L, User_Username UU WHERE UU.UID=T.Buyer_UID AND
+      T.LID=L.LID AND L.Seller_UID={$uid} ORDER BY T.Timestamp";
+      $result = mysqli_query($conn, $sql_statement);
+      if(!$result){
+        echo $sql_statement;
+        echo 'Could not run query: ' . mysqli_error($conn);
+        exit();
+      }
+      $num_results = mysqli_num_rows($result);
+      $og_result = $result;
+      for ($i = 0; $i < $num_results; $i++){
+        $row = mysqli_fetch_row($og_result);
+        $buyer_username = $row[0];
+        $price = $row[1];
+        $timestamp = $row[2];
+        $lid = $row[3];
+        $sql_statement = "SELECT CDL.Type, CDL.Title FROM Course_Doc_Listing CDL WHERE CDL.LID={$lid}";
+        $result = mysqli_query($conn, $sql_statement);
+        if(!$result){
+          echo 'Could not run query: ' . mysqli_error($conn);
+          exit();
+        }
+
+        echo "<a href=\"#\" class=\"list-group-item list-group-item-action align-items-start\">";
+        if(mysqli_num_rows($result) == 1){
+          $row = mysqli_fetch_row($result);
+          $type = $row[0];
+          $title = $row[1];
+          echo "
+          Time Sold: {$timestamp} <br>
+          Item Type: Course Document <br>
+          Document Title: {$title} <br>
+          Price: {$price} <br>
+          Sold to User: {$buyer_username}
+          <br>";
+        }else{
+          $sql_statement = "SELECT BL.Quality, BL.ISBN FROM Book_Listing BL
+           WHERE BL.LID={$lid}";
+           $result = mysqli_query($conn, $sql_statement);
+           if(!$result){
+             echo 'Could not run query: ' . mysqli_error($conn);
+             exit();
+           }
+           $row = mysqli_fetch_row($result);
+           $quality = $row[0];
+           $isbn = $row[1];
+           $sql_statement = "SELECT B.Name FROM Book B WHERE B.ISBN=\"{$isbn}\" ";
+           $result = mysqli_query($conn, $sql_statement);
+           if(!$result){
+             echo 'Could not run query: ' . mysqli_error($conn);
+             exit();
+           }
+           $row = mysqli_fetch_row($result);
+           $title = $row[0];
+           echo "
+           Time Sold: {$timestamp} <br>
+           Item Type: Book <br>
+           Book Title: {$title} <br>
+           Price: {$price} <br>
+           Quality: {$quality} <br>
+           Sold to User: {$buyer_username}
+           <br>";
+        }
+        echo 'Rate this user: <br>
+        <div class="stars">
+          <form action="">
+            <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
+            <label class="star star-5 " for="'.$i.'star-5"></label>
+            <input class="star star-4" id="'.$i.'star-4" type="radio" name="star"/>
+            <label class="star star-4" for="'.$i.'star-4"></label>
+            <input class="star star-3" id="'.$i.'star-3" type="radio" name="star"/>
+            <label class="star star-3" for="'.$i.'star-3"></label>
+            <input class="star star-2" id="'.$i.'star-2" type="radio" name="star"/>
+            <label class="star star-2" for="'.$i.'star-2"></label>
+            <input class="star star-1" id="'.$i.'star-1" type="radio" name="star"/>
+            <label class="star star-1" for="'.$i.'star-1"></label>
+          </form>
+      </div>
+      ';
+      echo "</a>";
+      }
+
+
+    ?>
   </div>
  </div>
 </body>
