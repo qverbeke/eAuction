@@ -25,7 +25,7 @@
     label.star {
       float: right;
       padding: 3px;
-      font-size: 36px;
+      font-size: 24px;
       color: #444;
     }
 
@@ -108,11 +108,12 @@
         $type = $row[0];
         $title = $row[1];
         echo "
-        Time Purchased: {$timestamp} <br>
+         Time Purchased: {$timestamp} <br>
         Item Type: Course Document <br>
         Document Title: {$title} <br>
         Price: {$price} <br>
-        Bought From: {$seller_username}";
+        Bought From: {$seller_username}
+        <br>";
 
       }else{
         $sql_statement = "SELECT BL.Quality, BL.ISBN FROM Book_Listing BL
@@ -140,11 +141,12 @@
          Price: {$price} <br>
          Quality: {$quality} <br>
          Bought From: {$seller_username}
-         ";
+         <br>";
 
       }
+
       echo '
-      <div class="stars">
+      <div class="stars pull-left">
         <form action="">
           <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
           <label class="star star-5 " for="'.$i.'star-5"></label>
@@ -158,8 +160,10 @@
           <label class="star star-1" for="'.$i.'star-1"></label>
         </form>
     </div>
+    <br>
     ';
-      echo "</a>";
+    echo "</a>";
+
     }
     ?>
   </div>
