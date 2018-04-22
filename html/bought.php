@@ -8,16 +8,81 @@
   <link rel="stylesheet" href="styles/misc.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   <script>
 	$(document).ready(function(e){
     $('#navbar').load("navbar.html");
 	});
   </script>
+  <style media="screen" type="text/css">
+
+      div.stars {
+      width: 270px;
+      display: inline-block;
+    }
+    input.star { display: none; }
+
+    label.star {
+      float: right;
+      padding: 3px;
+      font-size: 36px;
+      color: #444;
+      transition: all .2s;
+    }
+
+    label.star:hover { cursor: pointer;}
+
+    label.star:before {
+      content: '\f006';
+      font-family: FontAwesome;
+    }
+
+  </style>
+  <script>
+  $(document).ready(function(e){
+    $('.star').click(function(){
+      var prev = $(this).prevAll();
+      var next = $(this).nextAll();
+      prev.css("color", "#444");
+      next.css("color", "#FD4");
+      });
+	});
+  </script>
+
 </head>
 <body>
   <div id='navbar'>
   </div>
   <div class="container" style="margin-top:53px;">
+    <div class="stars">
+      <form action="">
+        <input class="star star-5" id="star-5" type="radio" name="star"/>
+        <label class="star star-5 " for="star-5"></label>
+        <input class="star star-4 " id="star-4" type="radio" name="star"/>
+        <label class="star star-4" for="star-4"></label>
+        <input class="star star-3" id="star-3" type="radio" name="star"/>
+        <label class="star star-3" for="star-3"></label>
+        <input class="star star-2" id="star-2" type="radio" name="star"/>
+        <label class="star star-2" for="star-2"></label>
+        <input class="star star-1" id="star-1" type="radio" name="star"/>
+        <label class="star star-1" for="star-1"></label>
+      </form>
+  </div>
+  <div class="stars">
+    <br><br>
+    <form action="">
+      <input class="star star-5" id="1star-5" type="radio" name="star"/>
+      <label class="star star-5" for="1star-5"></label>
+      <input class="star star-4" id="2star-4" type="radio" name="star"/>
+      <label class="star star-4" for="2star-4"></label>
+      <input class="star star-3" id="3star-3" type="radio" name="star"/>
+      <label class="star star-3" for="3star-3"></label>
+      <input class="star star-2" id="4star-2" type="radio" name="star"/>
+      <label class="star star-2" for="4star-2"></label>
+      <input class="star star-1" id="5star-1" type="radio" name="star"/>
+      <label class="star star-1" for="5star-1"></label>
+    </form>
+  </div>
     <h1 style="margin-bottom:25px"> Purchase History </h1>
     <div class="list-group">
   <?php
