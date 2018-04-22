@@ -187,23 +187,61 @@
          <br>";
 
       }
-
+      $sql_statement = "SELECT URU.Rating FROM User_Rates_User URU
+      WHERE URU.Seller_UID={$seller_uid} AND URU.Buyer_UID={$uid} AND
+      URU.Rated=\"Seller\" ";
+      $result = mysqli_query($conn, $sql_statement);
+      if(!$result){
+        echo $sql_statement;
+        echo 'Could not run query: ' . mysqli_error($conn);
+        exit();
+      }
       echo 'Rate this user: <br>
       <div class="stars">
-        <form action="">
-          <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
-          <label class="star star-5 " for="'.$i.'star-5"></label>
-          <input class="star star-4" id="'.$i.'star-4" type="radio" name="star"/>
-          <label class="star star-4" for="'.$i.'star-4"></label>
-          <input class="star star-3" id="'.$i.'star-3" type="radio" name="star"/>
-          <label class="star star-3" for="'.$i.'star-3"></label>
-          <input class="star star-2" id="'.$i.'star-2" type="radio" name="star"/>
-          <label class="star star-2" for="'.$i.'star-2"></label>
-          <input class="star star-1" id="'.$i.'star-1" type="radio" name="star"/>
-          <label class="star star-1" for="'.$i.'star-1"></label>
-        </form>
-    </div>
-    ';
+        <form action="">';
+      if(mysqli_num_rows($result == 0)){
+        echo'
+            <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
+            <label class="star star-5 " for="'.$i.'star-5"></label>
+            <input class="star star-4" id="'.$i.'star-4" type="radio" name="star"/>
+            <label class="star star-4" for="'.$i.'star-4"></label>
+            <input class="star star-3" id="'.$i.'star-3" type="radio" name="star"/>
+            <label class="star star-3" for="'.$i.'star-3"></label>
+            <input class="star star-2" id="'.$i.'star-2" type="radio" name="star"/>
+            <label class="star star-2" for="'.$i.'star-2"></label>
+            <input class="star star-1" id="'.$i.'star-1" type="radio" name="star"/>
+            <label class="star star-1" for="'.$i.'star-1"></label>
+          ';
+    }else{
+      $rating = mysqli_fetch_row($result)[0];
+      echo '<div>';
+      echo $rating;
+      for($k = 5; $k >= 1; $k = $k - 1){
+        echo
+        '<input class="star star-'.$k.'" id="'.$i.'star-'.$k.'" type="radio" name="star"';
+        if ($k > $rating){
+          echo 'style="color:#444;" ';
+        }
+        else{
+          echo 'style="color:#FD4;" ';
+        }
+        echo '/>
+        <label class="star star-'.$k.' " for="'.$i.'star-'.$k.'" ';
+        if ($k > $rating){
+          echo 'style="color:#444;" ';
+        }
+        else{
+          echo 'style="color:#FD4;" ';
+        }
+        echo '
+        ></label> ';
+      }
+      echo '</div>';
+    }
+
+    echo '</form>
+</div>
+';
     echo "</a>";
     }
     ?>
@@ -282,16 +320,16 @@
         echo 'Rate this user: <br>
         <div class="stars">
           <form action="">
-            <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
-            <label class="star star-5 " for="'.$i.'star-5"></label>
-            <input class="star star-4" id="'.$i.'star-4" type="radio" name="star"/>
-            <label class="star star-4" for="'.$i.'star-4"></label>
-            <input class="star star-3" id="'.$i.'star-3" type="radio" name="star"/>
-            <label class="star star-3" for="'.$i.'star-3"></label>
-            <input class="star star-2" id="'.$i.'star-2" type="radio" name="star"/>
-            <label class="star star-2" for="'.$i.'star-2"></label>
-            <input class="star star-1" id="'.$i.'star-1" type="radio" name="star"/>
-            <label class="star star-1" for="'.$i.'star-1"></label>
+            <input class="star star-5" id="x'.$i.'star-5" type="radio" name="star"/>
+            <label class="star star-5 " for="x'.$i.'star-5"></label>
+            <input class="star star-4" id="x'.$i.'star-4" type="radio" name="star"/>
+            <label class="star star-4" for="x'.$i.'star-4"></label>
+            <input class="star star-3" id="x'.$i.'star-3" type="radio" name="star"/>
+            <label class="star star-3" for="x'.$i.'star-3"></label>
+            <input class="star star-2" id="x'.$i.'star-2" type="radio" name="star"/>
+            <label class="star star-2" for="x'.$i.'star-2"></label>
+            <input class="star star-1" id="x'.$i.'star-1" type="radio" name="star"/>
+            <label class="star star-1" for="x'.$i.'star-1"></label>
           </form>
       </div>
       ';
