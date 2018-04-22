@@ -17,7 +17,7 @@
   <style media="screen" type="text/css">
 
       div.stars {
-      width: 270px;
+      width: 150px;
       display: inline-block;
     }
     input.star { display: none; }
@@ -145,8 +145,8 @@
 
       }
 
-      echo '
-      <div class="stars pull-left">
+      echo 'Rate this user: <br>
+      <div class="stars">
         <form action="">
           <input class="star star-5" id="'.$i.'star-5" type="radio" name="star"/>
           <label class="star star-5 " for="'.$i.'star-5"></label>
@@ -160,7 +160,6 @@
           <label class="star star-1" for="'.$i.'star-1"></label>
         </form>
     </div>
-    <br>
     ';
     echo "</a>";
 
