@@ -48,7 +48,12 @@
       $(this).unbind();
       prev.unbind();
       next.unbind();
-      alert(Math.floor(next.length / 2) + 1);
+      var a_text = $(this).parent().parent().parent().text();
+      var index1 = a_text.indexOf('User:');
+      var index2 = a_text.indexOf('Rate');
+      var username = a_text.substring(index1 + 6, index2);
+      alert(username);
+      //alert(Math.floor(next.length / 2) + 1);
       });
 	});
   </script>
@@ -112,7 +117,7 @@
         Item Type: Course Document <br>
         Document Title: {$title} <br>
         Price: {$price} <br>
-        Bought From: {$seller_username}
+        Bought From User: {$seller_username}
         <br>";
 
       }else{
@@ -140,7 +145,7 @@
          Book Title: {$title} <br>
          Price: {$price} <br>
          Quality: {$quality} <br>
-         Bought From: {$seller_username}
+         Bought From User: {$seller_username}
          <br>";
 
       }
