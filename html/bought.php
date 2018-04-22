@@ -39,7 +39,7 @@
   </style>
   <script>
   $(document).ready(function(e){
-    $('.star').click(function(){
+    $('input.star').click(function(){
       var prev = $(this).prevAll();
       var next = $(this).nextAll();
       prev.css("color", "#444");
@@ -48,6 +48,8 @@
       $(this).unbind();
       prev.unbind();
       next.unbind();
+      alert(Math.floor(next.length / 2) + 1);
+
       });
 	});
   </script>
