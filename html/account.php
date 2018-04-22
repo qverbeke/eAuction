@@ -50,7 +50,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/list.png" alt="add a listing" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>								
+								</div>
 							</div>
 						</a>
 					</div>
@@ -64,7 +64,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/add.png" alt="add a listing" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
@@ -78,7 +78,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/wish.png" alt="view wishlist" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
@@ -95,14 +95,14 @@ if(!isset($_SESSION['UID'])){
 					<div class="col-sm-4">
 						<a href="bought.php" style="text-decoration:none;">
 							<div class="account-container">
-								<h3>View purchased items</h3>
+								<h3>View transaction history</h3>
 								<div class="row">
 									<div class="col-sm-3"></div>
 									<div class="col-sm-6">
 										<img src="img/books.png" alt="view items" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
@@ -116,7 +116,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/feedback.png" alt="provide feedback" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
@@ -130,7 +130,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/manage.png" alt="Manage listings" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
@@ -155,7 +155,7 @@ if(!isset($_SESSION['UID'])){
 										<img src="img/logout.png" alt="Logout" style="width:100%;margin-top:10px">
 									</div>
 									<div class="col-sm-3"></div>
-								</div>		
+								</div>
 							</div>
 						</a>
 					</div>
