@@ -21,6 +21,7 @@ if(isset($_POST["LID"])){
 		<input type=\"hidden\" name=\"Price\" value=\"".$_POST["Price"]."\">
 		<input type=\"hidden\" name=\"ISBN\" value=\"".$_POST["ISBN"]."\">
 		<input type=\"hidden\" name=\"Buyer_UID\" value=\"".$Sender_UID."\">
+		<input type=\"hidden\" name=\"live\" value=\"1\">
 		<input type=\"submit\" value=\"Click to confirm that an in-person transaction has taken place\">
 	</form>";
 }

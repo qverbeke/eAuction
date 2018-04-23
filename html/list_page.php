@@ -71,10 +71,10 @@
 					$query_piece="B.ISBN='".$_GET['search_term']."'";
 				}
 				elseif($search_param=="Title"){
-					$query_piece="B.Name='".$_GET['search_term']."'";
+					$query_piece="B.Name='".addslashes($_GET['search_term'])."'";
 				}
 				elseif($search_param=="Author"){
-					$query_piece="N.Author='".$_GET['search_term']."'";
+					$query_piece="N.Author='".addslashes($_GET['search_term'])."'";
 				}
 				$query="SELECT * FROM Book B, Book_NAE N, Book_Name_Desc_Key D WHERE ".$query_piece." AND B.ISBN=N.ISBN AND B.Name=D.Name AND B.Description=D.Description";
 			}

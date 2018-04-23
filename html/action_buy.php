@@ -5,9 +5,13 @@ $Buyer_UID=$_SESSION['UID'];
 if(isset($_POST["Buyer_UID"])){
 	$Buyer_UID=$_POST["Buyer_UID"];
 }
+$Online_or_live=0;
+if(isset($_POST["live"])){
+	$Online_or_live=1;
+}
 $LID=$_POST['LID'];
 mysqli_begin_transaction($conn);
-$query="INSERT INTO Transaction(Online_or_live, Timestamp, CC_info, LID, Buyer_UID) VALUES(0, CURRENT_TIMESTAMP, 'no info', ".$LID.", ".$Buyer_UID.");";
+$query="INSERT INTO Transaction(Online_or_live, Timestamp, CC_info, LID, Buyer_UID) VALUES(".$Online_or_live.", CURRENT_TIMESTAMP, 'no info', ".$LID.", ".$Buyer_UID.");";
 $res = mysqli_query($conn, $query);
 if(!$res){
 	mysqli_rollback($conn);
