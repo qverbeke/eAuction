@@ -14,6 +14,7 @@ if(!$result){
   echo $sql_statement;
   echo 'Could not run query: ' . mysqli_error($conn);
 }
+mysqli_begin_transaction($conn);
 $row = mysqli_fetch_row($result);
 $other_uid = $row[0];
 $uid = $_SESSION["UID"];
@@ -30,6 +31,7 @@ $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo $sql_statement;
   echo 'Could not run query: ' . mysqli_error($conn);
+  mysqli_rollback($conn);
 }
 if ($rated == "Seller"){
   $sql_statement = "SELECT AVG(U.Rating) FROM User_Rates_User U WHERE
@@ -43,6 +45,7 @@ $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo $sql_statement;
   echo 'Could not run query: ' . mysqli_error($conn);
+  mysqli_rollback($conn);
 }
 $new_rating = mysqli_fetch_row($result)[0];
 if ($rated == "Seller"){
@@ -56,6 +59,9 @@ $result = mysqli_query($conn, $sql_statement);
 if(!$result){
   echo $sql_statement;
   echo 'Could not run query: ' . mysqli_error($conn);
+  mysqli_rollback($conn);
 }
+mysqli_commit($conn);
+mysqli_close($conn);
 
 ?>

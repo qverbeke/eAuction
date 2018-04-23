@@ -97,7 +97,14 @@
 							<div class='row'>
 								<div class='col-sm-3'></div>
 								<div class='col-sm-6'>
-									<form action='action_buy.php'>
+									<form action='action_buy.php' method='POST'>
+										<input type='hidden' name='LID' value='".$list_info["LID"]."'>
+										<input type='hidden' name='Avg_price' value='".$list_info["Avg_price"]."'>
+										<input type='hidden' name='Qty_sold' value='".$list_info["Qty_sold"]."'>
+										<input type='hidden' name='Max_Price_Ever' value='".$list_info["Max_Price_Ever"]."'>
+										<input type='hidden' name='Min_price_ever' value='".$list_info["Min_price_ever"]."'>
+										<input type='hidden' name='Price' value='".$list_info["Price"]."'>
+										<input type='hidden' name='ISBN' value='".$list_info["ISBN"]."'>
 										<input class='btn btn-primary' type='submit' value='Buy Directly' style='width:100%; margin-right:0px; margin-left:0px; color:white;'>
 									</form>
 								</div>
@@ -110,8 +117,15 @@
 							<div class='container-fluid'>
 								<div class='row'>
 									<div class='col-sm-6'>
-										<form action='action_buy.php' style='width:100%'>
-											<input class='btn btn-primary' type='submit' value='Buy Directly' style='width:100%; margin-right:10px; color:white;'>
+										<form action='action_buy.php' method='POST'>
+											<input type='hidden' name='LID' value='".$list_info["LID"]."'>
+											<input type='hidden' name='Avg_price' value='".$list_info["Avg_price"]."'>
+											<input type='hidden' name='Qty_sold' value='".$list_info["Qty_sold"]."'>
+											<input type='hidden' name='Max_Price_Ever' value='".$list_info["Max_Price_Ever"]."'>
+											<input type='hidden' name='Min_price_ever' value='".$list_info["Min_price_ever"]."'>
+											<input type='hidden' name='Price' value='".$list_info["Price"]."'>
+											<input type='hidden' name='ISBN' value='".$list_info["ISBN"]."'>
+											<input class='btn btn-primary' type='submit' value='Buy Directly' style='width:100%; margin-right:0px; margin-left:0px; color:white;'>
 										</form>
 									</div>
 									<div class='col-sm-6'>
@@ -164,6 +178,21 @@
                 <button type="submit" name="action" value="save" class="btn btn-default">Save as Draft </button>
                 <button type="submit" name="action" value="send" class="btn btn-default">Send</button>
               </div>
+              <?php
+				session_start();
+				include_once 'connect-to-database.php';
+				$query="SELECT * FROM Listing L, Book_Listing BL, Seller S, Book B WHERE L.LID=BL.LID AND L.LID='".$_POST["LID"]."' AND S.UID=L.Seller_UID AND B.ISBN=BL.ISBN;";
+				$result=mysqli_query($conn, $query);
+				$list_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
+				 echo "<input type=\"hidden\" name=\"LID\" value=\"".$list_info["LID"]."\">
+						<input type=\"hidden\" name=\"Avg_price\" value=\"".$list_info["Avg_price"]."\">
+						<input type=\"hidden\" name=\"Qty_sold\" value=\"".$list_info["Qty_sold"]."\">
+						<input type=\"hidden\" name=\"Max_Price_Ever\" value=\"".$list_info["Max_Price_Ever"]."\">
+						<input type=\"hidden\" name=\"Min_price_ever\" value=\"".$list_info["Min_price_ever"]."\">
+						<input type=\"hidden\" name=\"Price\" value=\"".$list_info["Price"]."\">
+						<input type=\"hidden\" name=\"ISBN\" value=\"".$list_info["ISBN"]."\">";
+              ?>
+             
             </form>
         </div>
     </div>

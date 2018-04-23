@@ -123,7 +123,7 @@ if(!isset($_SESSION['UID'])){
 				</div>
 			</div>";
 		}
-		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID AND S.UID!=".$_SESSION["UID"].";";
+		$query="SELECT L.LID, L.Price, BL.Quality, S.Seller_rating FROM Book B, Book_Listing BL, Listing L, Seller S WHERE B.ISBN='".$ISBN."' AND B.ISBN=BL.ISBN AND BL.LID=L.LID AND L.Seller_UID=S.UID AND S.UID!=".$_SESSION["UID"]." AND L.LID NOT IN (SELECT LID FROM Transaction);";
 		$result=mysqli_query($conn, $query);
 		if (!$result) {
 			alert('Could not run query: ' . mysqli_error());
