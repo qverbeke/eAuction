@@ -120,7 +120,7 @@
 										</div>
                     <div>
                       <div class="form-group">
-                      <input type="text"  name="DOB" id="DOB" tabindex="5" class="form-control", placeholder="Date of birth (MM/DD/YY)" value="">
+                      <input type="text"  pattern="[0-1][0-9]/[0-3][0-9]/[0-9]{2}" name="DOB" id="DOB" tabindex="5" class="form-control", placeholder="Date of birth (MM/DD/YY)" value="">
                     </div>
                     <div>
                       <div class="form-group">

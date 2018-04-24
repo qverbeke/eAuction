@@ -63,22 +63,3 @@ if(!isset($_SESSION['UID'])){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

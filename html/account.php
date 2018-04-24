@@ -19,13 +19,6 @@ if(!isset($_SESSION['UID'])){
 	  <script>
 		$(document).ready(function(e){
 		$('#navbar').load("navbar.html");
-			$('.search-panel .dropdown-menu').find('a').click(function(e) {
-				e.preventDefault();
-				var param = $(this).attr("href").replace("#","");
-				var concept = $(this).text();
-				$('.search-panel span#search_concept').text(concept);
-				$('.input-group #search_param').val(param);
-			});
 		});
 	  </script>
 	</head>
@@ -95,7 +88,7 @@ if(!isset($_SESSION['UID'])){
 					<div class="col-sm-4">
 						<a href="bought.php" style="text-decoration:none;">
 							<div class="account-container">
-								<h3>View transaction history</h3>
+								<h3>Transaction history</h3>
 								<div class="row">
 									<div class="col-sm-3"></div>
 									<div class="col-sm-6">
@@ -144,7 +137,21 @@ if(!isset($_SESSION['UID'])){
 		<div class="col-sm-8">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-4"></div>
+					<div class="col-sm-2"></div>
+					<div class="col-sm-4">
+						<a href="account_info.php" style="text-decoration:none;">
+							<div class="account-container">
+								<h3>Account Info</h3>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-6">
+										<img src="img/account_info.png" alt="account" style="width:100%;margin-top:10px">
+									</div>
+									<div class="col-sm-3"></div>
+								</div>
+							</div>
+						</a>
+					</div>
 					<div class="col-sm-4">
 						<a href="action_logout.php" style="text-decoration:none;">
 							<div class="account-container">
@@ -159,7 +166,7 @@ if(!isset($_SESSION['UID'])){
 							</div>
 						</a>
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-2"></div>
 				</div>
 			</div>
 		</div>
