@@ -9,6 +9,6 @@
     $content = $_POST['Content'];
     $sql = "INSERT INTO Feedback(Title, Is_bug, Content, UID, Timestamp) VALUES ('".addslashes($title)."',  ".$check.", '".addslashes($content)."', ".$_SESSION["UID"].", CURRENT_TIMESTAMP);";
     mysqli_query($conn, $sql);
-    header("Location: feedback.php");
+    header("Location: home.php");
     
 ?>

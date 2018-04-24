@@ -37,28 +37,34 @@ if(!isset($_SESSION['UID'])){
 <div id="navbar" style="margin-top:50px;"></div>
 <div class="container-fluid with-navbar">
 
-<div style="background-color:white; border-radius: 10px">
+<div>
 	<br>
   <div id="navbar" style="margin-top:5px;">
   </div>
-
+  <div class="row">
+	  <div class="col-sm-3"></div>
+	  <div class="col-sm-6" style="background-color:white; border-radius: 10px">
+	<h3>Provide site feedback</h3>
   <form action = "action_create_feedback.php" method = "post">
         Title:
-        <input type = "text" name = "Title" maxlength = "500"  />
-         <br />
-
-         <br />
-         <br />
-         <br />
-
+        <input type = "text" name = "Title" maxlength = "500">
         <input type="checkbox" name="check" value="1"> Is there a Bug? <br>
 
 
-        <textarea name="Content" rows=10 cols=35> Please share your comments with us</textarea>
+        <textarea name="Content" rows="10" placeholder="Please share your comments with us..." style="width:100%"></textarea>
          <br>
-
-         <button type = "submit" name = "submit"> Submit</button>
+		 <div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<button type = "submit" name = "submit" class="btn btn-primary" style="width:100%; font-size:20px"> Submit</button>
+			</div>
+			<div class="col-sm-3"></div>
+		 </div>
+         
       </form>
+      </div>
+      <div class="col-sm-3"></div>
+   </div>
 
 
 </body>
