@@ -113,7 +113,7 @@ if(!isset($_SESSION['UID'])){
       <button type="submit" name="action" value="book" class="btn btn-default">Submit</button>
 
     </form>
-    <form id="course-document-form" action="action_create_listing.php" method="post" role="form">
+    <form id="course-document-form" action="action_create_listing.php" method="post" role="form" enctype="multipart/form-data">
       <div class="form-group">
         <label for="title">Document Title</label>
         <input type="text" class="form-control" id="title"
@@ -160,6 +160,11 @@ if(!isset($_SESSION['UID'])){
         <textarea rows="5" type="text" class="form-control"
         id="description" name="description"></textarea>
       </div>
+      <div class="form-group">
+		<label for="fileToUpload">File to Upload</label>
+		<input type="file" name="fileToUpload" id="fileToUpload">
+      </div>
+		
 
       <button type="submit" name="action" value="doc" class="btn btn-default">Submit</button>
     </form>

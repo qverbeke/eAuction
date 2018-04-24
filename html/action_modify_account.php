@@ -61,7 +61,7 @@ elseif($input_type=="Address"){
 }
 elseif($input_type=="Willing_to_meet"){
 	$query="UPDATE Seller SET Willing_to_meet=";
-	if($input_val="Yes"){
+	if($input_val=="Yes"){
 		$query=$query."0";
 		echo "No";
 	}
