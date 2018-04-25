@@ -82,14 +82,19 @@ else if($action =="doc"){
   mysqli_commit($conn);
   mysqli_close($conn);
 	$target_dir = "/var/www/html/uploads/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-		
-        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } else {
-	echo "hi";
-        echo $_FILES["fileToUpload"]["error"];
-    }
+	if(pathinfo($_FILES["fileToUpload"]["name"])["extension"]=="pdf"){
+		$target_file = $target_dir.$LID.".pdf";
+		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			header("Location: home.php");
+    		}
+		else {
+			echo "hi";
+        		echo $_FILES["fileToUpload"]["error"];
+    		}
+	}
+	else{
+		echo "Incorrect file type detected";
+	}
   //header("Location: home.php");
   //exit();
 }
