@@ -16,32 +16,47 @@ $res = mysqli_query($conn, $query);
 if(!$res){
 	mysqli_rollback($conn);
 }
-if($_POST["Price"]<$_POST["Min_price_ever"]){
-	$query="UPDATE Book SET Min_price_ever=".$_POST["Price"]." WHERE ISBN=".$_POST["ISBN"].";";
+if($_POST["trans_type"]=="book"){
+	if($_POST["Price"]<$_POST["Min_price_ever"]){
+		$query="UPDATE Book SET Min_price_ever=".$_POST["Price"]." WHERE ISBN=".$_POST["ISBN"].";";
+		$res = mysqli_query($conn, $query);
+		if(!$res){
+			mysqli_rollback($conn);
+		}
+	}
+	if($_POST["Price"]>$_POST["Max_Price_Ever"]){
+		$query="UPDATE Book SET Max_Price_Ever=".$_POST["Price"]." WHERE ISBN=".$_POST["ISBN"].";";
+		$res = mysqli_query($conn, $query);
+		if(!$res){
+			mysqli_rollback($conn);
+		}
+	}
+	$query="UPDATE Book SET Qty_sold=".(string)((int)$_POST["Qty_sold"]+1)." WHERE ISBN=".$_POST["ISBN"].";";
 	$res = mysqli_query($conn, $query);
 	if(!$res){
 		mysqli_rollback($conn);
 	}
-}
-if($_POST["Price"]>$_POST["Max_Price_Ever"]){
-	$query="UPDATE Book SET Max_Price_Ever=".$_POST["Price"]." WHERE ISBN=".$_POST["ISBN"].";";
+	$query="UPDATE Book SET Avg_price=".(string)((((int)$_POST["Qty_sold"]*(int)$_POST["Qty_sold"])+(int)$_POST["Price"])/((int)$_POST["Qty_sold"]+1))." WHERE ISBN=".$_POST["ISBN"].";";
 	$res = mysqli_query($conn, $query);
 	if(!$res){
 		mysqli_rollback($conn);
 	}
+	mysqli_commit($conn);
+	mysqli_close($conn);
+	header("Location:home.php");
 }
-$query="UPDATE Book SET Qty_sold=".(string)((int)$_POST["Qty_sold"]+1)." WHERE ISBN=".$_POST["ISBN"].";";
-$res = mysqli_query($conn, $query);
-if(!$res){
-	mysqli_rollback($conn);
+elseif($_POST["trans_type"]=="coursedoc"){
+	$query = "UPDATE Course_Doc_Listing SET Qty_sold=".((int)$_POST["Qty_sold"]+1)." WHERE LID=".$LID.";";
+	$res = mysqli_query($conn, $query);
+	if(!$res){
+		mysqli_rollback($conn);
+	}
+	mysqli_commit($conn);
+	mysqli_close($conn);
+	header("Location:home.php");
 }
-$query="UPDATE Book SET Avg_price=".(string)((((int)$_POST["Qty_sold"]*(int)$_POST["Qty_sold"])+(int)$_POST["Price"])/((int)$_POST["Qty_sold"]+1))." WHERE ISBN=".$_POST["ISBN"].";";
-$res = mysqli_query($conn, $query);
-if(!$res){
-	mysqli_rollback($conn);
+else{
+	exit(1);
 }
-mysqli_commit($conn);
-mysqli_close($conn);
-header("Location:home.php");
 
 ?>

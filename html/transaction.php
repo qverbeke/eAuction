@@ -118,6 +118,7 @@
 											<input type='hidden' name='Min_price_ever' value='".$list_info["Min_price_ever"]."'>
 											<input type='hidden' name='Price' value='".$list_info["Price"]."'>
 											<input type='hidden' name='ISBN' value='".$list_info["ISBN"]."'>
+											<input type='hidden' name='trans_type' value='book'>
 											<input class='btn btn-primary' type='submit' value='Buy Directly' style='width:100%; margin-right:0px; margin-left:0px; color:white;'>
 										</form>
 									</div>

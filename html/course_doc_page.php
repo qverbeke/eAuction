@@ -65,18 +65,30 @@ if(!isset($_SESSION['UID'])){
 					$result=mysqli_query($conn, $query);
 					$doc_info = mysqli_fetch_array($result, MYSQLI_ASSOC);
 					echo "<div class=\"container-fluid\" style=\"background-color:white; margin:10px 10px 10px 10px; border-radius: 10px\">
-						<h1>".$doc_info["Title"]."</h1>
-						<h3>".$doc_info["Type"]."</h3>
-						<h3>".$doc_info["Price"]."</h3>
-						<h4>Quantity Sold: ".$doc_info["Qty_sold"]."</h4>
-						<h5>".$doc_info["Description"]."</h3>
-						<h3>".$doc_info["Name"]."</h3>
-						<h3>".$doc_info["Professor"]."</h3>
-						<form method='POST' action='course_doc_page.php'>
-							<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
-							<input type='hidden' name='LID' value='".$LID."'>
-						</form>
-					</div>
+						<h1><b>Title</b>: ".$doc_info["Title"]."</h1>
+						<h3><b>Type</b>: ".$doc_info["Type"]."</h3>
+						<h3><b>Price</b>: $".$doc_info["Price"]."</h3>
+						<h4><b>Quantity Sold</b>: ".$doc_info["Qty_sold"]."</h4>
+						<h5>Description: ".$doc_info["Description"]."</h3>
+						<h3>Course Name: ".$doc_info["Name"]."</h3>
+						<h3>Course Professor: ".$doc_info["Professor"]."</h3>";
+					$query = "SELECT * FROM Transaction WHERE LID=".$LID." AND Buyer_UID=".$_SESSION["UID"].";"
+					$result=mysqli_query($conn, $query);
+					if(mysqli_num_rows($result)==0){
+						echo " <a href='../uploads/".$LID.".pdf' download>Download file</a> ";
+					}
+					else{
+						
+						echo "<form method='POST' action='course_doc_page.php'>
+								<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
+								<input type='hidden' name='Qty_sold' value='".$doc_info["Qty_sold"]."'>
+								<input type='hidden' name='Buyer_UID' value='".$_SESSION["UID"]."'>
+								<input type='hidden' name='LID' value='".$LID."'>
+							</form>";
+					}
+						
+						
+					echo "</div>
 				</div>
 				<div class='col-sm-5'>
 					<div class='container-fluid' style='background-color:white; margin:10px 10px 10px 10px; border-radius: 10px'>
