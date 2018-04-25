@@ -112,7 +112,7 @@ if(!isset($_SESSION['UID'])){
 						<h4>Quantity sold:</h4><h2>".$meta_info["Qty_sold"]."</h2>
 					</div>
 					<div class='col-sm-3'>
-						<h4>Average price:</h4><h2>$".$meta_info["Avg_price"]."</h2>
+						<h4>Average price:</h4><h2>$".number_format($meta_info["Avg_price"], 2)."</h2>
 					</div>
 					<div class='col-sm-3'>
 						<h4>Minimum price ever:</h4><h2>$".$meta_info["Min_price_ever"]."</h2>

@@ -42,7 +42,7 @@ if(!isset($_SESSION['UID'])){
 		<div class="container-fluid" style="width:100%; border-radius:10px; background-color:white; width:50%; text-align:center;"><h1><b>My Book Listings</b></h1></div>
 		<?php
 			include 'connect-to-database.php';
-			$query="SELECT L.Timestamp, B.Name, B.ISBN, L.LID, L.Price FROM Listing L, Book_Listing BL, Book B WHERE L.LID=BL.LID AND L.Seller_UID=".$_SESSION["UID"]." AND BL.ISBN=B.ISBN;";
+			$query="SELECT L.Timestamp, B.Name, B.ISBN, L.LID, L.Price FROM Listing L, Book_Listing BL, Book B WHERE L.LID=BL.LID AND L.Seller_UID=".$_SESSION["UID"]." AND BL.ISBN=B.ISBN AND L.LID NOT IN (SELECT LID FROM Transaction);";
 			$result=mysqli_query($conn, $query);
 			while($list_info = mysqli_fetch_assoc($result)){
 				$time = strtotime($list_info["Timestamp"]);

@@ -176,14 +176,6 @@ if(!isset($_SESSION['UID'])){
 				</div>
 				<div class='row'>
 					<div class='col-sm-6'>
-						<h3>Date of Birth:</h3>
-					</div>
-					<div class='col-sm-6'>
-						<h3>".$user_info["DOB"]."</h3>
-					</div>
-				</div>
-				<div class='row'>
-					<div class='col-sm-6'>
 						<h3>Seller Rating:</h3>
 					</div>
 					<div class='col-sm-6'>";
