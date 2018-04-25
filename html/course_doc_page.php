@@ -72,7 +72,7 @@ if(!isset($_SESSION['UID'])){
 						<h5>Description: ".$doc_info["Description"]."</h3>
 						<h3>Course Name: ".$doc_info["Name"]."</h3>
 						<h3>Course Professor: ".$doc_info["Professor"]."</h3>";
-					$query = "SELECT * FROM Transaction WHERE LID=".$LID." AND Buyer_UID=".$_SESSION["UID"].";"
+					$query = "SELECT * FROM Transaction WHERE LID=".$LID." AND Buyer_UID=".$_SESSION["UID"].";";
 					$result=mysqli_query($conn, $query);
 					if(mysqli_num_rows($result)==0){
 						echo " <a href='../uploads/".$LID.".pdf' download>Download file</a> ";
