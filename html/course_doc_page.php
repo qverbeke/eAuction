@@ -84,7 +84,7 @@ if(!isset($_SESSION['UID'])){
 						</form>";
 					}
 					else{
-						echo " <a href='../uploads/".$LID.".pdf' download>Download file</a> ";					
+						echo " <a href='/var/www/uploads/".$LID.".pdf' download>Download file</a> ";					
 					}
 						
 						

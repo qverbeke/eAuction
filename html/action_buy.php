@@ -53,7 +53,7 @@ elseif($_POST["trans_type"]=="coursedoc"){
 	}
 	mysqli_commit($conn);
 	mysqli_close($conn);
-	header("Location:home.php");
+	header("Location:course_doc_page.php?LID=".$LID);
 }
 else{
 	exit(1);
