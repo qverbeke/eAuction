@@ -70,7 +70,7 @@ else if($action =="doc"){
   }
 
   $CID = $_POST["select-course"];
-  echo "{$CID}";
+ // echo "{$CID}";
   $sql_statement = "INSERT INTO Course_Doc_Part_Of_Course(CID, LID)
   VALUES ({$CID}, {$LID});";
   $result = mysqli_query($conn, $sql_statement);
