@@ -75,16 +75,15 @@ if(!isset($_SESSION['UID'])){
 					$query = "SELECT * FROM Transaction WHERE LID=".$LID." AND Buyer_UID=".$_SESSION["UID"].";";
 					$result=mysqli_query($conn, $query);
 					if(mysqli_num_rows($result)==0){
-						echo " <a href='../uploads/".$LID.".pdf' download>Download file</a> ";
+						echo "<form method='POST' action='course_doc_page.php'>
+							<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
+							<input type='hidden' name='Qty_sold' value='".$doc_info["Qty_sold"]."'>
+							<input type='hidden' name='Buyer_UID' value='".$_SESSION["UID"]."'>
+							<input type='hidden' name='LID' value='".$LID."'>
+						</form>";
 					}
 					else{
-						
-						echo "<form method='POST' action='course_doc_page.php'>
-								<input class='btn btn-primary' style='margin-top:6px; width:100%; font-size:24px; margin-top:13px' type='Submit' value='BUY'>
-								<input type='hidden' name='Qty_sold' value='".$doc_info["Qty_sold"]."'>
-								<input type='hidden' name='Buyer_UID' value='".$_SESSION["UID"]."'>
-								<input type='hidden' name='LID' value='".$LID."'>
-							</form>";
+						echo " <a href='../uploads/".$LID.".pdf' download>Download file</a> ";					
 					}
 						
 						
