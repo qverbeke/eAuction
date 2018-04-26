@@ -77,7 +77,7 @@ if(!isset($_SESSION['UID'])){
 			
 			}
 		?>
-		</div>
+		
 		<div class="container-fluid" style="width:100%; border-radius:10px; margin-top:20px; background-color:white; width:50%; text-align:center;"><h1><b>My Course Doc Listings</b></h1></div>
 		<?php
 			include 'connect-to-database.php';
