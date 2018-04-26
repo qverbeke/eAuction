@@ -43,16 +43,20 @@ if($action == "book"){
   }
 
   $course = $_POST["select-course"];
-  $query="INSERT INTO Course_Uses_Book(CID, ISBN) VALUES({$course},\"{$isbn}\");";
+  $query="SELECT * FROM Course_Uses_Book WHERE CID=".$course." AND ISBN='".$isbn."';";
   $result=mysqli_query($conn, $query);
-  if(!$result){
-    echo 'Could not run query: ' . mysqli_error($conn);
-    mysqli_rollback($conn);
-    exit();
+  if(mysqli_num_rows($result)==0){
+    $query="INSERT INTO Course_Uses_Book(CID, ISBN) VALUES({$course},\"{$isbn}\");";
+	$result=mysqli_query($conn, $query);
+	if(!$result){
+		echo 'Could not run query: ' . mysqli_error($conn);
+		mysqli_rollback($conn);
+		exit();
+	}
   }
   mysqli_commit($conn);
   mysqli_close($conn);
-  header("Location: home.php");
+  header("Location: manage_listings.php");
   exit();
 }
 else if($action =="doc"){
@@ -85,7 +89,7 @@ else if($action =="doc"){
 	if(pathinfo($_FILES["fileToUpload"]["name"])["extension"]=="pdf"){
 		$target_file = $target_dir.$LID.".pdf";
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			header("Location: home.php");
+			header("Location: manage_listings.php");
     		}
 		else {
 			echo "hi";
