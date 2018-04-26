@@ -60,7 +60,7 @@ if(!isset($_SESSION['UID'])){
           <select class="form-control" id="select-book" name="select-book">
             <?php
               include_once 'connect-to-database.php';
-              $sql_statement = 'Select B.Name, B.ISBN FROM Book B';
+              $sql_statement = 'Select B.Name, B.ISBN, N.Author, N.Edition FROM Book B, Book_NAE N WHERE B.ISBN=N.ISBN';
               $result = mysqli_query($conn, $sql_statement);
               if (!$result) {
                 echo 'Could not run query: ' . mysqli_error();
@@ -68,7 +68,7 @@ if(!isset($_SESSION['UID'])){
               }
               for($i = 0; $i < mysqli_num_rows($result); $i++){
                 $row = mysqli_fetch_row($result);
-                $book_name = $row[0];
+                $book_name = $row[0]." - ".row[2]." - Edition ".row[3];
                 $isbn = $row[1];
                 echo "<option value=\"{$isbn}\">{$book_name}</option>";
               }
