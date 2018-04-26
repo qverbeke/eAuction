@@ -85,7 +85,7 @@ else if($action =="doc"){
   }
   mysqli_commit($conn);
   mysqli_close($conn);
-	$target_dir = "/var/www/uploads/";
+	$target_dir = "/var/www/html/uploads/";
 	if(pathinfo($_FILES["fileToUpload"]["name"])["extension"]=="pdf"){
 		$target_file = $target_dir.$LID.".pdf";
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
