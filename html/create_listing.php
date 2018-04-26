@@ -137,7 +137,7 @@ if(!isset($_SESSION['UID'])){
           <select class="form-control" id="select-course" name="select-course">
             <?php
               include_once 'connect-to-database.php';
-              $sql_statement = 'Select C.Name, C.Professor, C.CID FROM Course C;';
+              $sql_statement = 'Select C.Name, C.Professor, C.CID FROM Course C ORDER BY Name;';
               $result = mysqli_query($conn, $sql_statement);
               if (!$result) {
                 echo 'Could not run query: ' . mysqli_error();
