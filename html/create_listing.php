@@ -68,7 +68,7 @@ if(!isset($_SESSION['UID'])){
               }
               for($i = 0; $i < mysqli_num_rows($result); $i++){
                 $row = mysqli_fetch_row($result);
-                $book_name = $row[0]." - ".row[2]." - Edition ".row[3];
+                $book_name = $row[0]." - ".$row[2]." - Edition ".$row[3];
                 $isbn = $row[1];
                 echo "<option value=\"{$isbn}\">{$book_name}</option>";
               }
